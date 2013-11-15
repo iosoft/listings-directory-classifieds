@@ -246,7 +246,7 @@ jQuery(document).ready(function($) {
 				</td>
 			</tr>
 			
-			<?php apply_filters('w2dc_level_html', $level); ?>
+			<?php do_action('w2dc_level_html', $level); ?>
 			
 			<tr>
 				<th scope="row">

@@ -8,7 +8,7 @@
 <p><?php _e('Listing will be raised up to the top of all lists, those ordered by date.', 'W2DC'); ?></p>
 <p><?php _e('Note, that listing will not stick on top, so new listings and other listings, those were raised up later, will place higher.', 'W2DC'); ?></p>
 
-<?php apply_filters('w2dc_raise_up_html', $listing); ?>
+<?php do_action('w2dc_raise_up_html', $listing); ?>
 
 <?php if ($action == 'show'): ?>
 <a href="<?php echo admin_url('options.php?page=w2dc_raise_up&listing_id=' . $listing->post->ID . '&raiseup_action=raiseup&referer=' . urlencode($referer)); ?>" class="button button-primary"><?php _e('Raise up', 'W2DC'); ?></a>

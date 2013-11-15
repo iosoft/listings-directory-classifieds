@@ -57,12 +57,24 @@ class w2dc_content_fields_manager {
 	
 		$content_fields = $w2dc_instance->content_fields;
 	
-		if (!$content_field = $content_fields->getContentFieldById($field_id))
-			$content_field = new w2dc_content_field();
+		if (!$content_field = $content_fields->getContentFieldById($field_id)) {
+			// this will be new field
+			if (isset($_POST['type'])) {
+				// load dummy content field by its type from $_POST
+				$field_class_name = 'w2dc_content_field_' . $_POST['type'];
+				if (class_exists($field_class_name)) {
+					$content_field = new $field_class_name;
+				} else {
+					w2dc_addMessage('This type of content field does not exist!', 'error');
+					w2dc_renderTemplate('content_fields/add_edit_content_field.tpl.php', array('content_fields' => $content_fields, 'content_field' => $content_field, 'field_id' => $field_id, 'fields_types_names' => $content_fields->fields_types_names));
+				}
+			} else 
+				$content_field = new w2dc_content_field();
+		}
 
 		if (w2dc_getValue($_POST, 'submit') && wp_verify_nonce($_POST['w2dc_content_fields_nonce'], W2DC_PATH)) {
 			$validation = $content_field->validation();
-	
+
 			if ($validation->run()) {
 				if ($content_field->id) {
 					if ($content_fields->saveContentFieldFromArray($field_id, $validation->result_array())) {

@@ -211,8 +211,8 @@ class w2dc_content_field {
 		if ($this->isCategories())
 			$validation->set_rules('categories_list', __('Assigned categories', 'W2DC'));
 
-		$validation = apply_filters('w2dc_content_field_validation', $this, $validation);
-		
+		$validation = apply_filters('w2dc_content_field_validation', $validation, $this);
+
 		if ($this->isSlug()) {
 			global $wpdb;
 			if ($wpdb->get_results($wpdb->prepare("SELECT * FROM wp_w2dc_content_fields WHERE slug=%s AND id!=%d", $_POST['slug'], $this->id), ARRAY_A)
@@ -227,7 +227,7 @@ class w2dc_content_field {
 			)
 				$validation->setError('slug', __('Can\'t use this slug', 'W2DC'));
 		}
-		
+
 		return $validation;
 	}
 	
@@ -254,7 +254,7 @@ class w2dc_content_field {
 		if ($this->isCategories())
 			$insert_update_args['categories'] = serialize($array['categories_list']);
 
-		$insert_update_args = apply_filters('w2dc_content_field_create_edit_args', $this, $insert_update_args, $array);
+		$insert_update_args = apply_filters('w2dc_content_field_create_edit_args', $insert_update_args, $this, $array);
 		
 		return $wpdb->insert('wp_w2dc_content_fields', $insert_update_args);
 	}
@@ -282,7 +282,7 @@ class w2dc_content_field {
 		if ($this->isCategories())
 			$insert_update_args['categories'] = serialize($array['categories_list']);
 
-		$insert_update_args = apply_filters('w2dc_content_field_create_edit_args', $this, $insert_update_args, $array);
+		$insert_update_args = apply_filters('w2dc_content_field_create_edit_args', $insert_update_args, $this, $array);
 		
 		return $wpdb->update('wp_w2dc_content_fields', $insert_update_args,	array('id' => $this->id), null, array('%d')) !== false;
 	}

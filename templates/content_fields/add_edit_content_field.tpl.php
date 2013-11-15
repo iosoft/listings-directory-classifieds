@@ -253,7 +253,7 @@
 				</td>
 			</tr>
 			
-			<?php apply_filters('w2dc_content_field_html', $content_field); ?>
+			<?php do_action('w2dc_content_field_html', $content_field); ?>
 			
 			<?php if ($content_field->isCategories()): ?>
 			<tr>
