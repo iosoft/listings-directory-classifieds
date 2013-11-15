@@ -8,7 +8,7 @@ Last Updated: 2013-Nov-15
 Stable tag: tags/1.0.0
 License: GPLv2 or later
 
-Build Directory or Classifieds site in some minutes.
+Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds script.
 
 == Description ==
 
@@ -53,9 +53,11 @@ Look at our [demo](http://www.salephpscripts.com/wordpress_directory/demo/)
 
 = Premium modules =
 Right now we have 2 additional premium modules:
+
 **Enhanced search** - allows to search by content fields, also additional feature for locations search in radius (in miles or kilometers)
 
 **Enhanced locations** - allows to set up any number of locations for one listing, also users may select map marker icons for their locations on Google map
+
 
 == Installation ==
 
