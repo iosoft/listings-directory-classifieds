@@ -1,0 +1,71 @@
+<?php 
+
+class w2dc_content_field_select extends w2dc_content_field {
+	public $selection_items = array();
+
+	protected $can_be_ordered = false;
+	protected $is_configuration_page = true;
+	protected $can_be_searched = true;
+
+	public function configure() {
+		global $wpdb, $w2dc_instance;
+
+		if (w2dc_getValue($_POST, 'submit') && wp_verify_nonce($_POST['w2dc_configure_content_fields_nonce'], W2DC_PATH)) {
+			$validation = new form_validation();
+			$validation->set_rules('selection_items[]', __('Selection items', 'W2DC'), 'required');
+			if ($validation->run()) {
+				$result = $validation->result_array();
+				if ($wpdb->update('wp_w2dc_content_fields', array('options' => serialize(array('selection_items' => $result['selection_items[]']))), array('id' => $this->id), null, array('%d')))
+					w2dc_addMessage(__('Field configuration was updated successfully!', 'W2DC'));
+				
+				$w2dc_instance->admin->content_fields_manager->showContentFieldsTable();
+			} else {
+				$this->selection_items = $validation->result_array('selection_items[]');
+				w2dc_addMessage($validation->error_string(), 'error');
+
+				w2dc_renderTemplate('content_fields/fields/select_configuration.tpl.php', array('content_field' => $this));
+			}
+		} else
+			w2dc_renderTemplate('content_fields/fields/select_configuration.tpl.php', array('content_field' => $this));
+	}
+	
+	public function buildOptions() {
+		if (isset($this->options['selection_items']))
+			$this->selection_items = $this->options['selection_items'];
+	}
+	
+	public function renderInput() {
+		w2dc_renderTemplate('content_fields/fields/select_input.tpl.php', array('content_field' => $this));
+	}
+	
+	public function validateValues(&$errors) {
+		$field_index = 'w2dc_field_input_' . $this->id;
+
+		$validation = new form_validation();
+		$rules = '';
+		if ($this->canBeRequired() && $this->is_required)
+			$rules .= '|required';
+		$validation->set_rules($field_index, $this->name, $rules);
+		if (!$validation->run())
+			$errors[] = $validation->error_string();
+		elseif ($selected_item = $validation->result_array($field_index)) {
+			if (!in_array($selected_item, $this->selection_items))
+				$errors[] = sprintf(__('This selection option "%s" doesn\'t exist', 'W2DC'), $selected_item);
+
+			return $selected_item;
+		}
+	}
+	
+	public function saveValue($post_id, $validation_results) {
+		return update_post_meta($post_id, '_content_field_' . $this->id, $validation_results);
+	}
+	
+	public function loadValue($post_id) {
+		$this->value = get_post_meta($post_id, '_content_field_' . $this->id, true);
+	}
+	
+	public function renderOutput($listing) {
+		w2dc_renderTemplate('content_fields/fields/select_radio_output.tpl.php', array('content_field' => $this, 'listing' => $listing));
+	}
+}
+?>

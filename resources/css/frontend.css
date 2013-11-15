@@ -1,0 +1,224 @@
+#w2dc_content {
+	float: left;
+	width: 65.1042%;
+	margin: 1.71429rem 0 0;
+}
+/*
+#w2dc_content h1 {
+	font-size: 2em;
+	margin: 0.6em 0;
+}
+#w2dc_content p, #w2dc_content li {
+	margin: 0.5em 0;
+}
+#w2dc_content label {
+	margin: 0.2em 0;
+}*/
+
+#ajax_loader {
+	width: 220px;
+	height: 19px;
+	display: none;
+}
+.ajax_loading {
+	background: url('../images/ajax-indicator.gif') no-repeat center;
+}
+.ui-autocomplete-loading {
+	background: url('../images/ajax-indicator.gif') right center no-repeat;
+}
+.red_asterisk {
+	color: red;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 1px;
+	padding: 2px;
+}
+.ui-widget-overlay {
+    background-repeat: repeat !important;
+	z-index: 5 !important;
+}
+.clear_float {
+	clear: both;
+}
+
+#recaptcha_widget_div {
+	margin: 10px 0;
+}
+.updated, .error {
+	margin: 5px 0 15px;
+	padding: 0 0.6em;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+}
+.updated p, .error p {
+	margin: 1em !important;
+}
+.updated {
+	background-color: #FFFFE0;
+	border-color: #E6DB55;
+}
+.error {
+	background-color: #FFEBE8;
+	border-color: #CC0000;
+}
+
+/* Content fields */
+.w2dc_field_output_block {
+	margin: 0.7em 0;
+}
+.w2dc_field_name {
+	font-weight: bold;
+}
+.w2dc_field_icon {
+	box-shadow: none !important;
+	margin-right: 5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+address.w2dc_location {
+	margin-bottom: 10px;
+	text-align: right;
+}
+
+/* Listings */
+.w2dc_listing {
+	background-color: #FBFEFE;
+	padding: 5px;
+	margin: 0 0 25px;
+	border: 1px solid #B1BDD6;
+	vertical-align: top;
+	box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.255);
+	-webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.255);
+	-moz-box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.255);
+
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+
+	/* IE7 CSS Bug fix: triggered hasLayout */
+	min-height: 1px;
+}
+em.w2dc_listing_date {
+	font-size: 0.8em;
+}
+h2.w2dc_listing_title {
+	margin: 3px 0 !important;
+}
+.w2dc_featured {
+	background: #FFFFCC;
+}
+.w2dc_sticky_icon {
+	width: 22px;
+	height: 22px;
+	background: url("../images/pin.png") no-repeat 0 0;
+	margin: 0 5px 5px 0;
+	float: right;
+}
+.listing_logo_wrap {
+	float: right;
+	margin: 10px 0 10px 10px;
+	text-align: center;
+}
+#listing_logo {
+	float: right;
+	margin-bottom: 10px;
+}
+.small_image_bg {
+	padding: 3px 0 3px 3px;
+	text-align: center !important;
+	vertical-align: middle !important;
+}
+.listing_text_content_wrap {
+	
+}
+
+.maps_canvas {
+	margin: 20px 0;
+	border: 1px solid black;
+}
+.maps_canvas img {
+	/* Do not change in twentytwelve theme */
+	max-width: none !important;
+	box-shadow: none !important;
+}
+
+.w2dc_contact_form label {
+	display: block;
+}
+
+#search_form {
+	margin: 20px 0;
+}
+.search_option {
+	float: left;
+	margin: 10px 13px 10px 0;
+}
+.search_option select {
+	min-width: 250px;
+	border: 1px solid #CCCCCC;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	font-family: inherit;
+	padding: 0.36em;
+	margin-bottom: 5px;
+}
+.search_option>label {
+	display: block;
+	font-weight: bold;
+}
+.search_label {
+	font-size: 1.2em;
+	background-color: #FFFFFF;
+	border: 1px solid #84002E;
+	color: #B80028;
+	display: inline;
+	font-weight: bold;
+	left: 10px;
+	padding: 3px 8px;
+	position: relative;
+	top: 8px;
+}
+.w2dc_field_search_select_block label {
+	padding-right: 5%;
+}
+.search_section {
+	background-color: #FAFFFD;
+	border: 1px solid #84002E;
+	font-family: Trebuchet MS;
+	margin: 0 0 10px;
+	padding: 15px;
+}
+.placeholder {
+	color: #aaa;
+}
+#advanced_search_label {
+	font-weight: bold;
+}
+
+.ascending {
+	background: url("../images/arrow_up.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	padding-left: 16px;
+}
+.descending {
+	background: url("../images/arrow_down.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	padding-left: 16px;
+}
+
+li.subcategories_list {
+	list-style: none;
+}
+li.categories_list {
+	float: left;
+	list-style: none;
+}
+li.categories_list>a {
+	font-weight: bold;
+}
+.breadcrumbs {
+	margin: 10px 0 20px 0;
+}
+#w2dc_orderby_links, #w2dc_found_listings {
+	margin: 0.5em 0;
+}

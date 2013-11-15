@@ -1,0 +1,212 @@
+.ajax_loading {
+	background: url('../images/ajax-indicator.gif') no-repeat center;
+}
+.wrap {
+	float: left;
+	margin: 4px 15px 0 0;
+	width: 100%;
+}
+.sidebar {
+	float: right;
+	width: 20%;
+	margin-right: 1%;
+}
+.sidebar .postbox {
+	min-width: inherit;
+}
+.sidebar .postbox h3 {
+	padding: 10px;
+}
+.w2dc_settings_wrap {
+	float: left;
+	width: 78%;
+	margin-right: 1%;
+}
+.w2dc_index_setting_row {
+	border-top: 1px solid #DFDFDF;
+}
+.w2dc_index_setting_row th {
+	text-align: center;
+}
+.description_big {
+	font-size: 14px;
+	font-style: italic;
+	font-weight: bold;
+}
+.red_asterisk {
+	color: red;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 1px;
+	padding: 2px;
+}
+.clear_float {
+	clear: both;
+}
+
+/* Listing locations input */
+.locations_metabox {
+	padding-bottom: 10px;
+}
+
+.locations_metabox label {
+	width: 160px;
+	display: inline-block;
+}
+.location_in_metabox {
+	border-bottom: 1px solid #EFEFEF;
+	padding: 15px 0;
+}
+
+/* Icons selection dialog */
+.theme_name {
+	font-size: 14px;
+	color: black;
+	font-weight: bold;
+	padding-bottom: 4px;
+	text-align: center;
+}
+.theme_block {
+	padding: 8px;
+}
+.icon {
+	padding: 3px;
+	float: left;
+	background-color: white;
+	cursor: pointer;
+}
+.selected_icon {
+	background-color: #FCA057;
+}
+.icon:hover {
+	background-color: #EFEFEF;
+}
+.selected_icon:hover {
+	background-color: #FCA057;
+}
+
+
+.tax_dropdowns_wrap select {
+    min-width: 200px
+}
+
+/* jQuery UI sortable widget customizations */
+.ui-sortable-placeholder {
+	background-color: #FFFBCC !important;
+}
+.ui-sortable tr {
+	cursor: move;
+	background-color: #FCFCFC;
+}
+.ui-widget-overlay {
+    background-repeat: repeat !important;
+	z-index: 5 !important;
+}
+
+/* Content fields */
+.delete_selection_item {
+	float: left;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.w2dc_field {
+	padding: 10px 0;
+}
+.w2dc_field>label {
+	width: 160px;
+	float: left;
+}
+.w2dc_field_input_select {
+	min-width: 200px
+}
+.w2dc_field_input_div {
+	float: left;
+}
+.w2dc_field_icon {
+	box-shadow: none !important;
+	margin-right: 5px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#upload_functions {
+	margin: 20px 0 40px;
+}
+.w2dc_attached_item {
+	float: left;
+	margin: 15px;
+}
+.w2dc_img_div_border {
+	background-color: #FFFFFF;
+	border: 2px solid #DAE2E8;
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 15px;
+}
+.w2dc_img_div_border img {
+	background: none repeat scroll 0 0 #FFFFFF;
+	vertical-align: middle;
+}
+.w2dc_img_div_helper {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+.w2dc_delete_attached_item {
+	width: 20px;
+	height: 20px;
+	background: url('../images/delete.png') no-repeat center;
+	cursor: pointer;
+}
+
+.maps_canvas {
+	margin: 20px 0;
+	border: 1px solid black;
+}
+.maps_canvas img {
+	/* Do not change in twentytwelve theme */
+	max-width: none !important;
+	box-shadow: none !important;
+}
+
+.hint_icon {
+	background: url(../images/question_mark.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	margin: 0 10px 0;
+	float: right;
+}
+.hint_msg {
+	display: none;
+	position: absolute;
+	padding: 10px;
+	width: 290px;
+	text-align: left;
+	background-color: #FFFBCC;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ffd215;
+}
+
+.w2dc_badge {
+	border-radius: 3px;
+	background-color: #999999;
+	color: #FFFFFF;
+	display: inline-block;
+	font-size: 11.844px;
+	font-weight: bold;
+	line-height: 14px;
+	padding: 2px 4px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	vertical-align: baseline;
+	white-space: nowrap;
+}
+.listing_status_active {
+	background-color: #5BB75B;
+}
+.listing_status_expired {
+	background-color: #DA4F49;
+}
+.listing_status_stopped {
+	background-color: #FAA732;
+}
