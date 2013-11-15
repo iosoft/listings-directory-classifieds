@@ -24,7 +24,7 @@ In other words - whatever you want.
 * Customizable content fields of different types
 * Icons for custom content fields
 * Category-based content fields
-* Order listings by content fields
+* Order directory listings by content fields
 * Powerful search by content fields (in premium module)
 * Search by categories and locations
 * SEO friendly
@@ -53,7 +53,6 @@ Look at our [demo](http://www.salephpscripts.com/wordpress_directory/demo/)
 
 = Premium modules =
 Right now we have 2 additional premium modules:
-
 **Enhanced search** - allows to search by content fields, also additional feature for locations search in radius (in miles or kilometers)
 
 **Enhanced locations** - allows to set up any number of locations for one listing, also users may select map marker icons for their locations on Google map
