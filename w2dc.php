@@ -3,7 +3,7 @@
 Plugin Name: Directory & Classifieds plugin
 Plugin URI: http://www.salephpscripts.com/wordpress_directory/
 Description: Provides an ability to build any kind of directory site: classifieds, events directory, cars, bikes, boats and other vehicles dealers site, pets, real estate portal on your WordPress powered site. In other words - whatever you want.
-Version: 1.0.2
+Version: 1.0.3
 Author: Mihail Chepovskiy
 Author URI: http://www.salephpscripts.com
 License: GPLv2 or any later version
