@@ -489,9 +489,9 @@ class w2dc_plugin {
 			wp_enqueue_script('jquery-ui-tabs');
 			wp_enqueue_script('jquery-ui-autocomplete');
 			// this jQuery UI version 1.10.3 is for WP v3.6.0
-			wp_enqueue_style('jquery-ui-style', W2DC_RESOURCES_URL . 'css/jquery-ui.css');
+			wp_enqueue_style('jquery-ui-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css');
 			
-			wp_enqueue_script('google_maps', 'http://maps.google.com/maps/api/js?v=3.14&sensor=false&language=en', array('jquery'));
+			wp_enqueue_script('google_maps', '//maps.google.com/maps/api/js?v=3.14&sensor=false&language=en', array('jquery'));
 			wp_enqueue_script('google_maps_view', W2DC_RESOURCES_URL . 'js/google_maps_view.js', array('jquery'));
 		}
 	}

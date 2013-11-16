@@ -56,7 +56,7 @@ Right now we have 2 additional premium modules:
 
 **Enhanced search** - allows to search by categories and content fields, also additional feature for locations search in radius (in miles or kilometers)
 
-**Enhanced locations** - allows to set up any number of locations for one listing, also users may select map marker icons for their locations on Google map
+**Enhanced locations** - allows to set up any number of locations for one listing, also users may select map markers icons for their locations on Google map
 
 
 == Installation ==

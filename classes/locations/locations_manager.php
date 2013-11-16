@@ -22,7 +22,7 @@ class w2dc_locations_manager {
 	public function addLocationsMetabox($post_type) {
 		if ($post_type == W2DC_POST_TYPE && ($level = w2dc_getCurrentListingInAdmin()->level) && $level->locations_number > 0) {
 			if ($level->google_map) {
-				wp_enqueue_script('google_maps', 'http://maps.google.com/maps/api/js?v=3.14&sensor=false&language=en', array('jquery'));
+				wp_enqueue_script('google_maps', '//maps.google.com/maps/api/js?v=3.14&sensor=false&language=en', array('jquery'));
 				wp_enqueue_script('google_maps_edit', W2DC_RESOURCES_URL . 'js/google_maps_edit.js', array('jquery'));
 			}
 
