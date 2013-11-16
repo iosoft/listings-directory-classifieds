@@ -68,6 +68,10 @@ Right now we have 2 additional premium modules:
 
 == Changelog ==
 
+= Version 1.0.3 =
+* added support of SSL for https sites
+* fixed bug with locations number during new levels creation
+
 = Version 1.0.2 =
 * default installation locations terms added
 
