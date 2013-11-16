@@ -52,7 +52,8 @@ function w2dc_install_directory() {
 				KEY `order_num` (`order_num`)
 				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
 	
-	$wpdb->query("INSERT INTO `wp_w2dc_levels` (`order_num`, `name`, `description`, `active_years`, `active_months`, `active_days`, `raiseup_enabled`, `sticky`, `featured`, `categories_number`, `unlimited_categories`, `locations_number`, `google_map`, `google_map_markers`, `logo_enabled`, `logo_size`, `images_number`, `videos_number`, `categories`) VALUES (1, 'Standart', '', 0, 0, 0, 1, 0, 0, 3, 0, 2, 1, 1, 1, 'thumbnail', 6, 3, '')");
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_levels` WHERE name = 'Standart'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_levels` (`order_num`, `name`, `description`, `active_years`, `active_months`, `active_days`, `raiseup_enabled`, `sticky`, `featured`, `categories_number`, `unlimited_categories`, `locations_number`, `google_map`, `google_map_markers`, `logo_enabled`, `logo_size`, `images_number`, `videos_number`, `categories`) VALUES (1, 'Standart', '', 0, 0, 0, 1, 0, 0, 3, 0, 2, 1, 1, 1, 'thumbnail', 6, 3, '')");
 	
 	$wpdb->query("CREATE TABLE IF NOT EXISTS `wp_w2dc_levels_relationships` (
 				`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -70,8 +71,13 @@ function w2dc_install_directory() {
 				PRIMARY KEY (`id`),
 				KEY `in_select_widget` (`in_widget`,`in_address_line`)
 				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
-	
-	$wpdb->query("INSERT INTO `wp_w2dc_locations_levels` (`name`, `in_widget`, `in_address_line`) VALUES ('Country', 1, 1), ('State', 1, 1), ('City', 1, 1);");
+
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_locations_levels` WHERE name = 'Country'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_locations_levels` (`name`, `in_widget`, `in_address_line`) VALUES ('Country', 1, 1);");
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_locations_levels` WHERE name = 'State'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_locations_levels` (`name`, `in_widget`, `in_address_line`) VALUES ('State', 1, 1);");
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_locations_levels` WHERE name = 'City'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_locations_levels` (`name`, `in_widget`, `in_address_line`) VALUES ('City', 1, 1);");
 
 	$wpdb->query("CREATE TABLE IF NOT EXISTS `wp_w2dc_locations_relationships` (
 				`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -88,7 +94,61 @@ function w2dc_install_directory() {
 				KEY `location_id` (`location_id`),
 				KEY `post_id` (`post_id`)
 				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
-	
+
+	if (!get_terms(W2DC_LOCATIONS_TAX)) {
+		$parent_term = wp_insert_term('USA', W2DC_LOCATIONS_TAX);
+		wp_insert_term('Alabama', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Alaska', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Arkansas', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('California', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Colorado', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Connecticut', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Delaware', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('District of Columbia', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Florida', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Georgia', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Hawaii', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Idaho', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Illinois', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Indiana', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Iowa', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Kansas', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Kentucky', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Lousiana', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Maine', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Maryland', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Massachusetts', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Michigan', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Minnesota', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Mississippi', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Missouri', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Montana', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Nebraska', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Nevada', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('New Hampshire', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('New Jersey', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('New Mexico', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('New York', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('North Carolina', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('North Dakota', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Ohio', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Oklahoma', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Oregon', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Pennsylvania', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Rhode Island', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('South Carolina', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('South Dakota', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Tennessee', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Texas', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Utah', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Vermont', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Virginia', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Washington', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('West Virginina', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Wisconsin', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+		wp_insert_term('Wyoming', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
+	}
+
 	update_option('w2dc_category_slug', 'web-category');
 	update_option('w2dc_tag_slug', 'web-tag');
 	update_option('w2dc_enable_recaptcha', '0');

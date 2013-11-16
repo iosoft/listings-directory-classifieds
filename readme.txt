@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.0.1
+Stable tag: tags/1.0.2
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -54,7 +54,7 @@ Look at our [demo](http://www.salephpscripts.com/wordpress_directory/demo/)
 = Premium modules =
 Right now we have 2 additional premium modules:
 
-**Enhanced search** - allows to search by content fields, also additional feature for locations search in radius (in miles or kilometers)
+**Enhanced search** - allows to search by categories and content fields, also additional feature for locations search in radius (in miles or kilometers)
 
 **Enhanced locations** - allows to set up any number of locations for one listing, also users may select map marker icons for their locations on Google map
 
@@ -64,3 +64,12 @@ Right now we have 2 additional premium modules:
 1. Upload files to the `/wp-content/plugins/w2dc/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Create new page with [webdirectory] shortcode OR tick *'Set directory at home page'* option on directory settings page
+
+
+== Changelog ==
+
+= Version 1.0.2 =
+* default installation locations terms added
+
+= Version 1.0.1 =
+* fixed bug that appears during new content fields creation
