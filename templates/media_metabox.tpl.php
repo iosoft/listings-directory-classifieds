@@ -76,7 +76,7 @@ $img_height = get_option('thumbnail_size_h');
 		if (jQuery("#attach_video_input").val()) {
 			if (matches = jQuery("#attach_video_input").val().match(/https?:\/\/(?:[a-zA_Z]{2,3}.)?(?:youtube\.com\/watch\?)((?:[\w\d\-\_\=]+&amp;(?:amp;)?)*v(?:&lt;[A-Z]+&gt;)?=([0-9a-zA-Z\-\_]+))/i)) {
 				var video_id = matches[2];
-				jQuery.getJSON('http://gdata.youtube.com/feeds/api/videos/'+video_id+'?v=2&alt=jsonc', function(data, status, xhr) {
+				jQuery.getJSON('//gdata.youtube.com/feeds/api/videos/'+video_id+'?v=2&alt=jsonc', function(data, status, xhr) {
 				    jQuery('<div class="w2dc_attached_item"><div class="w2dc_delete_attached_item delete_item" title="<?php _e('remove video', 'W2DC'); ?>"></div><input type="hidden" name="attached_video_id[]" value="' + video_id + '" /><div class="w2dc_img_div_border" style="width: 120px; height: 90px"><span class="w2dc_img_div_helper"></span><img src="' + data.data.thumbnail.sqDefault + '" style="max-width: 120px; max-height: 90px" /></div><input type="text" name="attached_video_title[]" value="" size="37" /></div>').appendTo("#videos_wrapper");
 				    jQuery("input[name=attached_video_title\\[\\]]:last").val(data.data.title);
 
