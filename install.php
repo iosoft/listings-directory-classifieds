@@ -26,7 +26,17 @@ function w2dc_install_directory() {
 				`search_options` text NOT NULL,
 				PRIMARY KEY (`id`)
 				) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
-	
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_content_fields` WHERE slug = 'summary'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_content_fields` (`is_core_field`, `order_num`, `name`, `slug`, `description`, `type`, `icon_image`, `is_required`, `is_configuration_page`, `is_search_configuration_page`, `is_ordered`, `is_hide_name`, `on_exerpt_page`, `on_listing_page`, `on_search_form`, `advanced_search_form`, `categories`, `options`, `search_options`) VALUES(1, 1, 'Summary', 'summary', '', 'excerpt', '', 0, 0, 0, 0, 0, 1, 1, 0, 0, '', '', '');");
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_content_fields` WHERE slug = 'address'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_content_fields` (`is_core_field`, `order_num`, `name`, `slug`, `description`, `type`, `icon_image`, `is_required`, `is_configuration_page`, `is_search_configuration_page`, `is_ordered`, `is_hide_name`, `on_exerpt_page`, `on_listing_page`, `on_search_form`, `advanced_search_form`, `categories`, `options`, `search_options`) VALUES(1, 2, 'Address', 'address', '', 'address', '', 0, 0, 0, 0, 0, 1, 1, 0, 0, '', '', '');");
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_content_fields` WHERE slug = 'content'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_content_fields` (`is_core_field`, `order_num`, `name`, `slug`, `description`, `type`, `icon_image`, `is_required`, `is_configuration_page`, `is_search_configuration_page`, `is_ordered`, `is_hide_name`, `on_exerpt_page`, `on_listing_page`, `on_search_form`, `advanced_search_form`, `categories`, `options`, `search_options`) VALUES(1, 3, 'Content', 'content', '', 'content', '', 0, 0, 0, 0, 0, 1, 1, 0, 0, '', '', '');");
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_content_fields` WHERE slug = 'categories_list'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_content_fields` (`is_core_field`, `order_num`, `name`, `slug`, `description`, `type`, `icon_image`, `is_required`, `is_configuration_page`, `is_search_configuration_page`, `is_ordered`, `is_hide_name`, `on_exerpt_page`, `on_listing_page`, `on_search_form`, `advanced_search_form`, `categories`, `options`, `search_options`) VALUES(1, 4, 'Categories list', 'categories_list', '', 'categories', '', 0, 0, 0, 0, 0, 1, 1, 0, 0, '', '', '');");
+	if (!$wpdb->get_var("SELECT id FROM `wp_w2dc_content_fields` WHERE slug = 'listing_tags'"))
+		$wpdb->query("INSERT INTO `wp_w2dc_content_fields` (`is_core_field`, `order_num`, `name`, `slug`, `description`, `type`, `icon_image`, `is_required`, `is_configuration_page`, `is_search_configuration_page`, `is_ordered`, `is_hide_name`, `on_exerpt_page`, `on_listing_page`, `on_search_form`, `advanced_search_form`, `categories`, `options`, `search_options`) VALUES(1, 5, 'Listing tags', 'listing_tags', '', 'tags', '', 0, 0, 0, 0, 0, 1, 1, 0, 0, '', '', '');");
+
 	$wpdb->query("CREATE TABLE IF NOT EXISTS `wp_w2dc_levels` (
 				`id` int(11) NOT NULL AUTO_INCREMENT,
 				`order_num` tinyint(1) NOT NULL,

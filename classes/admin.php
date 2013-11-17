@@ -120,7 +120,7 @@ class w2dc_admin {
 				)
 		);
 		wp_enqueue_script('jquery-ui-dialog');
-		// this jQuery UI version 1.10.3 is for WP v3.6.0
+		// this jQuery UI version 1.10.3 is for WP v3.7.1
 		wp_enqueue_style('jquery-ui-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css');
 	}
 }
