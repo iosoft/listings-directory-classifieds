@@ -173,7 +173,7 @@ class w2dc_listing {
 	}
 	
 	public function title() {
-		return $this->post->post_title;
+		return get_the_title($this->post);
 	}
 
 	public function processRaiseUp() {

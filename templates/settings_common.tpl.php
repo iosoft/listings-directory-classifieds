@@ -11,7 +11,7 @@
 	<h2 class="nav-tab-wrapper">
 		<a class="nav-tab <?php if ($section == 'w2dc_settings_page') echo 'nav-tab-active'; ?>" href="<?php echo admin_url('admin.php?page=w2dc_settings')?>"><?php _e('General', 'W2DC'); ?></a>
 		<a class="nav-tab <?php if ($section == 'w2dc_listings_settings_page') echo 'nav-tab-active'; ?>" href="<?php echo admin_url('admin.php?page=w2dc_settings&section=w2dc_listings_settings_page')?>"><?php _e('Listings', 'W2DC'); ?></a>
-		<a class="nav-tab <?php if ($section == 'w2dc_categories_settings_page') echo 'nav-tab-active'; ?>" href="<?php echo admin_url('admin.php?page=w2dc_settings&section=w2dc_categories_settings_page')?>"><?php _e('Pages & views', 'W2DC'); ?></a>
+		<a class="nav-tab <?php if ($section == 'w2dc_pagesviews_settings_page') echo 'nav-tab-active'; ?>" href="<?php echo admin_url('admin.php?page=w2dc_settings&section=w2dc_pagesviews_settings_page')?>"><?php _e('Pages & views', 'W2DC'); ?></a>
 		<a class="nav-tab <?php if ($section == 'w2dc_maps_settings_page') echo 'nav-tab-active'; ?>" href="<?php echo admin_url('admin.php?page=w2dc_settings&section=w2dc_maps_settings_page')?>"><?php _e('Maps', 'W2DC'); ?></a>
 		<a class="nav-tab <?php if ($section == 'w2dc_notifications_settings_page') echo 'nav-tab-active'; ?>" href="<?php echo admin_url('admin.php?page=w2dc_settings&section=w2dc_notifications_settings_page')?>"><?php _e('Email notifications', 'W2DC'); ?></a>
 		<?php do_action('w2dc_admin_settings_sections', $section); ?>

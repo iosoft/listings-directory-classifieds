@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.0.5
+Stable tag: tags/1.0.6
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -67,6 +67,10 @@ Right now we have 2 additional premium modules:
 
 
 == Changelog ==
+
+= Version 1.0.6 =
+* listings title layout bug fixed - esc_attr() added
+* 2 new settings for search panel added
 
 = Version 1.0.5 =
 * default installation content fields added

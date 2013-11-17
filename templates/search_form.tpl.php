@@ -1,3 +1,4 @@
+<?php if (get_option('w2dc_show_what_search') || get_option('w2dc_show_where_search')): ?>
 <script>
 jQuery(document).ready(function($) {
 	$("[placeholder]").focus(function() {
@@ -21,6 +22,7 @@ jQuery(document).ready(function($) {
 			})
 	});
 
+	<?php if (get_option('w2dc_show_where_search')): ?>
 	var cache = {};
 	$("#where_search").autocomplete({
 		minLength: 2,
@@ -42,6 +44,7 @@ jQuery(document).ready(function($) {
 			});
 		}
 	});
+	<?php endif; ?>
 });
 </script>
 
@@ -49,6 +52,7 @@ jQuery(document).ready(function($) {
 	<form action="<?php echo $w2dc_instance->index_page_url; ?>">
 		<input type="hidden" name="action" value="search" />
 
+		<?php if (get_option('w2dc_show_what_search')): ?>
 		<div class="search_label"><?php _e('What search', 'W2DC'); ?></div>
 		<div class="search_section">
 			<?php do_action('pre_search_what_form_html'); ?>
@@ -58,7 +62,9 @@ jQuery(document).ready(function($) {
 			<?php do_action('post_search_what_form_html'); ?>
 			<div class="clear_float"></div>
 		</div>
+		<?php endif; ?>
 
+		<?php if (get_option('w2dc_show_where_search')): ?>
 		<div class="search_label"><?php _e('Where search', 'W2DC'); ?></div>
 		<div class="search_section">
 			<?php do_action('pre_search_where_form_html'); ?>
@@ -76,6 +82,7 @@ jQuery(document).ready(function($) {
 			<?php do_action('post_search_where_form_html'); ?>
 			<div class="clear_float"></div>
 		</div>
+		<?php endif; ?>
 		
 		<?php do_action('post_search_form_html'); ?>
 
@@ -85,3 +92,4 @@ jQuery(document).ready(function($) {
 		<div class="clear_float"></div>
 	</form>
 </div>
+<?php endif; ?>

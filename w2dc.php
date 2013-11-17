@@ -3,13 +3,13 @@
 Plugin Name: Directory & Classifieds plugin
 Plugin URI: http://www.salephpscripts.com/wordpress_directory/
 Description: Provides an ability to build any kind of directory site: classifieds, events directory, cars, bikes, boats and other vehicles dealers site, pets, real estate portal on your WordPress powered site. In other words - whatever you want.
-Version: 1.0.5
+Version: 1.0.6
 Author: Mihail Chepovskiy
 Author URI: http://www.salephpscripts.com
 License: GPLv2 or any later version
 */
 
-define('W2DC_VERSION', '1.0.5');
+define('W2DC_VERSION', '1.0.6');
 
 define('W2DC_PATH', plugin_dir_path(__FILE__));
 define('W2DC_URL', plugins_url('/', __FILE__));
@@ -88,7 +88,7 @@ class w2dc_plugin {
 	public function init() {
 		global $w2dc_instance;
 		
-		if (!get_option('w2dc_installed_directory'))
+		if (!get_option('w2dc_installed_directory') || get_option('w2dc_installed_directory_version') != W2DC_VERSION)
 			w2dc_install_directory();
 
 		$_GET = stripslashes_deep($_GET);
@@ -235,7 +235,7 @@ class w2dc_plugin {
 		return $template;
 	}
 	public function _index_template($template) {
-		if (get_post_type() == W2DC_POST_TYPE || (!get_option('w2dc_is_home_page') && is_page($this->index_page_id))) {
+		if (get_query_var('post_type') == W2DC_POST_TYPE || (!get_option('w2dc_is_home_page') && $w2dc_instance->index_page_id && is_page($this->index_page_id))) {
 			if (is_file(W2DC_PATH . 'templates/frontend/index-custom.tpl.php'))
 				$template = W2DC_PATH . 'templates/frontend/index-custom.tpl.php';
 			else

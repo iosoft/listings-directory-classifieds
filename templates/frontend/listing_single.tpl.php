@@ -13,7 +13,8 @@ $frontend_controller = $w2dc_instance->frontend_controller;
 			
 			<?php if ($frontend_controller->listings): ?>
 			<?php while ($frontend_controller->query->have_posts()): ?>
-				<?php if ($frontend_controller->getPageTitle()): ?>
+				<?php $frontend_controller->query->the_post(); ?>
+				<?php if (get_the_title()): ?>
 				<header class="entry-header">
 					<?php if ($frontend_controller->breadcrumbs): ?>
 					<div class="breadcrumbs">
@@ -21,12 +22,11 @@ $frontend_controller = $w2dc_instance->frontend_controller;
 					</div>
 					<?php endif; ?>
 
-					<h1 class="entry-title"><?php echo $frontend_controller->getPageTitle(); ?></h1>
+					<h1 class="entry-title"><?php the_title(); ?></h1>
 					<div class="w2dc_edit_listing_link"><img src="<?php echo W2DC_RESOURCES_URL; ?>images/page_edit.png" class="w2dc_field_icon" /><?php edit_post_link(__('Edit listing', 'W2DC')); ?></div>
 				</heder>
 				<?php endif; ?>
 
-				<?php $frontend_controller->query->the_post(); ?>
 				<article id="post-<?php the_ID(); ?>" class="">
 					<?php $frontend_controller->listings[get_the_ID()]->display(); ?>
 				</article>

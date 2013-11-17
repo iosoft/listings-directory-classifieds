@@ -17,6 +17,7 @@ class w2dc_settings_manager {
 	}
 	
 	public function register_settings() {
+		// General settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
 				'w2dc_general_section',
 				__('General settings', 'W2DC'),
@@ -55,7 +56,8 @@ class w2dc_settings_manager {
 				'w2dc_general_section'
 		);
 		register_setting('w2dc_settings_page', 'w2dc_tag_slug');
-		
+
+		// Recaptcha settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
 				'w2dc_recaptcha_section',
 				__('reCaptcha settings', 'W2DC'),
@@ -87,39 +89,65 @@ class w2dc_settings_manager {
 		);
 		register_setting('w2dc_settings_page', 'w2dc_recaptcha_private_key');
 
-		
+
+		// Pages & Views settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
 				'w2dc_categories_section',
 				__('Categories settings', 'W2DC'),
 				null,
-				'w2dc_categories_settings_page'
+				'w2dc_pagesviews_settings_page'
 		);
 		add_settings_field(
 				'w2dc_show_categories_index',
 				__('Show categories list on index and excerpt pages?', 'W2DC'),
 				array($this, 'w2dc_show_categories_index_callback'),
-				'w2dc_categories_settings_page',
+				'w2dc_pagesviews_settings_page',
 				'w2dc_categories_section'
 		);
-		register_setting('w2dc_categories_settings_page', 'w2dc_show_categories_index');
+		register_setting('w2dc_pagesviews_settings_page', 'w2dc_show_categories_index');
 		add_settings_field(
 				'w2dc_categories_nesting_level',
 				__('Categories nesting level', 'W2DC'),
 				array($this, 'w2dc_categories_nesting_level_callback'),
-				'w2dc_categories_settings_page',
+				'w2dc_pagesviews_settings_page',
 				'w2dc_categories_section'
 		);
-		register_setting('w2dc_categories_settings_page', 'w2dc_categories_nesting_level');
+		register_setting('w2dc_pagesviews_settings_page', 'w2dc_categories_nesting_level');
 		add_settings_field(
 				'w2dc_show_category_count',
 				__('Show category posts count?', 'W2DC'),
 				array($this, 'w2dc_show_category_count_callback'),
-				'w2dc_categories_settings_page',
+				'w2dc_pagesviews_settings_page',
 				'w2dc_categories_section'
 		);
-		register_setting('w2dc_categories_settings_page', 'w2dc_show_category_count');
+		register_setting('w2dc_pagesviews_settings_page', 'w2dc_show_category_count');
 
-		
+		// Search settings /////////////////////////////////////////////////////////////////////////
+		add_settings_section(
+				'w2dc_search_section',
+				__('Search settings', 'W2DC'),
+				null,
+				'w2dc_pagesviews_settings_page'
+		);
+		add_settings_field(
+				'w2dc_show_what_search',
+				__('Show "What search" section?', 'W2DC'),
+				array($this, 'w2dc_show_what_search_callback'),
+				'w2dc_pagesviews_settings_page',
+				'w2dc_search_section'
+		);
+		register_setting('w2dc_pagesviews_settings_page', 'w2dc_show_what_search');
+		add_settings_field(
+				'w2dc_show_where_search',
+				__('Show "Where search" section?', 'W2DC'),
+				array($this, 'w2dc_show_where_search_callback'),
+				'w2dc_pagesviews_settings_page',
+				'w2dc_search_section'
+		);
+		register_setting('w2dc_pagesviews_settings_page', 'w2dc_show_where_search');
+
+
+		// Listings settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
 				'w2dc_listings_section',
 				__('Listings settings', 'W2DC'),
@@ -160,6 +188,7 @@ class w2dc_settings_manager {
 		register_setting('w2dc_listings_settings_page', 'w2dc_images_on_tab');
 
 
+		// Maps settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
 				'w2dc_maps_section',
 				__('Maps settings', 'W2DC'),
@@ -190,7 +219,8 @@ class w2dc_settings_manager {
 				'w2dc_maps_section'
 		);
 		register_setting('w2dc_maps_settings_page', 'w2dc_show_directions');
-		
+
+		// Notifications settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
 				'w2dc_notifications_section',
 				__('Email notifications settings', 'W2DC'),
@@ -223,6 +253,7 @@ class w2dc_settings_manager {
 		register_setting('w2dc_notifications_settings_page', 'w2dc_expiration_notification');
 	}
 
+	// General settings page /////////////////////////////////////////////////////////////////////////
 	public function w2dc_directory_title_callback() {
 		echo '<input type="text" id="w2dc_directory_title" name="w2dc_directory_title" value="' . esc_attr(get_option('w2dc_directory_title')) . '" size="53" />';
 		echo '<p class="description">' . __('This title will be used in HTML title tag of every directory page', 'W2DC') . '</p>';
@@ -237,7 +268,8 @@ class w2dc_settings_manager {
 	public function w2dc_tag_slug_callback() {
 		echo '<input type="text" id="w2dc_tag_slug" name="w2dc_tag_slug" value="' . esc_attr(get_option('w2dc_tag_slug')) . '" size="25" />';
 	}
-	
+
+	// ReCaptcha settings page /////////////////////////////////////////////////////////////////////////
 	public function w2dc_enable_recaptcha_callback() {
 		echo '<input type="checkbox" id="w2dc_enable_recaptcha" name="w2dc_enable_recaptcha" value="1" ' . checked(get_option('w2dc_enable_recaptcha'), 1, false) .' />';
 	}
@@ -249,6 +281,7 @@ class w2dc_settings_manager {
 		echo '<input type="text" id="w2dc_recaptcha_private_key" name="w2dc_recaptcha_private_key" value="' . esc_attr(get_option('w2dc_recaptcha_private_key')) . '" size="53" />';
 	}
 
+	// Categories settings page /////////////////////////////////////////////////////////////////////////
 	public function w2dc_show_categories_index_callback() {
 		echo '<input type="checkbox" id="w2dc_show_categories_index" name="w2dc_show_categories_index" value="1" ' . checked(get_option('w2dc_show_categories_index'), 1, false) .' />';
 	}
@@ -259,6 +292,15 @@ class w2dc_settings_manager {
 		echo '<input type="checkbox" id="w2dc_show_category_count" name="w2dc_show_category_count" value="1" ' . checked(get_option('w2dc_show_category_count'), 1, false) .' />';
 	}
 
+	// Search settings page /////////////////////////////////////////////////////////////////////////
+	public function w2dc_show_what_search_callback() {
+		echo '<input type="checkbox" id="w2dc_show_what_search" name="w2dc_show_what_search" value="1" ' . checked(get_option('w2dc_show_what_search'), 1, false) .' />';
+	}
+	public function w2dc_show_where_search_callback() {
+		echo '<input type="checkbox" id="w2dc_show_where_search" name="w2dc_show_where_search" value="1" ' . checked(get_option('w2dc_show_where_search'), 1, false) .' />';
+	}
+
+	// Listings settings page /////////////////////////////////////////////////////////////////////////
 	public function w2dc_listings_number_index_callback() {
 		echo '<input type="text" id="w2dc_listings_number_index" name="w2dc_listings_number_index" value="' . esc_attr(get_option('w2dc_listings_number_index')) .'" size="1" />';
 	}
@@ -272,6 +314,7 @@ class w2dc_settings_manager {
 		echo '<input type="checkbox" id="w2dc_images_on_tab" name="w2dc_images_on_tab" value="1" ' . checked(get_option('w2dc_images_on_tab'), 1, false) .' />';
 	}
 
+	// Maps settings page /////////////////////////////////////////////////////////////////////////
 	public function w2dc_map_on_index_callback() {
 		echo '<input type="checkbox" id="w2dc_map_on_index" name="w2dc_map_on_index" value="1" ' . checked(get_option('w2dc_map_on_index'), 1, false) .' />';
 	}
@@ -281,7 +324,8 @@ class w2dc_settings_manager {
 	public function w2dc_show_directions_callback() {
 		echo '<input type="checkbox" id="w2dc_show_directions" name="w2dc_show_directions" value="1" ' . checked(get_option('w2dc_show_directions'), 1, false) .' />';
 	}
-	
+
+	// Notifications settings page /////////////////////////////////////////////////////////////////////////
 	public function w2dc_send_expiration_notification_days_callback() {
 		echo '<input type="text" id="w2dc_send_expiration_notification_days" name="w2dc_send_expiration_notification_days" value="' . esc_attr(get_option('w2dc_send_expiration_notification_days')) .'" size="1" />';
 	}
