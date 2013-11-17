@@ -194,7 +194,8 @@ function w2dc_install_directory() {
 		foreach ($upgrades_list AS $upgrade_version) {
 			if (!$old_version || version_compare($old_version, $upgrade_version, '<')) {
 				$upgrade_function_name = 'upgrade_to_' . str_replace('.', '_', $upgrade_version);
-				$upgrade_function_name();
+				if (function_exists($upgrade_function_name))
+					$upgrade_function_name();
 			}
 		}
 		update_option('w2dc_installed_directory_version', W2DC_VERSION);
