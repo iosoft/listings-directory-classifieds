@@ -56,6 +56,14 @@ class w2dc_settings_manager {
 				'w2dc_general_section'
 		);
 		register_setting('w2dc_settings_page', 'w2dc_tag_slug');
+		add_settings_field(
+				'w2dc_content_width',
+				__('Content width', 'W2DC'),
+				array($this, 'w2dc_content_width_callback'),
+				'w2dc_settings_page',
+				'w2dc_general_section'
+		);
+		register_setting('w2dc_settings_page', 'w2dc_content_width');
 
 		// Recaptcha settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
@@ -260,13 +268,17 @@ class w2dc_settings_manager {
 	}
 	public function w2dc_is_home_page_callback() {
 		echo '<input type="checkbox" id="w2dc_is_home_page" name="w2dc_is_home_page" value="1" ' . checked(get_option('w2dc_is_home_page'), 1, false) . ' />';
-		echo '<p class="description">' . __('Tick this setting if you wish to display directory listings at the home page, in other case they will be displayed from your custom page with [' . W2DC_MAIN_SHORTCODE . '] shortcode', 'W2DC') . '</p>';
+		echo '<p class="description">' . sprintf(__('Tick this setting if you wish to display directory listings at the home page, in other case they will be displayed from your custom page with [%s] shortcode', 'W2DC'), W2DC_MAIN_SHORTCODE) . '</p>';
 	}
 	public function w2dc_category_slug_callback() {
 		echo '<input type="text" id="w2dc_category_slug" name="w2dc_category_slug" value="' . esc_attr(get_option('w2dc_category_slug')) . '" size="25" />';
 	}
 	public function w2dc_tag_slug_callback() {
 		echo '<input type="text" id="w2dc_tag_slug" name="w2dc_tag_slug" value="' . esc_attr(get_option('w2dc_tag_slug')) . '" size="25" />';
+	}
+	public function w2dc_content_width_callback() {
+		echo '<input type="text" id="w2dc_content_width" name="w2dc_content_width" value="' . esc_attr(get_option('w2dc_content_width')) . '" size="1" /> %';
+		echo '<p class="description">' . __('Set width of the content part of all directory pages or set 0 to prevent additional styling of this part', 'W2DC') . '</p>';
 	}
 
 	// ReCaptcha settings page /////////////////////////////////////////////////////////////////////////

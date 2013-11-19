@@ -5,7 +5,7 @@ $frontend_controller = $w2dc_instance->frontend_controller;
 
 <?php get_header(); ?>
 
-	<div id="primary" class="site-content">
+	<div id="primary" class="site-content" <?php if (get_option('w2dc_content_width')): ?>style="float: left; width: <?php echo get_option('w2dc_content_width'); ?>%"<?php endif; ?> >
 		<div id="content" role="main">
 
 			<?php w2dc_renderMessages(); ?>

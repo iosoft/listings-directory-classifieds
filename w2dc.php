@@ -3,13 +3,13 @@
 Plugin Name: Directory & Classifieds plugin
 Plugin URI: http://www.salephpscripts.com/wordpress_directory/
 Description: Provides an ability to build any kind of directory site: classifieds, events directory, cars, bikes, boats and other vehicles dealers site, pets, real estate portal on your WordPress powered site. In other words - whatever you want.
-Version: 1.0.6
+Version: 1.0.7
 Author: Mihail Chepovskiy
 Author URI: http://www.salephpscripts.com
 License: GPLv2 or any later version
 */
 
-define('W2DC_VERSION', '1.0.6');
+define('W2DC_VERSION', '1.0.7');
 
 define('W2DC_PATH', plugin_dir_path(__FILE__));
 define('W2DC_URL', plugins_url('/', __FILE__));
@@ -94,7 +94,7 @@ class w2dc_plugin {
 		$_GET = stripslashes_deep($_GET);
 		if (isset($_REQUEST['action']))
 			$this->action = $_REQUEST['action'];
-		
+
 		add_action('plugins_loaded', array($this, 'load_textdomain'), 0);
 		
 		add_action('sheduled_events', array($this, 'suspend_expired_listings'));

@@ -188,6 +188,7 @@ function w2dc_install_directory() {
 	} elseif (get_option('w2dc_installed_directory_version') != W2DC_VERSION) {
 		$upgrades_list = array(
 				'1.0.6',
+				'1.0.7',
 		);
 
 		$old_version = get_option('w2dc_installed_directory_version');
@@ -205,6 +206,10 @@ function w2dc_install_directory() {
 function upgrade_to_1_0_6() {
 	update_option('w2dc_show_what_search', '1');
 	update_option('w2dc_show_where_search', '1');
+}
+
+function upgrade_to_1_0_7() {
+	update_option('w2dc_content_width', '70');
 }
 
 ?>

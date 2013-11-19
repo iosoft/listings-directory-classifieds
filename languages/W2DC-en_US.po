@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: w2dc v1.0.0\n"
-"POT-Creation-Date: 2013-11-17 08:52+0500\n"
-"PO-Revision-Date: 2013-11-17 08:52+0500\n"
+"POT-Creation-Date: 2013-11-20 03:12+0500\n"
+"PO-Revision-Date: 2013-11-20 03:12+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Create new listing"
 msgstr ""
 
-#: w2dc.php:315 templates/frontend/listing_single.tpl.php:25
+#: w2dc.php:315 templates/frontend/listing_single.tpl.php:26
 msgid "Edit listing"
 msgstr ""
 
@@ -195,7 +195,7 @@ msgstr ""
 msgid "Search tags"
 msgstr ""
 
-#: w2dc.php:415 w2dc.php:450 classes/settings_manager.php:218
+#: w2dc.php:415 w2dc.php:450 classes/settings_manager.php:256
 msgid "Expiration notification"
 msgstr ""
 
@@ -419,122 +419,146 @@ msgstr ""
 msgid "Directory settings"
 msgstr ""
 
-#: classes/settings_manager.php:22
+#: classes/settings_manager.php:23
 msgid "General settings"
 msgstr ""
 
-#: classes/settings_manager.php:28
+#: classes/settings_manager.php:29
 msgid "Directory title"
 msgstr ""
 
-#: classes/settings_manager.php:36
+#: classes/settings_manager.php:37
 msgid "Set directory at home page"
 msgstr ""
 
-#: classes/settings_manager.php:44
+#: classes/settings_manager.php:45
 msgid "Category slug"
 msgstr ""
 
-#: classes/settings_manager.php:52
+#: classes/settings_manager.php:53
 msgid "Tag slug"
 msgstr ""
 
 #: classes/settings_manager.php:61
+msgid "Content width"
+msgstr ""
+
+#: classes/settings_manager.php:71
 msgid "reCaptcha settings"
 msgstr ""
 
-#: classes/settings_manager.php:67
+#: classes/settings_manager.php:77
 msgid "Enable reCaptcha"
 msgstr ""
 
-#: classes/settings_manager.php:75
+#: classes/settings_manager.php:85
 msgid "reCaptcha public key"
 msgstr ""
 
-#: classes/settings_manager.php:83
+#: classes/settings_manager.php:93
 msgid "reCaptcha private key"
 msgstr ""
 
-#: classes/settings_manager.php:93
+#: classes/settings_manager.php:104
 msgid "Categories settings"
 msgstr ""
 
-#: classes/settings_manager.php:99
+#: classes/settings_manager.php:110
 msgid "Show categories list on index and excerpt pages?"
 msgstr ""
 
-#: classes/settings_manager.php:107
+#: classes/settings_manager.php:118
 msgid "Categories nesting level"
 msgstr ""
 
-#: classes/settings_manager.php:115
+#: classes/settings_manager.php:126
 msgid "Show category posts count?"
 msgstr ""
 
-#: classes/settings_manager.php:125
+#: classes/settings_manager.php:136
+msgid "Search settings"
+msgstr ""
+
+#: classes/settings_manager.php:142
+msgid "Show \"What search\" section?"
+msgstr ""
+
+#: classes/settings_manager.php:150
+msgid "Show \"Where search\" section?"
+msgstr ""
+
+#: classes/settings_manager.php:161
 msgid "Listings settings"
 msgstr ""
 
-#: classes/settings_manager.php:131
+#: classes/settings_manager.php:167
 msgid "Number of listings on index page"
 msgstr ""
 
-#: classes/settings_manager.php:139
+#: classes/settings_manager.php:175
 msgid "Number of listings on excerpt page"
 msgstr ""
 
-#: classes/settings_manager.php:147
+#: classes/settings_manager.php:183
 msgid "Do listings have own pages?"
 msgstr ""
 
-#: classes/settings_manager.php:155
+#: classes/settings_manager.php:191
 msgid "Place listing images gallery on separate tab?"
 msgstr ""
 
-#: classes/settings_manager.php:165
+#: classes/settings_manager.php:202
 msgid "Maps settings"
 msgstr ""
 
-#: classes/settings_manager.php:171
+#: classes/settings_manager.php:208
 msgid "Show map on index page?"
 msgstr ""
 
-#: classes/settings_manager.php:179
+#: classes/settings_manager.php:216
 msgid "Show map on excerpt page?"
 msgstr ""
 
-#: classes/settings_manager.php:187
+#: classes/settings_manager.php:224
 msgid "Show directions panel for the listing map?"
 msgstr ""
 
-#: classes/settings_manager.php:196
+#: classes/settings_manager.php:234
 msgid "Email notifications settings"
 msgstr ""
 
-#: classes/settings_manager.php:202
+#: classes/settings_manager.php:240
 msgid "Days before pre-expiration notification will be sent"
 msgstr ""
 
-#: classes/settings_manager.php:210
+#: classes/settings_manager.php:248
 msgid "Pre-expiration notification"
 msgstr ""
 
-#: classes/settings_manager.php:228
+#: classes/settings_manager.php:267
 msgid "This title will be used in HTML title tag of every directory page"
 msgstr ""
 
-#: classes/settings_manager.php:232
+#: classes/settings_manager.php:271
+#, php-format
 msgid ""
 "Tick this setting if you wish to display directory listings at the home "
-"page, in other case they will be displayed from your custom page with ["
+"page, in other case they will be displayed from your custom page with [%s] "
+"shortcode"
 msgstr ""
 
-#: classes/settings_manager.php:245
+#: classes/settings_manager.php:281
+msgid ""
+"Set width of the content part of all directory pages or set 0 to prevent "
+"additional styling of this part"
+msgstr ""
+
+#: classes/settings_manager.php:289
 #, php-format
 msgid "get your reCAPTCHA API Keys <a href=\"%s\" target=\"_blank\">here</a>"
 msgstr ""
 
-#: classes/settings_manager.php:297
+#: classes/settings_manager.php:353
 msgid "Settings saved!"
 msgstr ""
 
@@ -1264,23 +1288,23 @@ msgstr ""
 msgid "Attach video"
 msgstr ""
 
-#: templates/search_form.tpl.php:52
+#: templates/search_form.tpl.php:56
 msgid "What search"
 msgstr ""
 
-#: templates/search_form.tpl.php:56
+#: templates/search_form.tpl.php:60
 msgid "Enter keywords"
 msgstr ""
 
-#: templates/search_form.tpl.php:62
+#: templates/search_form.tpl.php:68
 msgid "Where search"
 msgstr ""
 
-#: templates/search_form.tpl.php:74
+#: templates/search_form.tpl.php:80
 msgid "Enter address or zip code"
 msgstr ""
 
-#: templates/search_form.tpl.php:83
+#: templates/search_form.tpl.php:90
 msgid "Search"
 msgstr ""
 
