@@ -4,6 +4,7 @@
 		<div class="inside">
 			<p>Contact us <a target="_blank" href="http://www.salephpscripts.com/contact/">here</a></p>
 			<ul>
+				<li class="li_link"><a target="_blank" href="http://www.salephpscripts.com/wordpress_directory/demo/">Look at the demo</a></li>
 				<li class="li_link"><a target="_blank" href="http://wordpress.org/plugins/listings-directory-classifieds/">Place a rating at WordPress.org</a></li>
 			</ul>
 			<br />
