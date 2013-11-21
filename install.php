@@ -182,6 +182,7 @@ function w2dc_install_directory() {
 		update_option('w2dc_expiration_notification', 'Your listing "[listing]" had expired. You can renew it here [link]');
 		update_option('w2dc_show_what_search', '1');
 		update_option('w2dc_show_where_search', '1');
+		update_option('w2dc_content_width', '60');
 	
 		update_option('w2dc_installed_directory', true);
 		update_option('w2dc_installed_directory_version', W2DC_VERSION);
@@ -209,7 +210,7 @@ function upgrade_to_1_0_6() {
 }
 
 function upgrade_to_1_0_7() {
-	update_option('w2dc_content_width', '70');
+	update_option('w2dc_content_width', '60');
 }
 
 ?>
