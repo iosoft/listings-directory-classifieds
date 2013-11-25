@@ -3,31 +3,46 @@
 class w2dc_frontend_controller {
 	public $query;
 	public $page_title;
+	public $template;
 	public $listings = array();
 	public $google_map;
 	public $paginator;
 	public $breadcrumbs = array();
 	public $base_url;
 	public $messages = array();
+	
+	public $is_home = false;
+	public $is_search = false;
+	public $is_single = false;
+	public $is_category = false;
+	public $is_tag = false;
 
 	public function __construct() {
 		global $w2dc_instance;
 
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		$paged = (get_query_var('page')) ? get_query_var('page') : 1;
 
-		if (is_single() && get_post_type() == W2DC_POST_TYPE) {
-			global $wp_query;
-			$this->query = $wp_query;
+		if (get_query_var('listing')) {
+			$args = array(
+					'post_type' => W2DC_POST_TYPE,
+					'post_status' => 'publish',
+					'name' => get_query_var('listing'),
+					'posts_per_page' => 1,
+			);
+			$this->query = new WP_Query($args);
+			$this->processQuery();
 
-			add_filter('single_template', array($w2dc_instance, '_listing_template'));
-			add_action('wp_head', array($w2dc_instance, 'highlight_menu_item'));
-
-			$this->listings[get_the_ID()] = new w2dc_listing;
-			if ($this->listings[get_the_ID()]->loadListingFromPost(get_post())) {
-				$this->page_title = $this->listings[get_the_ID()]->title();
+			if (count($this->listings) == 1) {
+				$this->is_single = true;
+				$this->template = 'frontend/listing_single.tpl.php';
+				
+				$listings_array = $this->listings;
+				$listing = array_shift($listings_array);
+				$this->listing = $listing;
+				$this->page_title = $listing->title();
 				$this->breadcrumbs = array(
 						'<a href="' . $w2dc_instance->index_page_url . '">' . __('Home', 'W2DC') . '</a>',
-						$this->listings[get_the_ID()]->title()
+						$listing->title()
 				);
 				if ($w2dc_instance->action == 'contact')
 					$this->contactOwnerAction(get_post());
@@ -37,14 +52,13 @@ class w2dc_frontend_controller {
 				include(get_404_template());
 				exit;
 			}
-		} elseif ($w2dc_instance->action == 'search' && is_search()) {
-			
+		} elseif ($w2dc_instance->action == 'search') {
+			$this->is_search = true;
+			$this->template = 'frontend/search.tpl.php';
+
 			$this->search_form = new search_form();
 			$order_args = apply_filters('w2dc_order_args', array());
-			
-			add_filter('search_template', array($w2dc_instance, '_search_template'));
-			add_action('wp_head', array($w2dc_instance, 'highlight_menu_item'));
-			
+
 			add_filter('posts_join', array($this, 'join_levels'));
 			add_filter('posts_orderby', array($this, 'orderby_levels'), 1);
 			$args = array(
@@ -61,88 +75,100 @@ class w2dc_frontend_controller {
 			$this->query = new WP_Query($args);
 			$this->processQuery(get_option('w2dc_map_on_excerpt'));
 
-			//var_dump($this->query->request);
-			
 			$this->page_title = __('Search results', 'W2DC');
 			$this->breadcrumbs = array(
 					'<a href="' . $w2dc_instance->index_page_url . '">' . __('Home', 'W2DC') . '</a>',
 					__('Search results', 'W2DC')
 			);
 			$this->base_url = add_query_arg($base_url_args, $w2dc_instance->index_page_url);
-		} elseif (is_tax() && get_query_var('taxonomy') == W2DC_CATEGORIES_TAX) {
-			$category_object = get_queried_object();
-			$this->search_form = new search_form();
-			$order_args = apply_filters('w2dc_order_args', array());
+		} elseif (get_query_var('category')) {
+			if ($category_object = get_term_by('slug', get_query_var('category'), W2DC_CATEGORIES_TAX)) {
+				$this->is_category = true;
+				$this->category = $category_object;
+				$this->search_form = new search_form();
+				$order_args = apply_filters('w2dc_order_args', array());
 
-			add_filter('taxonomy_template', array($w2dc_instance, '_category_template'));
-			add_action('wp_head', array($w2dc_instance, 'highlight_menu_item'));
-			add_filter('posts_join', array($this, 'join_levels'));
-			add_filter('posts_orderby', array($this, 'orderby_levels'), 1);
-			$args = array(
-					'tax_query' => array(
-							array(
-								'taxonomy' => W2DC_CATEGORIES_TAX,
-								'field' => 'slug',
-								'terms' => $category_object->slug,
-							)
-					),
-					'post_type' => W2DC_POST_TYPE,
-					'post_status' => 'publish',
-					'meta_query' => array(array('key' => '_listing_status', 'value' => 'active')),
-					'posts_per_page' => get_option('w2dc_listings_number_excerpt'),
-					'paged' => $paged,
-			);
-			$args = array_merge($args, $order_args);
-
-			$this->query = new WP_Query($args);
-			$this->processQuery(get_option('w2dc_map_on_excerpt'));
-
-			$this->page_title = $category_object->name;
-			$this->breadcrumbs = array_merge(
-					array('<a href="' . $w2dc_instance->index_page_url . '">' . __('Home', 'W2DC') . '</a>'),
-					w2dc_get_term_parents($category_object, W2DC_CATEGORIES_TAX, true, true)
-			);
-			$this->base_url = get_term_link($category_object, W2DC_CATEGORIES_TAX);
-		} elseif (is_tax() && get_query_var('taxonomy') == W2DC_TAGS_TAX) {
-			$tag_object = get_queried_object();
-			$this->search_form = new search_form();
-			$order_args = apply_filters('w2dc_order_args', array());
-
-			add_filter('taxonomy_template', array($w2dc_instance, '_tag_template'));
-			add_action('wp_head', array($w2dc_instance, 'highlight_menu_item'));
-			add_filter('posts_join', array($this, 'join_levels'));
-			add_filter('posts_orderby', array($this, 'orderby_levels'), 1);
-			$args = array(
-					'tax_query' => array(
-							array(
-									'taxonomy' => W2DC_TAGS_TAX,
+				add_filter('posts_join', array($this, 'join_levels'));
+				add_filter('posts_orderby', array($this, 'orderby_levels'), 1);
+				$args = array(
+						'tax_query' => array(
+								array(
+									'taxonomy' => W2DC_CATEGORIES_TAX,
 									'field' => 'slug',
-									'terms' => $tag_object->slug,
-							)
-					),
-					'post_type' => W2DC_POST_TYPE,
-					'post_status' => 'publish',
-					'meta_query' => array(array('key' => '_listing_status', 'value' => 'active')),
-					'posts_per_page' => get_option('w2dc_listings_number_excerpt'),
-					'paged' => $paged,
-			);
-			$args = array_merge($args, $order_args);
+									'terms' => $category_object->slug,
+								)
+						),
+						'post_type' => W2DC_POST_TYPE,
+						'post_status' => 'publish',
+						'meta_query' => array(array('key' => '_listing_status', 'value' => 'active')),
+						'posts_per_page' => get_option('w2dc_listings_number_excerpt'),
+						'paged' => $paged,
+				);
+				$args = array_merge($args, $order_args);
+	
+				$this->query = new WP_Query($args);
+				$this->processQuery(get_option('w2dc_map_on_excerpt'));
 
-			$this->query = new WP_Query($args);
-			$this->processQuery(get_option('w2dc_map_on_excerpt'));
+				$this->template = 'frontend/category.tpl.php';
 
-			$this->page_title = $tag_object->name;
-			$this->breadcrumbs = array_merge(
-					array('<a href="' . $w2dc_instance->index_page_url . '">' . __('Home', 'W2DC') . '</a>'),
-					w2dc_get_term_parents($tag_object, W2DC_TAGS_TAX, true, true)
-			);
-			$this->base_url = get_term_link($tag_object, W2DC_TAGS_TAX);
-		} elseif (get_query_var('post_type') == W2DC_POST_TYPE || (!get_option('w2dc_is_home_page') && $w2dc_instance->index_page_id && is_page($w2dc_instance->index_page_id))) {
+				$this->page_title = $category_object->name;
+				$this->breadcrumbs = array_merge(
+						array('<a href="' . $w2dc_instance->index_page_url . '">' . __('Home', 'W2DC') . '</a>'),
+						w2dc_get_term_parents($category_object, W2DC_CATEGORIES_TAX, true, true)
+				);
+				$this->base_url = get_term_link($category_object, W2DC_CATEGORIES_TAX);
+			} else {
+				status_header(404);
+				nocache_headers();
+				include(get_404_template());
+				exit;
+			}
+		} elseif (get_query_var('tag')) {
+			if ($tag_object = get_term_by('slug', get_query_var('tag'), W2DC_TAGS_TAX)) {
+				$this->is_tag = true;
+				$this->tag = $tag_object;
+				$this->search_form = new search_form();
+				$order_args = apply_filters('w2dc_order_args', array());
+
+				add_filter('posts_join', array($this, 'join_levels'));
+				add_filter('posts_orderby', array($this, 'orderby_levels'), 1);
+				$args = array(
+						'tax_query' => array(
+								array(
+										'taxonomy' => W2DC_TAGS_TAX,
+										'field' => 'slug',
+										'terms' => $tag_object->slug,
+								)
+						),
+						'post_type' => W2DC_POST_TYPE,
+						'post_status' => 'publish',
+						'meta_query' => array(array('key' => '_listing_status', 'value' => 'active')),
+						'posts_per_page' => get_option('w2dc_listings_number_excerpt'),
+						'paged' => $paged,
+				);
+				$args = array_merge($args, $order_args);
+	
+				$this->query = new WP_Query($args);
+				$this->processQuery(get_option('w2dc_map_on_excerpt'));
+
+				$this->template = 'frontend/tag.tpl.php';
+	
+				$this->page_title = $tag_object->name;
+				$this->breadcrumbs = array_merge(
+						array('<a href="' . $w2dc_instance->index_page_url . '">' . __('Home', 'W2DC') . '</a>'),
+						w2dc_get_term_parents($tag_object, W2DC_TAGS_TAX, true, true)
+				);
+				$this->base_url = get_term_link($tag_object, W2DC_TAGS_TAX);
+			} else {
+				status_header(404);
+				nocache_headers();
+				include(get_404_template());
+				exit;
+			}
+		} else {
+			$this->is_home = true;
 			$this->search_form = new search_form();
 			$order_args = apply_filters('w2dc_order_args', array());
-
-			add_filter('template_include', array($w2dc_instance, '_index_template'));
-			add_action('wp_head', array($w2dc_instance, 'highlight_menu_item'));
 
 			add_filter('posts_join', array($this, 'join_levels'));
 			add_filter('posts_orderby', array($this, 'orderby_levels'), 1);
@@ -154,10 +180,11 @@ class w2dc_frontend_controller {
 					'paged' => $paged,
 			);
 			$args = array_merge($args, $order_args);
+			
+			$this->template = 'frontend/index.tpl.php';
 
 			$this->query = new WP_Query($args);
 			$this->processQuery(get_option('w2dc_map_on_index'));
-			$this->page_title = get_option('w2dc_directory_title');
 			$this->base_url = $w2dc_instance->index_page_url;
 		}
 	}
@@ -177,21 +204,19 @@ class w2dc_frontend_controller {
 	}
 	
 	public function processQuery($load_map = true) {
-		global $w2dc_instance;
-
 		$this->google_map = new google_maps;
 		while ($this->query->have_posts()) {
 			$this->query->the_post();
-		
+
 			$listing = new w2dc_listing;
-			$listing->loadListingFromPost($this->query->post);
+			$listing->loadListingFromPost(get_post());
 
 			if ($load_map)
 				$this->google_map->collectLocations($listing);
 			
 			$this->listings[get_the_ID()] = $listing;
 		}
-
+		// this is reset is really required after the loop ends 
 		wp_reset_postdata();
 	}
 	
@@ -278,17 +303,13 @@ class w2dc_frontend_controller {
 						), true);
 
 				if (wp_mail($listing_owner->user_email, $subject, $body, $headers))
-					//$this->messages['updated'][] = __('You message was sent successfully!', 'W2DC');
 					w2dc_addMessage(__('You message was sent successfully!', 'W2DC'), 'error');
 				else
-					//$this->messages['error'][] =  __('An error occurred and your message wasn\t sent', 'W2DC');
 					w2dc_addMessage(__('An error occurred and your message wasn\t sent', 'W2DC'), 'error');
 			} else {
-				//$this->messages['error'][] =  __('Verification code wasn\'t entered correctly', 'W2DC');
 				w2dc_addMessage(__('Verification code wasn\'t entered correctly', 'W2DC'), 'error');
 			}
 		} else {
-			//$this->messages['error'][] = $validation->error_string();
 			w2dc_addMessage($validation->error_string(), 'error');
 		}
 	}

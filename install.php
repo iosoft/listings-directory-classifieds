@@ -172,7 +172,6 @@ function w2dc_install_directory() {
 		update_option('w2dc_map_on_index', '1');
 		update_option('w2dc_map_on_excerpt', '1');
 		update_option('w2dc_listings_own_page', '1');
-		update_option('w2dc_is_home_page', '0');
 		update_option('w2dc_directory_title', 'Directory & Classifieds');
 		update_option('w2dc_categories_nesting_level', '1');
 		update_option('w2dc_images_on_tab', '0');
@@ -182,7 +181,6 @@ function w2dc_install_directory() {
 		update_option('w2dc_expiration_notification', 'Your listing "[listing]" had expired. You can renew it here [link]');
 		update_option('w2dc_show_what_search', '1');
 		update_option('w2dc_show_where_search', '1');
-		update_option('w2dc_content_width', '60');
 	
 		update_option('w2dc_installed_directory', true);
 		update_option('w2dc_installed_directory_version', W2DC_VERSION);
@@ -190,6 +188,7 @@ function w2dc_install_directory() {
 		$upgrades_list = array(
 				'1.0.6',
 				'1.0.7',
+				'1.1.0',
 		);
 
 		$old_version = get_option('w2dc_installed_directory_version');
@@ -211,6 +210,11 @@ function upgrade_to_1_0_6() {
 
 function upgrade_to_1_0_7() {
 	update_option('w2dc_content_width', '60');
+}
+
+function upgrade_to_1_1_0() {
+	delete_option('w2dc_is_home_page');
+	delete_option('w2dc_content_width');
 }
 
 ?>

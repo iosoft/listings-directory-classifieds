@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.0.7
+Stable tag: tags/1.1.0
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -27,7 +27,7 @@ In other words - whatever you want.
 * Order directory listings by content fields
 * Powerful search by content fields (in premium module)
 * Search by categories and locations
-* SEO friendly
+* SEO friendly - fully compatible with Yoast SEO plugin
 * Locations search in radius - results displaying on map (in premium module)
 * Set up any number of locations for one listing (in premium module)
 * Google Maps integrated
@@ -63,10 +63,15 @@ Right now we have 2 additional premium modules:
 
 1. Upload files to the `/wp-content/plugins/w2dc/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Create new page with [webdirectory] shortcode OR tick *'Set directory at home page'* option on directory settings page
+3. Create new page with [webdirectory] shortcode
 
 
 == Changelog ==
+
+= Version 1.1.0 =
+* the structure of plugin was redesigned to be compatible with most of wordpress themes
+* compatibility with Yoast SEO plugin was added
+* 2 unnecessary settings were removed
 
 = Version 1.0.7 =
 * new setting was added to manage width of HTML content part of all directory pages

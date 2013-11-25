@@ -7,11 +7,11 @@
 	<span class="w2dc_field_name"><?php echo $content_field->name?>:</span>
 	<?php endif; ?>
 	<?php foreach ($listing->locations AS $location): ?>
-		<?php if ($location->selected_location): ?>
+		<?php //if ($location->selected_location): ?>
 		<address class="w2dc_location">
 			<?php echo $location->getWholeAddress(); ?>
 		</address>
-		<?php endif; ?>
+		<?php //endif; ?>
 	<?php endforeach; ?>
 </div>
 <?php endif; ?>

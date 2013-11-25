@@ -1,35 +1,25 @@
-<?php
-global $w2dc_instance;
-$frontend_controller = $w2dc_instance->frontend_controller; 
-?>
-
-<?php get_header(); ?>
-
-	<div id="primary" class="site-content" <?php if (get_option('w2dc_content_width')): ?>style="float: left; width: <?php echo get_option('w2dc_content_width'); ?>%"<?php endif; ?> >
-		<div id="content" role="main">
-
 			<?php w2dc_renderMessages(); ?>
 
 			<?php if ($frontend_controller->getPageTitle()): ?>
 			<header class="entry-header">
+				<h2><?php echo $frontend_controller->getPageTitle(); ?></h2>
+
 				<?php if ($frontend_controller->breadcrumbs): ?>
 				<div class="breadcrumbs">
 					<?php echo $frontend_controller->getBreadCrumbs(); ?>
 				</div>
 				<?php endif; ?>
 
-				<h1 class="entry-title"><?php echo $frontend_controller->getPageTitle(); ?></h1>
-
-				<?php if (term_description()): ?>
-				<div class="archive-meta"><?php echo term_description(); ?></div>
+				<?php if (term_description($frontend_controller->category->term_id, W2DC_CATEGORIES_TAX)): ?>
+				<div class="archive-meta"><?php echo term_description($frontend_controller->category->term_id, W2DC_CATEGORIES_TAX); ?></div>
 				<?php endif; ?>
-			</heder>
+			</header>
 			<?php endif; ?>
 	
 			<div class="entry-content">
 				<?php $frontend_controller->search_form->display(); ?>
 		
-				<?php w2dc_renderSubCategories(get_query_var('term'), 2, get_option('w2dc_show_category_count')); ?>
+				<?php w2dc_renderSubCategories(get_query_var('category'), 2, get_option('w2dc_show_category_count')); ?>
 				
 				<?php $frontend_controller->google_map->display(false);?>
 		
@@ -58,8 +48,3 @@ $frontend_controller = $w2dc_instance->frontend_controller;
 					<?php $frontend_controller->renderPaginator(); ?>
 				<?php endif; ?>
 			</div>
-		</div>
-	</div>
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>

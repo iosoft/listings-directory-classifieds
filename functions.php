@@ -98,12 +98,12 @@ function w2dc_getIndexPage() {
 
 	if ($wp_rewrite->using_permalinks())
 		// If this is not WP homepage - add webdirectory page's slug
-		if (!get_option('w2dc_is_home_page'))
+		if (get_option('page_on_front') != $index_page['id'])
 			$index_page['url'] = home_url($index_page['slug']) . '/';
 		else
 			$index_page['url'] = home_url() . '/';
 	else
-			$index_page['url'] = home_url() . '/';
+			$index_page['url'] = add_query_arg('page_id', $index_page['id'], home_url());
 
 	return $index_page;
 }

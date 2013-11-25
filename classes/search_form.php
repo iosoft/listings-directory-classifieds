@@ -49,8 +49,7 @@ class search_form {
 		else
 			$order_args['order'] = 'ASC';
 		
-		if (!isset($_GET['orderby']) || $_GET['orderby'] == 'post_date') {
-			//$order_args['orderby'] = 'date';
+		if (!isset($_GET['order_by']) || $_GET['order_by'] == 'post_date') {
 			// First of all order by _order_date parameter
 			$order_args['orderby'] = 'meta_value_num';
 			$order_args['meta_key'] = '_order_date';
@@ -58,7 +57,7 @@ class search_form {
 				$order_args['order'] = $_GET['order'];
 			else
 				$order_args['order'] = 'DESC';
-		} elseif ($_GET['orderby'] == 'title') {
+		} elseif ($_GET['order_by'] == 'title') {
 			$order_args['orderby'] = 'title';
 		} else
 			$order_args = array_merge($order_args, $w2dc_instance->content_fields->getOrderParams());

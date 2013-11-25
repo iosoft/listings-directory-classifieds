@@ -3,13 +3,13 @@
 Plugin Name: Directory & Classifieds plugin
 Plugin URI: http://www.salephpscripts.com/wordpress_directory/
 Description: Provides an ability to build any kind of directory site: classifieds, events directory, cars, bikes, boats and other vehicles dealers site, pets, real estate portal on your WordPress powered site. In other words - whatever you want.
-Version: 1.0.7
+Version: 1.1.0
 Author: Mihail Chepovskiy
 Author URI: http://www.salephpscripts.com
 License: GPLv2 or any later version
 */
 
-define('W2DC_VERSION', '1.0.7');
+define('W2DC_VERSION', '1.1.0');
 
 define('W2DC_PATH', plugin_dir_path(__FILE__));
 define('W2DC_URL', plugins_url('/', __FILE__));
@@ -99,10 +99,12 @@ class w2dc_plugin {
 		
 		add_action('sheduled_events', array($this, 'suspend_expired_listings'));
 
+		add_shortcode('webdirectory', array($this, 'renderDirectory'));
+
 		add_action('init', array($this, 'register_post_type'), 0);
 		add_action('init', array($this, 'getIndexPage'), 0);
-		add_action('wp', array($this, 'loadFrontendController'), 0);
-		add_action('pre_get_posts', array($this, 'rewrite_query_vars'));
+		// use 'get_header' hook instead of 'wp' hook
+		add_action('get_header', array($this, 'loadFrontendController'));
 
 		$w2dc_instance->levels = new w2dc_levels;
 		$w2dc_instance->locations_levels = new w2dc_locations_levels;
@@ -111,8 +113,9 @@ class w2dc_plugin {
 		if (is_admin()) {
 			$this->admin = new w2dc_admin();
 		} else {
-			add_filter('wp_title', array($this, 'page_title'), 10, 2);
+			add_action('wp', array($this, 'configure_seo_filters'));
 			add_action('wp_loaded', array($this, 'wp_loaded'));
+			add_filter('query_vars', array($this, 'add_query_vars'));
 			add_filter('rewrite_rules_array', array($this, 'rewrite_rules'));
 			add_filter('post_type_link', array($this, 'listing_permalink'), 10, 2);
 			add_filter('term_link', array($this, 'category_permalink'), 10, 3);
@@ -125,28 +128,28 @@ class w2dc_plugin {
 	public function load_textdomain() {
 		load_plugin_textdomain('W2DC', '', dirname(plugin_basename( __FILE__ )) . '/languages');
 	}
+	
+	public function add_query_vars($vars) {
+		$vars[] = 'listing';
+		$vars[] = 'category';
+		$vars[] = 'tag';
+		
+		$key = array_search('order', $vars);
+		unset($vars[$key]);
 
-	public function loadFrontendController() {
-		$this->frontend_controller = new w2dc_frontend_controller();
+		return $vars;
 	}
 	
-	public function rewrite_query_vars($query) {
-		if (!is_admin() && $query->is_main_query()) {
-			if ($this->action == 'search')
-				// set up search flag
-				$query->is_search = true;
+	public function renderDirectory() {
+		$output =  w2dc_renderTemplate($this->frontend_controller->template, array('frontend_controller' => $this->frontend_controller), true);
+		// this is reset is really required after the loop ends
+		wp_reset_postdata();
+		return $output;
+	}
 
-			if (get_option('w2dc_is_home_page') && $query->is_home())
-				$query->set('post_type', W2DC_POST_TYPE);
-
-			if ($query->is_tax() && get_query_var('taxonomy') == W2DC_CATEGORIES_TAX) {
-				// categories/tags pages
-				$query->query_vars['posts_per_page'] = get_option('w2dc_listings_number_excerpt');
-			} elseif (!$query->is_single() && get_query_var('post_type') == W2DC_POST_TYPE) {
-				// index page
-				$query->query_vars['posts_per_page'] = get_option('w2dc_listings_number_index');
-			}
-		}
+	public function loadFrontendController() {
+		if (is_page($this->index_page_id))
+			$this->frontend_controller = new w2dc_frontend_controller();
 	}
 
 	public function getIndexPage() {
@@ -156,24 +159,91 @@ class w2dc_plugin {
 			$this->index_page_url = $array['url'];
 		}
 		
-		if (!get_option('w2dc_is_home_page') && $this->index_page_id === 0)
-			w2dc_addMessage(sprintf(__('<b>Directory & Classifieds plugin</b>: sorry, but there isn\'t any page with [webdirectory] shortcode. Create <a href="%s">this special page</a> for you? Or you wish to set up <a href="%s">directory at home page</a>?', 'W2DC'), admin_url('admin.php?page=w2dc_admin&action=directory_page_installation'), admin_url('admin.php?page=w2dc_settings')));
+		if ($this->index_page_id === 0)
+			w2dc_addMessage(sprintf(__('<b>Directory & Classifieds plugin</b>: sorry, but there isn\'t any page with [webdirectory] shortcode. Create <a href="%s">this special page</a> for you?', 'W2DC'), admin_url('admin.php?page=w2dc_admin&action=directory_page_installation')));
+	}
+	
+	public function configure_seo_filters() {
+		add_filter('wp_title', array($this, 'page_title'), 10, 2);
+		if (defined('WPSEO_VERSION')) {
+			global $wpseo_front;
+			remove_filter('wp_title', array(&$wpseo_front, 'title'), 15, 3);
+			remove_action('wp_head', array(&$wpseo_front, 'head'), 1, 1);
+			
+			add_action('wp_head', array( $this, 'page_meta'));
+		}
+	}
+	
+	public function page_meta() {
+		if (isset($this->frontend_controller)) {
+			global $wpseo_front;
+			if ($this->frontend_controller->is_single) {
+				global $post;
+				$saved_page = $post;
+				$post = get_post($this->frontend_controller->listing->post->ID);
+
+				$wpseo_front->metadesc();
+				$wpseo_front->metakeywords();
+
+				$post = $saved_page;
+			} elseif ($this->frontend_controller->is_category) {
+				$metadesc = wpseo_get_term_meta($this->frontend_controller->category, $this->frontend_controller->category->taxonomy, 'desc');
+				if (!$metadesc && isset($wpseo_front->options['metadesc-' . $this->frontend_controller->category->taxonomy]))
+					$metadesc = wpseo_replace_vars($wpseo_front->options['metadesc-' . $this->frontend_controller->category->taxonomy], (array) $this->frontend_controller->category );
+				$metadesc = apply_filters('wpseo_metadesc', trim($metadesc));
+				echo '<meta name="description" content="' . esc_attr(strip_tags(stripslashes($metadesc))) . '"/>' . "\n";
+			} elseif ($this->frontend_controller->is_tag) {
+				$metadesc = wpseo_get_term_meta($this->frontend_controller->tag, $this->frontend_controller->tag->taxonomy, 'desc');
+				if (!$metadesc && isset($wpseo_front->options['metadesc-' . $this->frontend_controller->tag->taxonomy]))
+					$metadesc = wpseo_replace_vars($wpseo_front->options['metadesc-' . $this->frontend_controller->tag->taxonomy], (array) $this->frontend_controller->tag );
+				$metadesc = apply_filters('wpseo_metadesc', trim($metadesc));
+				echo '<meta name="description" content="' . esc_attr(strip_tags(stripslashes($metadesc))) . '"/>' . "\n";
+			} elseif ($this->frontend_controller->is_home) {
+				$wpseo_front->metadesc();
+				$wpseo_front->metakeywords();
+			}
+		}
 	}
 
 	public function page_title($title, $separator) {
-		if ($this->frontend_controller->getPageTitle()) {
-			if (get_option('w2dc_directory_title'))
-				if ($this->frontend_controller->getPageTitle() == get_option('w2dc_directory_title'))
-					$directory_title = '';
-				else
-					$directory_title = get_option('w2dc_directory_title') . ' ' . $separator . ' ';
-			else
-				$directory_title = '';
-			
-			if ($title != __('Directory listings', 'W2DC') . ' ' . $separator . ' ')
-				return $this->frontend_controller->getPageTitle() . ' ' . $separator . ' ' . $directory_title;
-			else
-				return $directory_title;
+		if (isset($this->frontend_controller)) {
+			if (defined('WPSEO_VERSION')) {
+				global $wpseo_front;
+				if ($this->frontend_controller->is_single) {
+					$title = $wpseo_front->get_content_title(get_post($this->frontend_controller->listing->post->ID));
+					return esc_html(strip_tags(stripslashes(apply_filters('wpseo_title', $title))));
+				} elseif ($this->frontend_controller->is_search) {
+					return $wpseo_front->get_title_from_options('title-search');
+				} elseif ($this->frontend_controller->is_category) {
+					$title = trim(wpseo_get_term_meta($this->frontend_controller->category, $this->frontend_controller->category->taxonomy, 'title'));
+					if (!empty($title))
+						return wpseo_replace_vars($title, (array)$this->frontend_controller->category);
+					return $wpseo_front->get_title_from_options('title-' . $this->frontend_controller->category->taxonomy, $this->frontend_controller->category);
+				} elseif ($this->frontend_controller->is_tag) {
+					$title = trim(wpseo_get_term_meta($this->frontend_controller->tag, $this->frontend_controller->tag->taxonomy, 'title'));
+					if (!empty($title))
+						return wpseo_replace_vars($title, (array)$this->frontend_controller->tag);
+					return $wpseo_front->get_title_from_options('title-' . $this->frontend_controller->tag->taxonomy, $this->frontend_controller->tag);
+				} elseif ($this->frontend_controller->is_home) {
+					$page = get_post($this->index_page_id);
+					return $wpseo_front->get_title_from_options('title-' . W2DC_POST_TYPE, (array) $page);
+				}
+			} else {
+				if ($this->frontend_controller->getPageTitle()) {
+					if (get_option('w2dc_directory_title'))
+						if ($this->frontend_controller->getPageTitle() == get_option('w2dc_directory_title'))
+							$directory_title = '';
+						else
+							$directory_title = get_option('w2dc_directory_title');
+					else
+						$directory_title = '';
+					
+					if ($title != __('Directory listings', 'W2DC') . ' ' . $separator . ' ')
+						return $this->frontend_controller->getPageTitle() . ' ' . $separator . ' ' . $directory_title;
+					else
+						return $directory_title;
+				}
+			}
 		}
 
 		return $title;
@@ -196,20 +266,18 @@ class w2dc_plugin {
 '; */
 		
 		$page_url = $this->index_page_slug;
+		
+		$rules['(' . $page_url . ')/' . $wp_rewrite->pagination_base . '/?([0-9]{1,})/?$'] = 'index.php?page_id=' .  $this->index_page_id . '&paged=$matches[2]';
+		$rules['(' . $page_url . ')/?$'] = 'index.php?page_id=' .  $this->index_page_id;
+		
+		$rules['(' . $page_url . ')?/?' . get_option('w2dc_category_slug') . '/([^\/.]+)/' . $wp_rewrite->pagination_base . '/?([0-9]{1,})/?$'] = 'index.php?page_id=' .  $this->index_page_id . '&category=$matches[2]&paged=$matches[3]';
+		$rules['(' . $page_url . ')?/?' . get_option('w2dc_category_slug') . '/([^\/.]+)/?$'] = 'index.php?page_id=' .  $this->index_page_id . '&category=$matches[2]';
+		
+		$rules['(' . $page_url . ')?/?' . get_option('w2dc_tag_slug') . '/([^\/.]+)/' . $wp_rewrite->pagination_base . '/?([0-9]{1,})/?$'] = 'index.php?page_id=' .  $this->index_page_id . '&tag=$matches[2]&paged=$matches[3]';
+		$rules['(' . $page_url . ')?/?' . get_option('w2dc_tag_slug') . '/([^\/.]+)/?$'] = 'index.php?page_id=' .  $this->index_page_id . '&tag=$matches[2]';
 
-		$rules['(' . $page_url . ')/' . $wp_rewrite->pagination_base . '/?([0-9]{1,})/?$'] = 'index.php?post_type=' . W2DC_POST_TYPE . '&paged=$matches[2]';
-		$rules['(' . $page_url . ')/?$'] = 'index.php?post_type=' . W2DC_POST_TYPE;
-
-		if ($page_url)
-			$rules[$page_url . '/([^\/.]+)/?$'] = 'index.php?' . W2DC_POST_TYPE . '=$matches[1]';
-		else
-			$rules['([0-9]{1,})/(.+)/?$'] = 'index.php?' . W2DC_POST_TYPE . '=$matches[2]';
-
-		$rules['(' . $page_url . ')?/?' . get_option('w2dc_category_slug') . '/([^\/.]+)/' . $wp_rewrite->pagination_base . '/?([0-9]{1,})/?$'] = 'index.php?term=$matches[2]&taxonomy=' . W2DC_CATEGORIES_TAX . '&paged=$matches[3]';
-		$rules['(' . $page_url . ')?/?' . get_option('w2dc_category_slug') . '/([^\/.]+)/?$'] = 'index.php?term=$matches[2]&taxonomy=' . W2DC_CATEGORIES_TAX;
-
-		$rules['(' . $page_url . ')?/?' . get_option('w2dc_tag_slug') . '/([^\/.]+)/' . $wp_rewrite->pagination_base . '/?([0-9]{1,})/?$'] = 'index.php?term=$matches[2]&taxonomy=' . W2DC_TAGS_TAX . '&paged=$matches[3]';
-		$rules['(' . $page_url . ')?/?' . get_option('w2dc_tag_slug') . '/([^\/.]+)/?$'] = 'index.php?term=$matches[2]&taxonomy=' . W2DC_TAGS_TAX;
+		$rules[$page_url . '/([^\/.]+)/?$'] = 'index.php?page_id=' . $this->index_page_id . '&listing=$matches[1]';
+		$rules['([0-9]{1,})/([^\/.]+)/?$'] = 'index.php?page_id=' . $this->index_page_id . '&listing=$matches[2]';
 
 		return $rules;
 	}
@@ -224,61 +292,16 @@ class w2dc_plugin {
 				}
 	}
 
-	public function _listing_template($template) {
-		if (is_single() && get_post_type() == W2DC_POST_TYPE) {
-			if (is_file(W2DC_PATH . 'templates/frontend/listing_single-custom.tpl.php'))
-				$template = W2DC_PATH . 'templates/frontend/listing_single-custom.tpl.php';
-			else
-				$template = W2DC_PATH . 'templates/frontend/listing_single.tpl.php';
-		}
-
-		return $template;
-	}
-	public function _index_template($template) {
-		if (get_query_var('post_type') == W2DC_POST_TYPE || (!get_option('w2dc_is_home_page') && $w2dc_instance->index_page_id && is_page($this->index_page_id))) {
-			if (is_file(W2DC_PATH . 'templates/frontend/index-custom.tpl.php'))
-				$template = W2DC_PATH . 'templates/frontend/index-custom.tpl.php';
-			else
-				$template = W2DC_PATH . 'templates/frontend/index.tpl.php';
-		}
-
-		return $template;
-	}
-	public function _search_template($template) {
-		if (is_file(W2DC_PATH . 'templates/frontend/search-custom.tpl.php'))
-			$template = W2DC_PATH . 'templates/frontend/search-custom.tpl.php';
-		else
-			$template = W2DC_PATH . 'templates/frontend/search.tpl.php';
-
-		return $template;
-	}
-	public function _category_template($template) {
-		if (is_file(W2DC_PATH . 'templates/frontend/category-custom.tpl.php'))
-			$template = W2DC_PATH . 'templates/frontend/category-custom.tpl.php';
-		else
-			$template = W2DC_PATH . 'templates/frontend/category.tpl.php';
-
-		return $template;
-	}
-	public function _tag_template($template) {
-		if (is_file(W2DC_PATH . 'templates/frontend/tag-custom.tpl.php'))
-			$template = W2DC_PATH . 'templates/frontend/tag-custom.tpl.php';
-		else
-			$template = W2DC_PATH . 'templates/frontend/tag.tpl.php';
-
-		return $template;
-	}
-	
 	public function listing_permalink($permalink, $post) {
 		if ($post->post_type == W2DC_POST_TYPE) {
 			global $wp_rewrite;
 			if ($wp_rewrite->using_permalinks())
-				if (get_option('w2dc_is_home_page') || !$this->index_page_id)
+				if (get_option('page_on_front') == $this->index_page_id)
 					return $this->index_page_url . $post->ID . '/' . $post->post_name;
 				else
 					return $this->index_page_url . $post->post_name;
 			else
-				return add_query_arg(W2DC_POST_TYPE, $post->post_name, $this->index_page_url);
+				return add_query_arg('listing', $post->post_name, $this->index_page_url);
 		}
 		return $permalink;
 	}
@@ -289,7 +312,7 @@ class w2dc_plugin {
 			if ($wp_rewrite->using_permalinks())
 				return $this->index_page_url . get_option('w2dc_category_slug') . '/' . $category->slug;
 			else
-				return add_query_arg(W2DC_CATEGORIES_TAX, $category->slug, $this->index_page_url);
+				return add_query_arg('category', $category->slug, $this->index_page_url);
 		}
 		return $permalink;
 	}
@@ -300,7 +323,7 @@ class w2dc_plugin {
 			if ($wp_rewrite->using_permalinks())
 				return $this->index_page_url . get_option('w2dc_tag_slug') . '/' . $tag->slug;
 			else
-				return add_query_arg(W2DC_TAGS_TAX, $tag->slug, $this->index_page_url);
+				return add_query_arg('tag', $tag->slug, $this->index_page_url);
 		}
 		return $permalink;
 	}
@@ -375,17 +398,7 @@ class w2dc_plugin {
 			)
 		);
 	}
-	
-	public function highlight_menu_item() {
-		if (!get_option('w2dc_is_home_page'))
-			echo "<script>
-				jQuery(document).ready(function($) {
-					$('.page-item-" . $this->index_page_id . "').addClass('current_page_item');
-				});
-			</script>
-			";
-	}
-	
+
 	public function suspend_expired_listings() {
 		global $wpdb;
 
@@ -458,7 +471,7 @@ class w2dc_plugin {
 	}
 
 	public function enqueue_scripts_styles() {
-		if (!is_null($this->frontend_controller->page_title)) {
+		if (!is_null($this->frontend_controller)) {
 			if (is_file(W2DC_RESOURCES_PATH . 'css/frontend-custom.css'))
 				$css_file = W2DC_RESOURCES_URL . 'css/frontend-custom.css';
 			elseif (is_file(W2DC_RESOURCES_PATH . 'css/frontend.css'))
@@ -475,7 +488,7 @@ class w2dc_plugin {
 					)
 			);
 			
-			if (is_single()) {
+			if ($this->frontend_controller->is_single) {
 				wp_enqueue_style('media_styles', W2DC_RESOURCES_URL . 'lightbox/css/lightbox.css');
 				wp_enqueue_script('media_scripts', W2DC_RESOURCES_URL . 'lightbox/js/lightbox-2.6.min.js', array('jquery'));
 				

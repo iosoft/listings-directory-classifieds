@@ -95,7 +95,7 @@ class w2dc_admin {
 
 	public function w2dc_index_page() {
 		if (isset($_GET['action']) && $_GET['action'] == 'directory_page_installation') {
-			$page = array('post_status' => 'publish', 'post_title' => __('Directory & Classifieds', 'W2DC'), 'post_type' => 'page', 'post_content' => '[webdirectory]');
+			$page = array('post_status' => 'publish', 'post_title' => __('Directory & Classifieds', 'W2DC'), 'post_type' => 'page', 'post_content' => '[webdirectory]', 'comment_status' => 'closed');
 			if (wp_insert_post($page))
 				w2dc_addMessage(__('"Directory & Classifieds" page with [webdirectory] shortcode was successfully created, thank you!'));
 		}

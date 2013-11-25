@@ -1,4 +1,6 @@
-			<?php if (!is_single()): ?>
+<?php $is_single = $w2dc_instance->frontend_controller->is_single; ?>
+
+			<?php if (!$is_single): ?>
 			<header class="entry-header">
 				<h1 class="entry-title">
 					<?php if (!get_option('w2dc_listings_own_page')): ?>
@@ -20,9 +22,9 @@
 				<div id="listing_logo">
 					<?php $src = wp_get_attachment_image_src($listing->logo_image, $listing->level->logo_size); ?>
 					<?php $src_full = wp_get_attachment_image_src($listing->logo_image, 'full'); ?>
-					<?php if (is_single() && get_option('w2dc_images_on_tab')): ?>
+					<?php if ($is_single && get_option('w2dc_images_on_tab')): ?>
 					<img src="<?php echo $src[0]; ?>" itemprop="image" />
-					<?php elseif (is_single()): ?>
+					<?php elseif ($is_single): ?>
 					<a href="<?php echo $src_full[0]; ?>" data-lightbox="listing_images">
 						<img src="<?php echo $src[0]; ?>" itemprop="image" />
 					</a>
@@ -33,14 +35,14 @@
 					<?php endif; ?>
 				</div>
 				<div class="clear_float"></div>
-				<?php if (is_single() && !get_option('w2dc_images_on_tab') && count($listing->images) > 1): ?>
+				<?php if ($is_single && !get_option('w2dc_images_on_tab') && count($listing->images) > 1): ?>
 				<?php w2dc_renderTemplate('frontend/images_gallery_js.tpl.php', array('listing' => $listing)); ?>
 				<?php endif; ?>
 			</div>
 			<?php endif; ?>
 
 			<div class="listing_text_content_wrap entry-content">
-				<?php if (!is_single() && comments_open()): ?>
+				<?php if (!$is_single && comments_open()): ?>
 				<div>
 					<img src="<?php echo W2DC_RESOURCES_URL; ?>images/comments.png" class="w2dc_field_icon" />
 					<?php echo sprintf(_n('%d reply', '%d replies', $listing->post->comment_count, 'W2DC'), $listing->post->comment_count);?>
@@ -49,11 +51,11 @@
 				
 				<em class="w2dc_listing_date"><?php echo get_the_date(); ?> <?php echo get_the_time(); ?></em>
 			
-				<?php $listing->renderContentFields(is_single()); ?>
+				<?php $listing->renderContentFields($is_single); ?>
 			</div>
 			<div class="clear_float"></div>
 
-			<?php if (is_single()): ?>
+			<?php if ($is_single): ?>
 			<script>
 				jQuery(document).ready(function($) {
 					var $tabs = $("#tabs").tabs({

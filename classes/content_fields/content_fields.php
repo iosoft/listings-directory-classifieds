@@ -149,9 +149,9 @@ class w2dc_content_fields {
 	}
 	
 	public function getOrderParams() {
-		if (isset($_GET['orderby']))
+		if (isset($_GET['order_by']))
 			foreach($this->content_fields_array AS $content_field)
-				if ($content_field->canBeOrdered() && $content_field->is_ordered && $content_field->slug == $_GET['orderby']) {
+				if ($content_field->canBeOrdered() && $content_field->is_ordered && $content_field->slug == $_GET['order_by']) {
 					return $content_field->orderParams();
 					break;
 				}

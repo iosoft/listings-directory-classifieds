@@ -162,44 +162,44 @@ function w2dc_orderLinks($base_url) {
 
 	$ordering = array();
 	$class = '';
-	if (!isset($_GET['orderby']) || $_GET['orderby'] == 'post_date') {
+	if (!isset($_GET['order_by']) || $_GET['order_by'] == 'post_date') {
 		if (!isset($_GET['order']) || $_GET['order'] == 'DESC') {
 			$class = 'descending';
-			$url = add_query_arg('order', 'ASC', add_query_arg('orderby', 'post_date', $base_url));
+			$url = add_query_arg('order', 'ASC', add_query_arg('order_by', 'post_date', $base_url));
 		} elseif ($_GET['order'] == 'ASC') {
 			$class = 'ascending';
-			$url = add_query_arg('orderby', 'post_date', $base_url);
+			$url = add_query_arg('order_by', 'post_date', $base_url);
 		}
 	} else
-		$url = add_query_arg('orderby', 'post_date', $base_url);
+		$url = add_query_arg('order_by', 'post_date', $base_url);
 	$ordering['post_date'] = '<a class="' . $class . '" href="' . $url . '">' . __('Date', 'W2DC') . '</a>';
 	
 	$class = '';
-	if (isset($_GET['orderby']) && $_GET['orderby'] == 'title') {
+	if (isset($_GET['order_by']) && $_GET['order_by'] == 'title') {
 		if (!isset($_GET['order']) || $_GET['order'] == 'ASC') {
 			$class = 'ascending';
-			$url = add_query_arg('order', 'DESC', add_query_arg('orderby', 'title', $base_url));
+			$url = add_query_arg('order', 'DESC', add_query_arg('order_by', 'title', $base_url));
 		} elseif ($_GET['order'] == 'DESC') {
 			$class = 'descending';
-			$url = add_query_arg('orderby', 'title', $base_url);
+			$url = add_query_arg('order_by', 'title', $base_url);
 		}
 	} else
-		$url = add_query_arg('orderby', 'title', $base_url);
+		$url = add_query_arg('order_by', 'title', $base_url);
 	$ordering['title'] = '<a class="' . $class . '" href="' . $url . '">' . __('Title', 'W2DC') . '</a>';
 
 	$content_fields = $w2dc_instance->content_fields->getOrderingContentFields();
 	foreach ($content_fields AS $content_field) {
 		$class = '';
-		if (isset($_GET['orderby']) && $_GET['orderby'] == $content_field->slug) {
+		if (isset($_GET['order_by']) && $_GET['order_by'] == $content_field->slug) {
 			if (!isset($_GET['order']) || $_GET['order'] == 'ASC') {
 				$class = 'ascending';
-				$url = add_query_arg('order', 'DESC', add_query_arg('orderby', $content_field->slug, $base_url));
+				$url = add_query_arg('order', 'DESC', add_query_arg('order_by', $content_field->slug, $base_url));
 			} elseif ($_GET['order'] == 'DESC') {
 				$class = 'descending';
-				$url = add_query_arg('orderby', $content_field->slug, $base_url);
+				$url = add_query_arg('order_by', $content_field->slug, $base_url);
 			}
 		} else
-			$url = add_query_arg('orderby', $content_field->slug, $base_url);
+			$url = add_query_arg('order_by', $content_field->slug, $base_url);
 		$ordering[$content_field->slug] = '<a class="' . $class . '" href="' . $url . '">' . $content_field->name . '</a>';
 	}
 	$ordering = apply_filters('w2dc_ordering_options', $ordering, $base_url);
