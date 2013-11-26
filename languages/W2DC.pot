@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: w2dc v1.0.0\n"
-"POT-Creation-Date: 2013-11-25 23:44+0500\n"
-"PO-Revision-Date: 2013-11-25 23:44+0500\n"
+"POT-Creation-Date: 2013-11-26 14:09+0500\n"
+"PO-Revision-Date: 2013-11-26 14:10+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Subcategories:"
 msgstr ""
 
-#: w2dc.php:163
+#: w2dc.php:160
 #, php-format
 msgid ""
 "<b>Directory & Classifieds plugin</b>: sorry, but there isn't any page with "
@@ -50,148 +50,148 @@ msgid ""
 "you?"
 msgstr ""
 
-#: w2dc.php:241 w2dc.php:334 w2dc.php:346
+#: w2dc.php:238 w2dc.php:331 w2dc.php:343
 msgid "Directory listings"
 msgstr ""
 
-#: w2dc.php:335
+#: w2dc.php:332
 msgid "Directory listing"
 msgstr ""
 
-#: w2dc.php:336 w2dc.php:337
+#: w2dc.php:333 w2dc.php:334
 msgid "Create new listing"
 msgstr ""
 
-#: w2dc.php:338 templates/frontend/listing_single.tpl.php:18
+#: w2dc.php:335 templates/frontend/listing_single.tpl.php:18
 msgid "Edit listing"
 msgstr ""
 
-#: w2dc.php:339
+#: w2dc.php:336
 msgid "New listing"
 msgstr ""
 
-#: w2dc.php:340 templates/google_map.tpl.php:5
+#: w2dc.php:337 templates/google_map.tpl.php:5
 msgid "View listing"
 msgstr ""
 
-#: w2dc.php:341
+#: w2dc.php:338
 msgid "Search listings"
 msgstr ""
 
-#: w2dc.php:342
+#: w2dc.php:339
 msgid "No listings found"
 msgstr ""
 
-#: w2dc.php:343
+#: w2dc.php:340
 msgid "No listings found in trash"
 msgstr ""
 
-#: w2dc.php:357 classes/categories_manager.php:24
+#: w2dc.php:354 classes/categories_manager.php:24
 #: classes/content_fields/content_fields.php:27
 msgid "Listing categories"
 msgstr ""
 
-#: w2dc.php:358 templates/admin_index.tpl.php:63
+#: w2dc.php:355 templates/admin_index.tpl.php:63
 msgid "Directory categories"
 msgstr ""
 
-#: w2dc.php:359
+#: w2dc.php:356
 msgid "Category"
 msgstr ""
 
-#: w2dc.php:360
+#: w2dc.php:357
 msgid "Create category"
 msgstr ""
 
-#: w2dc.php:361
+#: w2dc.php:358
 msgid "New category"
 msgstr ""
 
-#: w2dc.php:362
+#: w2dc.php:359
 msgid "Edit category"
 msgstr ""
 
-#: w2dc.php:363
+#: w2dc.php:360
 msgid "View category"
 msgstr ""
 
-#: w2dc.php:364
+#: w2dc.php:361
 msgid "Update category"
 msgstr ""
 
-#: w2dc.php:365
+#: w2dc.php:362
 msgid "Search categories"
 msgstr ""
 
-#: w2dc.php:372 classes/locations/locations_manager.php:30
+#: w2dc.php:369 classes/locations/locations_manager.php:30
 msgid "Listing locations"
 msgstr ""
 
-#: w2dc.php:373 templates/admin_index.tpl.php:39
+#: w2dc.php:370 templates/admin_index.tpl.php:39
 msgid "Directory locations"
 msgstr ""
 
-#: w2dc.php:374
+#: w2dc.php:371
 msgid "Location"
 msgstr ""
 
-#: w2dc.php:375
+#: w2dc.php:372
 msgid "Create location"
 msgstr ""
 
-#: w2dc.php:376
+#: w2dc.php:373
 msgid "New location"
 msgstr ""
 
-#: w2dc.php:377
+#: w2dc.php:374
 msgid "Edit location"
 msgstr ""
 
-#: w2dc.php:378
+#: w2dc.php:375
 msgid "View location"
 msgstr ""
 
-#: w2dc.php:379
+#: w2dc.php:376
 msgid "Update location"
 msgstr ""
 
-#: w2dc.php:380
+#: w2dc.php:377
 msgid "Search locations"
 msgstr ""
 
-#: w2dc.php:388 classes/content_fields/content_fields.php:28
+#: w2dc.php:385 classes/content_fields/content_fields.php:28
 msgid "Listing tags"
 msgstr ""
 
-#: w2dc.php:389 templates/admin_index.tpl.php:71
+#: w2dc.php:386 templates/admin_index.tpl.php:71
 msgid "Directory tags"
 msgstr ""
 
-#: w2dc.php:390
+#: w2dc.php:387
 msgid "Tag"
 msgstr ""
 
-#: w2dc.php:391
+#: w2dc.php:388
 msgid "Create tag"
 msgstr ""
 
-#: w2dc.php:392
+#: w2dc.php:389
 msgid "New tag"
 msgstr ""
 
-#: w2dc.php:393
+#: w2dc.php:390
 msgid "Edit tag"
 msgstr ""
 
-#: w2dc.php:394
+#: w2dc.php:391
 msgid "View tag"
 msgstr ""
 
-#: w2dc.php:395
+#: w2dc.php:392
 msgid "Update tag"
 msgstr ""
 
-#: w2dc.php:396
+#: w2dc.php:393
 msgid "Search tags"
 msgstr ""
 
@@ -207,11 +207,11 @@ msgstr ""
 msgid "Directory Admin"
 msgstr ""
 
-#: classes/admin.php:98
+#: classes/admin.php:99
 msgid "Directory & Classifieds"
 msgstr ""
 
-#: classes/admin.php:100
+#: classes/admin.php:101
 msgid ""
 "\"Directory & Classifieds\" page with [webdirectory] shortcode was "
 "successfully created, thank you!"

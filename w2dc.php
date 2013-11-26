@@ -87,9 +87,6 @@ class w2dc_plugin {
 	
 	public function init() {
 		global $w2dc_instance;
-		
-		if (!get_option('w2dc_installed_directory') || get_option('w2dc_installed_directory_version') != W2DC_VERSION)
-			w2dc_install_directory();
 
 		$_GET = stripslashes_deep($_GET);
 		if (isset($_REQUEST['action']))
@@ -397,6 +394,9 @@ class w2dc_plugin {
 				),
 			)
 		);
+		
+		if (!get_option('w2dc_installed_directory') || get_option('w2dc_installed_directory_version') != W2DC_VERSION)
+			w2dc_install_directory();
 	}
 
 	public function suspend_expired_listings() {

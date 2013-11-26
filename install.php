@@ -106,7 +106,7 @@ function w2dc_install_directory() {
 					KEY `post_id` (`post_id`)
 					) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
 	
-		if (!get_terms(W2DC_LOCATIONS_TAX)) {
+		if (!is_array(get_terms(W2DC_LOCATIONS_TAX)) || !count(get_terms(W2DC_LOCATIONS_TAX))) {
 			$parent_term = wp_insert_term('USA', W2DC_LOCATIONS_TAX);
 			wp_insert_term('Alabama', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
 			wp_insert_term('Alaska', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));

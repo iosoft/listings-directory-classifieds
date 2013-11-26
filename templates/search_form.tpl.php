@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
 		<div class="search_section">
 			<?php do_action('pre_search_what_form_html'); ?>
 			<div class="search_option">
-				<input type="text" name="what_search" size="45" placeholder="<?php _e('Enter keywords', 'W2DC'); ?>" value="<?php if (isset($_GET['what_search'])) echo esc_attr(stripslashes($_GET['what_search'])); ?>" />
+				<input type="text" name="what_search" size="38" placeholder="<?php _e('Enter keywords', 'W2DC'); ?>" value="<?php if (isset($_GET['what_search'])) echo esc_attr(stripslashes($_GET['what_search'])); ?>" />
 			</div>
 			<?php do_action('post_search_what_form_html'); ?>
 			<div class="clear_float"></div>
@@ -77,7 +77,7 @@ jQuery(document).ready(function($) {
 				w2dc_tax_dropdowns_init(W2DC_LOCATIONS_TAX, 'search_location', $term_id, true, array(), $w2dc_instance->locations_levels->getSelectionsArray()); ?>
 			</div>
 			<div class="search_option">
-				<input type="text" name="where_search" id="where_search" size="45" placeholder="<?php _e('Enter address or zip code', 'W2DC'); ?>" value="<?php if (isset($_GET['where_search'])) echo esc_attr(stripslashes($_GET['where_search'])); ?>" />
+				<input type="text" name="where_search" id="where_search" size="38" placeholder="<?php _e('Enter address or zip code', 'W2DC'); ?>" value="<?php if (isset($_GET['where_search'])) echo esc_attr(stripslashes($_GET['where_search'])); ?>" />
 			</div>
 			<?php do_action('post_search_where_form_html'); ?>
 			<div class="clear_float"></div>
