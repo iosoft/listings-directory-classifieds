@@ -50,6 +50,11 @@ jQuery(document).ready(function($) {
 
 <div id="search_form">
 	<form action="<?php echo $w2dc_instance->index_page_url; ?>">
+		<?php
+		global $wp_rewrite;
+		if (!$wp_rewrite->using_permalinks() && get_option('page_on_front') != $w2dc_instance->index_page_id): ?>
+		<input type="hidden" name="page_id" value="<?php echo $w2dc_instance->index_page_id; ?>" />
+		<?php endif; ?>
 		<input type="hidden" name="action" value="search" />
 
 		<?php if (get_option('w2dc_show_what_search')): ?>
