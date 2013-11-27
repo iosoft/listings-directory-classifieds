@@ -13,7 +13,12 @@
 
 <div class="locations_metabox">
 	<div id="locations_wrapper">
-		<?php w2dc_renderTemplate('locations/locations_in_metabox.tpl.php', array('listing' => $listing, 'location' => $listing->locations[0], 'locations_levels' => $locations_levels)); ?>
+		<?php
+		if ($listing->locations)
+			w2dc_renderTemplate('locations/locations_in_metabox.tpl.php', array('listing' => $listing, 'location' => $listing->locations[0], 'locations_levels' => $locations_levels));
+		else
+			w2dc_renderTemplate('locations/locations_in_metabox.tpl.php', array('listing' => $listing, 'location' => new w2dc_location, 'locations_levels' => $locations_levels));
+		?>
 	</div>
 
 	<?php if ($listing->level->google_map): ?>
