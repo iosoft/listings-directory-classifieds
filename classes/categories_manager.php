@@ -8,7 +8,10 @@ class w2dc_categories_manager {
 		if ($pagenow == 'post-new.php' || $pagenow == 'post.php' || $pagenow == 'admin-ajax.php') {
 			add_action('add_meta_boxes', array($this, 'removeCategoriesMetabox'));
 			add_action('add_meta_boxes', array($this, 'addCategoriesMetabox'));
-		} 
+		}
+
+		// 'checked_ontop' for directory categories taxonomy must be always be false
+		add_filter('wp_terms_checklist_args', array($this, 'unset_checked_ontop'), 100);
 	}
 	
 	// remove native locations taxonomy metabox from sidebar
@@ -30,9 +33,17 @@ class w2dc_categories_manager {
 		}
 	}
 	
+	public function unset_checked_ontop($args) {
+		if (isset($args['taxonomy']) && $args['taxonomy'] == W2DC_CATEGORIES_TAX)
+			$args['checked_ontop'] = false;
+
+		return $args;
+	}
+
 	public function validateCategories($level, &$postarr, &$errors) {
 		if (isset($postarr['tax_input'][W2DC_CATEGORIES_TAX]) && is_array($postarr['tax_input'][W2DC_CATEGORIES_TAX])) {
-			unset($postarr['tax_input'][W2DC_CATEGORIES_TAX][0]);
+			if ($postarr['tax_input'][W2DC_CATEGORIES_TAX][0] == 0)
+				unset($postarr['tax_input'][W2DC_CATEGORIES_TAX][0]);
 
 			if (!$level->unlimited_categories)
 				// remove unauthorized categories

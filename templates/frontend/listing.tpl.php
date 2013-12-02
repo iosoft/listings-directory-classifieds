@@ -79,7 +79,14 @@
 						$("#tabs").tabs("option", "active", $("#tabs>div").index($("#contact-tab")));
 				});
 			</script>
-		
+
+			<?php if (
+					   ($listing->level->google_map && $listing->isMap() && $listing->locations)
+					|| (comments_open())
+					|| ($listing->level->images_number && count($listing->images) > 1 && get_option('w2dc_images_on_tab'))
+					|| ($listing->level->videos_number && $listing->videos)
+					|| (get_option('w2dc_listing_contact_form'))
+					): ?>
 			<div id="tabs">
 				<ul>
 					<?php if ($listing->level->google_map && $listing->isMap() && $listing->locations): ?>
@@ -94,7 +101,9 @@
 					<?php if ($listing->level->videos_number && $listing->videos): ?>
 					<li><a href="#videos-tab"><?php _e('Videos','W2DC'); ?> (<?php echo count($listing->videos); ?>)</a></li>
 					<?php endif; ?>
+					<?php if (get_option('w2dc_listing_contact_form')): ?>
 					<li><a href="#contact-tab"><?php _e('Contact', 'W2DC'); ?></a></li>
+					<?php endif; ?>
 				</ul>
 
 				<?php if ($listing->level->google_map && $listing->isMap() && $listing->locations): ?>
@@ -124,8 +133,11 @@
 				</div>
 				<?php endif; ?>
 
+				<?php if (get_option('w2dc_listing_contact_form')): ?>
 				<div id="contact-tab">
 					<?php w2dc_renderTemplate('frontend/contact_form.tpl.php', array('listing' => $listing, 'current_user' => wp_get_current_user())); ?>
 				</div>
+				<?php endif; ?>
 			</div>
+			<?php endif; ?>
 			<?php endif; ?>

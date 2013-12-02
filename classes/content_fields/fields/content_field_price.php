@@ -24,7 +24,7 @@ class w2dc_content_field_price extends w2dc_content_field {
 				if ($wpdb->update('wp_w2dc_content_fields', array('options' => serialize(array('currency_symbol' => $result['currency_symbol'], 'currency_code' => $result['currency_code'], 'decimal_separator' => $result['decimal_separator'], 'thousands_separator' => $result['thousands_separator']))), array('id' => $this->id), null, array('%d')))
 					w2dc_addMessage(__('Field configuration was updated successfully!', 'W2DC'));
 				
-				$w2dc_instance->admin->content_fields_manager->showContentFieldsTable();
+				$w2dc_instance->content_fields_manager->showContentFieldsTable();
 			} else {
 				$this->currency_symbol = $validation->result_array('currency_symbol');
 				$this->currency_code = $validation->result_array('currency_code');

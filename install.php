@@ -181,6 +181,8 @@ function w2dc_install_directory() {
 		update_option('w2dc_expiration_notification', 'Your listing "[listing]" had expired. You can renew it here [link]');
 		update_option('w2dc_show_what_search', '1');
 		update_option('w2dc_show_where_search', '1');
+		update_option('w2dc_listings_on_index', '1');
+		update_option('w2dc_listing_contact_form', '1');
 	
 		update_option('w2dc_installed_directory', true);
 		update_option('w2dc_installed_directory_version', W2DC_VERSION);
@@ -189,6 +191,7 @@ function w2dc_install_directory() {
 				'1.0.6',
 				'1.0.7',
 				'1.1.0',
+				'1.1.2',
 		);
 
 		$old_version = get_option('w2dc_installed_directory_version');
@@ -215,6 +218,11 @@ function upgrade_to_1_0_7() {
 function upgrade_to_1_1_0() {
 	delete_option('w2dc_is_home_page');
 	delete_option('w2dc_content_width');
+}
+
+function upgrade_to_1_1_2() {
+	update_option('w2dc_listings_on_index', '1');
+	update_option('w2dc_listing_contact_form', '1');
 }
 
 ?>

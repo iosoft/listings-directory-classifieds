@@ -44,8 +44,8 @@ class w2dc_frontend_controller {
 						'<a href="' . $w2dc_instance->index_page_url . '">' . __('Home', 'W2DC') . '</a>',
 						$listing->title()
 				);
-				if ($w2dc_instance->action == 'contact')
-					$this->contactOwnerAction(get_post());
+				if (get_option('w2dc_listing_contact_form') && $w2dc_instance->action == 'contact')
+					$this->contactOwnerAction($listing->post);
 			} else {
 				status_header(404);
 				nocache_headers();
@@ -165,7 +165,7 @@ class w2dc_frontend_controller {
 				include(get_404_template());
 				exit;
 			}
-		} else {
+		} elseif (!$w2dc_instance->action) {
 			$this->is_home = true;
 			$this->search_form = new search_form();
 			$order_args = apply_filters('w2dc_order_args', array());
@@ -187,6 +187,8 @@ class w2dc_frontend_controller {
 			$this->processQuery(get_option('w2dc_map_on_index'));
 			$this->base_url = $w2dc_instance->index_page_url;
 		}
+		
+		apply_filters('w2dc_frontend_controller_contruct', $this);
 	}
 
 	public function join_levels($join = '') {
@@ -303,11 +305,11 @@ class w2dc_frontend_controller {
 						), true);
 
 				if (wp_mail($listing_owner->user_email, $subject, $body, $headers))
-					w2dc_addMessage(__('You message was sent successfully!', 'W2DC'), 'error');
+					w2dc_addMessage(__('You message was sent successfully!', 'W2DC'));
 				else
-					w2dc_addMessage(__('An error occurred and your message wasn\t sent', 'W2DC'), 'error');
+					w2dc_addMessage(__('An error occurred and your message wasn\t sent!', 'W2DC'), 'error');
 			} else {
-				w2dc_addMessage(__('Verification code wasn\'t entered correctly', 'W2DC'), 'error');
+				w2dc_addMessage(__('Verification code wasn\'t entered correctly!', 'W2DC'), 'error');
 			}
 		} else {
 			w2dc_addMessage($validation->error_string(), 'error');

@@ -154,7 +154,8 @@ function w2dc_is_recaptcha_passed() {
 		} else {
 			return false;
 		}
-	}
+	} else
+		return true;
 }
 
 function w2dc_orderLinks($base_url) {
@@ -235,6 +236,48 @@ function w2dc_renderSubCategories($parent_category_slug = '', $columns = 2, $cou
 		}
 		echo '</ul>';
 	}
+}
+
+function w2dc_terms_checklist($post_id) {
+	if ($terms = wp_list_filter(get_categories(array('taxonomy' => W2DC_CATEGORIES_TAX, 'pad_counts' => true, 'hide_empty' => false)), array('parent' => 0))) {
+		$checked_categories_ids = array();
+		$checked_categories = wp_get_object_terms($post_id, W2DC_CATEGORIES_TAX);
+		foreach ($checked_categories AS $term)
+			$checked_categories_ids[] = $term->term_id;
+
+		echo '<ul class="categorychecklist">';
+		foreach ($terms AS $term) {
+			$checked = '';
+			if (in_array($term->term_id, $checked_categories_ids))
+				$checked = 'checked';
+				
+			echo '
+<li id="' . W2DC_CATEGORIES_TAX . '-' . $term->term_id . '">';
+			echo '<label class="selectit"><input type="checkbox" ' . $checked . ' id="in-' . W2DC_CATEGORIES_TAX . '-' . $term->term_id . '" name="tax_input[' . W2DC_CATEGORIES_TAX . '][]" value="' . $term->term_id . '"> ' . $term->name . '</label>';
+			echo _w2dc_terms_checklist($term->term_id, $checked_categories_ids);
+			echo '</li>';
+		}
+		echo '</ul>';
+	}
+}
+function _w2dc_terms_checklist($parent = 0, $checked_categories_ids = array()) {
+	$html = '';
+	if ($terms = wp_list_filter(get_categories(array('taxonomy' => W2DC_CATEGORIES_TAX, 'pad_counts' => true, 'hide_empty' => false)), array('parent' => $parent))) {
+		$html .= '<ul class="children">';
+		foreach ($terms AS $term) {
+			$checked = '';
+			if (in_array($term->term_id, $checked_categories_ids))
+				$checked = 'checked';
+
+			$html .= '
+<li id="' . W2DC_CATEGORIES_TAX . '-' . $term->term_id . '">';
+			$html .= '<label class="selectit"><input type="checkbox" ' . $checked . ' id="in-' . W2DC_CATEGORIES_TAX . '-' . $term->term_id . '" name="tax_input[' . W2DC_CATEGORIES_TAX . '][]" value="' . $term->term_id . '"> ' . $term->name . '</label>';
+			$html .= _w2dc_terms_checklist($term->term_id);
+			$html .= '</li>';
+		}
+		$html .= '</ul>';
+	}
+	return $html;
 }
 
 function w2dc_renderAllCategories($depth = 2, $columns = 2, $count = false) {

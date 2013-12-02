@@ -27,8 +27,8 @@ class w2dc_content_field_checkbox extends w2dc_content_field_select {
 	}
 	
 	public function saveValue($post_id, $validation_results) {
+		delete_post_meta($post_id, '_content_field_' . $this->id);
 		if ($validation_results && is_array($validation_results)) {
-			delete_post_meta($post_id, '_content_field_' . $this->id);
 			foreach ($validation_results AS $value)
 				add_post_meta($post_id, '_content_field_' . $this->id, $value);
 		}

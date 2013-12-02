@@ -18,7 +18,7 @@ class w2dc_content_field_select extends w2dc_content_field {
 				if ($wpdb->update('wp_w2dc_content_fields', array('options' => serialize(array('selection_items' => $result['selection_items[]']))), array('id' => $this->id), null, array('%d')))
 					w2dc_addMessage(__('Field configuration was updated successfully!', 'W2DC'));
 				
-				$w2dc_instance->admin->content_fields_manager->showContentFieldsTable();
+				$w2dc_instance->content_fields_manager->showContentFieldsTable();
 			} else {
 				$this->selection_items = $validation->result_array('selection_items[]');
 				w2dc_addMessage($validation->error_string(), 'error');

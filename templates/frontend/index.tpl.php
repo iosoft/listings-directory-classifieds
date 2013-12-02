@@ -1,4 +1,6 @@
 			<?php w2dc_renderMessages(); ?>
+			
+			<?php do_action('w2dc_directory_frontpanel'); ?>
 
 			<div class="entry-content">
 				<?php $frontend_controller->search_form->display(); ?>
@@ -8,7 +10,8 @@
 				<?php endif; ?>
 				
 				<?php $frontend_controller->google_map->display(false);?>
-		
+
+				<?php if (get_option('w2dc_listings_on_index')): ?>
 				<div id="w2dc_found_listings">
 					<?php echo sprintf(_n('Found %d listing', 'Found %d listings', $frontend_controller->query->found_posts, 'W2DC'), $frontend_controller->query->found_posts); ?>
 				</div>
@@ -32,5 +35,6 @@
 					<?php endwhile; ?>
 					
 					<?php $frontend_controller->renderPaginator(); ?>
+				<?php endif; ?>
 				<?php endif; ?>
 			</div>

@@ -26,7 +26,7 @@ class w2dc_content_field_number extends w2dc_content_field {
 				if ($wpdb->update('wp_w2dc_content_fields', array('options' => serialize(array('is_integer' => $result['is_integer'], 'decimal_separator' => $result['decimal_separator'], 'thousands_separator' => $result['thousands_separator'], 'min' => $result['min'], 'max' => $result['max']))), array('id' => $this->id), null, array('%d')))
 					w2dc_addMessage(__('Field configuration was updated successfully!', 'content_fields', 'W2DC'));
 				
-				$w2dc_instance->admin->content_fields_manager->showContentFieldsTable();
+				$w2dc_instance->content_fields_manager->showContentFieldsTable();
 			} else {
 				$this->is_integer = $validation->result_array('is_integer');
 				$this->decimal_separator = $validation->result_array('decimal_separator');

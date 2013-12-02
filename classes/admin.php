@@ -1,33 +1,27 @@
 <?php
 
 class w2dc_admin {
-	public $listings_manager;
-	public $locations_manager;
-	public $locations_levels_manager;
-	public $categories_manager;
-	public $content_fields_manager;
-	public $media_manager;
-	public $settings_manager;
-	public $levels_manager;
-	
+
 	public function __construct() {
+		global $w2dc_instance;
+
 		add_action('admin_menu', array($this, 'menu'));
 
-		$this->settings_manager = new w2dc_settings_manager;
+		$w2dc_instance->settings_manager = new w2dc_settings_manager;
 
-		$this->levels_manager = new w2dc_levels_manager;
+		$w2dc_instance->levels_manager = new w2dc_levels_manager;
 
-		$this->listings_manager = new w2dc_listings_manager;
+		$w2dc_instance->listings_manager = new w2dc_listings_manager;
 
-		$this->locations_manager = new w2dc_locations_manager;
+		$w2dc_instance->locations_manager = new w2dc_locations_manager;
 
-		$this->locations_levels_manager = new w2dc_locations_levels_manager;
+		$w2dc_instance->locations_levels_manager = new w2dc_locations_levels_manager;
 
-		$this->categories_manager = new w2dc_categories_manager;
+		$w2dc_instance->categories_manager = new w2dc_categories_manager;
 
-		$this->content_fields_manager = new w2dc_content_fields_manager;
+		$w2dc_instance->content_fields_manager = new w2dc_content_fields_manager;
 
-		$this->media_manager = new w2dc_media_manager;
+		$w2dc_instance->media_manager = new w2dc_media_manager;
 
 		add_action('admin_menu', array($this, 'addChooseLevelPage'));
 		add_action('load-post-new.php', array($this, 'handleLevel'));
@@ -54,7 +48,9 @@ class w2dc_admin {
 
 	// Special page to choose the level for new listing
 	public function chooseLevelsPage() {
-		$this->levels_manager->displayChooseLevelTable();
+		global $w2dc_instance;
+
+		$w2dc_instance->levels_manager->displayChooseLevelTable();
 	}
 	
 	public function handleLevel() {

@@ -169,8 +169,8 @@ class w2dc_manage_content_fields_table extends WP_List_Table {
 
 	public function __construct() {
 		parent::__construct(array(
-				'singular' => __('content field', 'WPBDM'),
-				'plural' => __('content fields', 'WPBDM'),
+				'singular' => __('content field', 'W2DC'),
+				'plural' => __('content fields', 'W2DC'),
 				'ajax' => false
 		));
 	}

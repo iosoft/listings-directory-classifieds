@@ -138,7 +138,6 @@ class w2dc_settings_manager {
 		);
 		register_setting('w2dc_pagesviews_settings_page', 'w2dc_show_where_search');
 
-
 		// Listings settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
 				'w2dc_listings_section',
@@ -146,6 +145,14 @@ class w2dc_settings_manager {
 				null,
 				'w2dc_listings_settings_page'
 		);
+		add_settings_field(
+				'w2dc_listings_on_index',
+				__('Show listings on index', 'W2DC'),
+				array($this, 'w2dc_listings_on_index_callback'),
+				'w2dc_listings_settings_page',
+				'w2dc_listings_section'
+		);
+		register_setting('w2dc_listings_settings_page', 'w2dc_listings_on_index');
 		add_settings_field(
 				'w2dc_listings_number_index',
 				__('Number of listings on index page', 'W2DC'),
@@ -178,6 +185,14 @@ class w2dc_settings_manager {
 				'w2dc_listings_section'
 		);
 		register_setting('w2dc_listings_settings_page', 'w2dc_images_on_tab');
+		add_settings_field(
+				'w2dc_listing_contact_form',
+				__('Enable contact form on listing page', 'W2DC'),
+				array($this, 'w2dc_listing_contact_form_callback'),
+				'w2dc_listings_settings_page',
+				'w2dc_listings_section'
+		);
+		register_setting('w2dc_listings_settings_page', 'w2dc_listing_contact_form');
 
 
 		// Maps settings page /////////////////////////////////////////////////////////////////////////
@@ -289,6 +304,9 @@ class w2dc_settings_manager {
 	}
 
 	// Listings settings page /////////////////////////////////////////////////////////////////////////
+	public function w2dc_listings_on_index_callback() {
+		echo '<input type="checkbox" id="w2dc_listings_on_index" name="w2dc_listings_on_index" value="1" ' . checked(get_option('w2dc_listings_on_index'), 1, false) .' />';
+	}
 	public function w2dc_listings_number_index_callback() {
 		echo '<input type="text" id="w2dc_listings_number_index" name="w2dc_listings_number_index" value="' . esc_attr(get_option('w2dc_listings_number_index')) .'" size="1" />';
 	}
@@ -300,6 +318,9 @@ class w2dc_settings_manager {
 	}
 	public function w2dc_images_on_tab_callback() {
 		echo '<input type="checkbox" id="w2dc_images_on_tab" name="w2dc_images_on_tab" value="1" ' . checked(get_option('w2dc_images_on_tab'), 1, false) .' />';
+	}
+	public function w2dc_listing_contact_form_callback() {
+		echo '<input type="checkbox" id="w2dc_listing_contact_form" name="w2dc_listing_contact_form" value="1" ' . checked(get_option('w2dc_listing_contact_form'), 1, false) .' />';
 	}
 
 	// Maps settings page /////////////////////////////////////////////////////////////////////////

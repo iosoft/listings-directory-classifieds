@@ -69,14 +69,20 @@ function w2dc_renderTemplate($template, $args = array(), $return = false) {
 		extract($args);
 	
 	$core_template_path = W2DC_PATH . 'templates' . DIRECTORY_SEPARATOR . $template;
+	if (!is_file($template))
+		if (!is_file($core_template_path))
+			return false;
+		else
+			$template = $core_template_path;
+
+	$custom_template = str_replace('.tpl.php', '', $template) . '-custom.tpl.php';
+	if (is_file($custom_template))
+		$template = $custom_template;
 
 	if ($return)
 		ob_start();
 
-	if (is_file($template))
-		include($template);
-	elseif (is_file($core_template_path))
-		include($core_template_path);
+	include($template);
 	
 	if ($return) {
 		$output = ob_get_contents();
@@ -87,7 +93,8 @@ function w2dc_renderTemplate($template, $args = array(), $return = false) {
 
 function w2dc_getCurrentListingInAdmin() {
 	global $w2dc_instance;
-	return $w2dc_instance->admin->listings_manager->current_listing;
+	
+	return $w2dc_instance->current_listing;
 }
 
 function w2dc_getIndexPage() {

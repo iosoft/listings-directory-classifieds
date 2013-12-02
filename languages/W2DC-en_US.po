@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: w2dc v1.0.0\n"
-"POT-Creation-Date: 2013-11-26 14:09+0500\n"
-"PO-Revision-Date: 2013-11-26 14:10+0500\n"
+"POT-Creation-Date: 2013-12-02 20:18+0500\n"
+"PO-Revision-Date: 2013-12-02 20:18+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: functions.php:122
+#: functions.php:129
 #, php-format
 msgid "View all posts in %s"
 msgstr ""
@@ -26,23 +26,23 @@ msgstr ""
 msgid "- Select All -"
 msgstr ""
 
-#: functions_ui.php:175
+#: functions_ui.php:176
 msgid "Date"
 msgstr ""
 
-#: functions_ui.php:188
+#: functions_ui.php:189
 msgid "Title"
 msgstr ""
 
-#: functions_ui.php:207
+#: functions_ui.php:208
 msgid "Order by: "
 msgstr ""
 
-#: functions_ui.php:220
+#: functions_ui.php:221
 msgid "Subcategories:"
 msgstr ""
 
-#: w2dc.php:160
+#: w2dc.php:171
 #, php-format
 msgid ""
 "<b>Directory & Classifieds plugin</b>: sorry, but there isn't any page with "
@@ -50,182 +50,182 @@ msgid ""
 "you?"
 msgstr ""
 
-#: w2dc.php:238 w2dc.php:331 w2dc.php:343
+#: w2dc.php:248 w2dc.php:340 w2dc.php:352
 msgid "Directory listings"
 msgstr ""
 
-#: w2dc.php:332
+#: w2dc.php:341
 msgid "Directory listing"
 msgstr ""
 
-#: w2dc.php:333 w2dc.php:334
+#: w2dc.php:342 w2dc.php:343
 msgid "Create new listing"
 msgstr ""
 
-#: w2dc.php:335 templates/frontend/listing_single.tpl.php:18
+#: w2dc.php:344 templates/frontend/listing_single.tpl.php:19
 msgid "Edit listing"
 msgstr ""
 
-#: w2dc.php:336
+#: w2dc.php:345
 msgid "New listing"
 msgstr ""
 
-#: w2dc.php:337 templates/google_map.tpl.php:5
+#: w2dc.php:346 templates/google_map.tpl.php:5
 msgid "View listing"
 msgstr ""
 
-#: w2dc.php:338
+#: w2dc.php:347
 msgid "Search listings"
 msgstr ""
 
-#: w2dc.php:339
+#: w2dc.php:348
 msgid "No listings found"
 msgstr ""
 
-#: w2dc.php:340
+#: w2dc.php:349
 msgid "No listings found in trash"
 msgstr ""
 
-#: w2dc.php:354 classes/categories_manager.php:24
+#: w2dc.php:363 classes/categories_manager.php:27
 #: classes/content_fields/content_fields.php:27
 msgid "Listing categories"
 msgstr ""
 
-#: w2dc.php:355 templates/admin_index.tpl.php:63
+#: w2dc.php:364 templates/admin_index.tpl.php:63
 msgid "Directory categories"
 msgstr ""
 
-#: w2dc.php:356
+#: w2dc.php:365
 msgid "Category"
 msgstr ""
 
-#: w2dc.php:357
+#: w2dc.php:366
 msgid "Create category"
 msgstr ""
 
-#: w2dc.php:358
+#: w2dc.php:367
 msgid "New category"
 msgstr ""
 
-#: w2dc.php:359
+#: w2dc.php:368
 msgid "Edit category"
 msgstr ""
 
-#: w2dc.php:360
+#: w2dc.php:369
 msgid "View category"
 msgstr ""
 
-#: w2dc.php:361
+#: w2dc.php:370
 msgid "Update category"
 msgstr ""
 
-#: w2dc.php:362
+#: w2dc.php:371
 msgid "Search categories"
 msgstr ""
 
-#: w2dc.php:369 classes/locations/locations_manager.php:30
+#: w2dc.php:378 classes/locations/locations_manager.php:29
 msgid "Listing locations"
 msgstr ""
 
-#: w2dc.php:370 templates/admin_index.tpl.php:39
+#: w2dc.php:379 templates/admin_index.tpl.php:39
 msgid "Directory locations"
 msgstr ""
 
-#: w2dc.php:371
+#: w2dc.php:380
 msgid "Location"
 msgstr ""
 
-#: w2dc.php:372
+#: w2dc.php:381
 msgid "Create location"
 msgstr ""
 
-#: w2dc.php:373
+#: w2dc.php:382
 msgid "New location"
 msgstr ""
 
-#: w2dc.php:374
+#: w2dc.php:383
 msgid "Edit location"
 msgstr ""
 
-#: w2dc.php:375
+#: w2dc.php:384
 msgid "View location"
 msgstr ""
 
-#: w2dc.php:376
+#: w2dc.php:385
 msgid "Update location"
 msgstr ""
 
-#: w2dc.php:377
+#: w2dc.php:386
 msgid "Search locations"
 msgstr ""
 
-#: w2dc.php:385 classes/content_fields/content_fields.php:28
+#: w2dc.php:394 classes/content_fields/content_fields.php:28
 msgid "Listing tags"
 msgstr ""
 
-#: w2dc.php:386 templates/admin_index.tpl.php:71
+#: w2dc.php:395 templates/admin_index.tpl.php:71
 msgid "Directory tags"
 msgstr ""
 
-#: w2dc.php:387
+#: w2dc.php:396
 msgid "Tag"
 msgstr ""
 
-#: w2dc.php:388
+#: w2dc.php:397
 msgid "Create tag"
 msgstr ""
 
-#: w2dc.php:389
+#: w2dc.php:398
 msgid "New tag"
 msgstr ""
 
-#: w2dc.php:390
+#: w2dc.php:399
 msgid "Edit tag"
 msgstr ""
 
-#: w2dc.php:391
+#: w2dc.php:400
 msgid "View tag"
 msgstr ""
 
-#: w2dc.php:392
+#: w2dc.php:401
 msgid "Update tag"
 msgstr ""
 
-#: w2dc.php:393
+#: w2dc.php:402
 msgid "Search tags"
 msgstr ""
 
-#: w2dc.php:428 w2dc.php:463 classes/settings_manager.php:240
+#: w2dc.php:437 w2dc.php:472 classes/settings_manager.php:255
 msgid "Expiration notification"
 msgstr ""
 
-#: classes/admin.php:47 classes/admin.php:48
+#: classes/admin.php:41 classes/admin.php:42
 msgid "Choose level of new listing"
 msgstr ""
 
-#: classes/admin.php:78 classes/admin.php:79
+#: classes/admin.php:74 classes/admin.php:75
 msgid "Directory Admin"
 msgstr ""
 
-#: classes/admin.php:99
+#: classes/admin.php:95
 msgid "Directory & Classifieds"
 msgstr ""
 
-#: classes/admin.php:101
+#: classes/admin.php:97
 msgid ""
 "\"Directory & Classifieds\" page with [webdirectory] shortcode was "
 "successfully created, thank you!"
 msgstr ""
 
-#: classes/categories_manager.php:42
+#: classes/categories_manager.php:53
 msgid "Sorry, you can not choose some categries for this level!"
 msgstr ""
 
-#: classes/categories_manager.php:66
+#: classes/categories_manager.php:77
 msgid "Sorry, you can not choose this category for this level!"
 msgstr ""
 
-#: classes/categories_manager.php:67
+#: classes/categories_manager.php:78
 #, php-format
 msgid "Sorry, you can not choose more than %d categories!"
 msgstr ""
@@ -356,34 +356,34 @@ msgstr ""
 msgid "Search results"
 msgstr ""
 
-#: classes/frontend_controller.php:271
+#: classes/frontend_controller.php:273
 msgid "Contact name"
 msgstr ""
 
-#: classes/frontend_controller.php:272
+#: classes/frontend_controller.php:274
 msgid "Contact email"
 msgstr ""
 
-#: classes/frontend_controller.php:274
+#: classes/frontend_controller.php:276
 #: templates/frontend/contact_form.tpl.php:21
 msgid "Your message"
 msgstr ""
 
-#: classes/frontend_controller.php:294
+#: classes/frontend_controller.php:296
 #, php-format
 msgid "%s contacted you about your listing"
 msgstr ""
 
-#: classes/frontend_controller.php:306
+#: classes/frontend_controller.php:308
 msgid "You message was sent successfully!"
 msgstr ""
 
-#: classes/frontend_controller.php:308
-msgid "An error occurred and your message wasn\\t sent"
+#: classes/frontend_controller.php:310
+msgid "An error occurred and your message wasn\\t sent!"
 msgstr ""
 
-#: classes/frontend_controller.php:310
-msgid "Verification code wasn't entered correctly"
+#: classes/frontend_controller.php:312
+msgid "Verification code wasn't entered correctly!"
 msgstr ""
 
 #: classes/media_manager.php:30
@@ -479,64 +479,72 @@ msgstr ""
 msgid "Show \"Where search\" section?"
 msgstr ""
 
-#: classes/settings_manager.php:145
+#: classes/settings_manager.php:144
 msgid "Listings settings"
 msgstr ""
 
-#: classes/settings_manager.php:151
+#: classes/settings_manager.php:150
+msgid "Show listings on index"
+msgstr ""
+
+#: classes/settings_manager.php:158
 msgid "Number of listings on index page"
 msgstr ""
 
-#: classes/settings_manager.php:159
+#: classes/settings_manager.php:166
 msgid "Number of listings on excerpt page"
 msgstr ""
 
-#: classes/settings_manager.php:167
+#: classes/settings_manager.php:174
 msgid "Do listings have own pages?"
 msgstr ""
 
-#: classes/settings_manager.php:175
+#: classes/settings_manager.php:182
 msgid "Place listing images gallery on separate tab?"
 msgstr ""
 
-#: classes/settings_manager.php:186
+#: classes/settings_manager.php:190
+msgid "Enable contact form on listing page"
+msgstr ""
+
+#: classes/settings_manager.php:201
 msgid "Maps settings"
 msgstr ""
 
-#: classes/settings_manager.php:192
+#: classes/settings_manager.php:207
 msgid "Show map on index page?"
 msgstr ""
 
-#: classes/settings_manager.php:200
+#: classes/settings_manager.php:215
 msgid "Show map on excerpt page?"
 msgstr ""
 
-#: classes/settings_manager.php:208
+#: classes/settings_manager.php:223
 msgid "Show directions panel for the listing map?"
 msgstr ""
 
-#: classes/settings_manager.php:218
+#: classes/settings_manager.php:233
 msgid "Email notifications settings"
 msgstr ""
 
-#: classes/settings_manager.php:224
+#: classes/settings_manager.php:239
 msgid "Days before pre-expiration notification will be sent"
 msgstr ""
 
-#: classes/settings_manager.php:232
+#: classes/settings_manager.php:247
 msgid "Pre-expiration notification"
 msgstr ""
 
-#: classes/settings_manager.php:251
+#: classes/settings_manager.php:266
 msgid "This title will be used in HTML title tag of every directory page"
 msgstr ""
 
-#: classes/settings_manager.php:265
+#: classes/settings_manager.php:280
 #, php-format
 msgid "get your reCAPTCHA API Keys <a href=\"%s\" target=\"_blank\">here</a>"
 msgstr ""
 
-#: classes/settings_manager.php:329
+#: classes/settings_manager.php:350
 msgid "Settings saved!"
 msgstr ""
 
@@ -592,60 +600,60 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:196
+#: classes/content_fields/content_fields.php:203
 msgid "Content field name"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:198
+#: classes/content_fields/content_fields.php:205
 msgid "Content field slug"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:199
+#: classes/content_fields/content_fields.php:206
 msgid "Content field description"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:200
+#: classes/content_fields/content_fields.php:207
 #: classes/content_fields/content_fields_manager.php:183
 #: templates/content_fields/add_edit_content_field.tpl.php:162
 msgid "Icon image"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:202
+#: classes/content_fields/content_fields.php:209
 msgid "Content field required"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:204
+#: classes/content_fields/content_fields.php:211
 #: templates/content_fields/add_edit_content_field.tpl.php:220
 msgid "Order by field"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:205
+#: classes/content_fields/content_fields.php:212
 #: templates/content_fields/add_edit_content_field.tpl.php:138
 msgid "Hide name"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:206
+#: classes/content_fields/content_fields.php:213
 #: templates/content_fields/add_edit_content_field.tpl.php:233
 msgid "On excerpt page"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:207
+#: classes/content_fields/content_fields.php:214
 #: templates/content_fields/add_edit_content_field.tpl.php:245
 msgid "On listing page"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:210
+#: classes/content_fields/content_fields.php:217
 msgid "Content field type"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:212
+#: classes/content_fields/content_fields.php:219
 #: classes/levels/levels_manager.php:72
 #: templates/content_fields/add_edit_content_field.tpl.php:261
 #: templates/levels/add_edit_level.tpl.php:275
 msgid "Assigned categories"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:228
+#: classes/content_fields/content_fields.php:235
 msgid "Can't use this slug"
 msgstr ""
 
@@ -695,7 +703,7 @@ msgid "content fields"
 msgstr ""
 
 #: classes/content_fields/content_fields_manager.php:180
-#: classes/levels/levels_manager.php:142 classes/levels/levels_manager.php:233
+#: classes/levels/levels_manager.php:142 classes/levels/levels_manager.php:241
 #: classes/locations/locations_levels.php:105
 msgid "Name"
 msgstr ""
@@ -710,7 +718,7 @@ msgid "Required"
 msgstr ""
 
 #: classes/content_fields/content_fields_manager.php:220
-#: classes/levels/levels_manager.php:182
+#: classes/levels/levels_manager.php:183
 #: classes/locations/locations_levels.php:134
 msgid "Edit"
 msgstr ""
@@ -720,7 +728,7 @@ msgid "Configure"
 msgstr ""
 
 #: classes/content_fields/content_fields_manager.php:227
-#: classes/levels/levels_manager.php:183
+#: classes/levels/levels_manager.php:184
 #: classes/locations/locations_levels.php:135
 #: templates/delete_question.tpl.php:13
 msgid "Delete"
@@ -846,10 +854,8 @@ msgstr ""
 msgid "Add nofollow attribute"
 msgstr ""
 
-#: classes/levels/levels.php:214 classes/listings/listings_manager.php:67
-#: templates/levels/add_edit_level.tpl.php:138
-#: templates/listings/info_metabox.tpl.php:40
-msgid "Eternal active period"
+#: classes/levels/levels.php:214
+msgid "Never expire"
 msgstr ""
 
 #: classes/levels/levels.php:218
@@ -976,48 +982,49 @@ msgstr ""
 msgid "Are you sure you want delete \"%s\" level with all listings inside?"
 msgstr ""
 
-#: classes/levels/levels_manager.php:134 classes/levels/levels_manager.php:225
+#: classes/levels/levels_manager.php:134 classes/levels/levels_manager.php:233
 msgid "level"
 msgstr ""
 
-#: classes/levels/levels_manager.php:135 classes/levels/levels_manager.php:226
+#: classes/levels/levels_manager.php:135 classes/levels/levels_manager.php:234
 msgid "levels"
 msgstr ""
 
-#: classes/levels/levels_manager.php:143 classes/levels/levels_manager.php:234
+#: classes/levels/levels_manager.php:143 classes/levels/levels_manager.php:242
 #: templates/levels/add_edit_level.tpl.php:67
 msgid "Active period"
 msgstr ""
 
-#: classes/levels/levels_manager.php:144 classes/levels/levels_manager.php:235
+#: classes/levels/levels_manager.php:144 classes/levels/levels_manager.php:243
 msgid "Sticky"
 msgstr ""
 
-#: classes/levels/levels_manager.php:145 classes/levels/levels_manager.php:236
+#: classes/levels/levels_manager.php:145 classes/levels/levels_manager.php:244
 msgid "Featured"
 msgstr ""
 
-#: classes/levels/levels_manager.php:146 classes/levels/levels_manager.php:237
+#: classes/levels/levels_manager.php:146 classes/levels/levels_manager.php:245
 msgid "Categories number"
 msgstr ""
 
-#: classes/levels/levels_manager.php:147 classes/levels/levels_manager.php:238
+#: classes/levels/levels_manager.php:147 classes/levels/levels_manager.php:246
 msgid "Google map"
 msgstr ""
 
-#: classes/levels/levels_manager.php:167 classes/levels/levels_manager.php:261
+#: classes/levels/levels_manager.php:168 classes/levels/levels_manager.php:212
+#: classes/levels/levels_manager.php:270 classes/levels/levels_manager.php:319
 msgid "Unlimited"
 msgstr ""
 
-#: classes/levels/levels_manager.php:217
+#: classes/levels/levels_manager.php:225
 msgid "No levels found."
 msgstr ""
 
-#: classes/levels/levels_manager.php:265
+#: classes/levels/levels_manager.php:274
 msgid "Create listing in this level"
 msgstr ""
 
-#: classes/levels/levels_manager.php:316
+#: classes/levels/levels_manager.php:332
 msgid "No levels found. Can't create new listings."
 msgstr ""
 
@@ -1031,6 +1038,12 @@ msgstr ""
 
 #: classes/listings/listings_manager.php:51
 msgid "Expiration date"
+msgstr ""
+
+#: classes/listings/listings_manager.php:67
+#: templates/levels/add_edit_level.tpl.php:138
+#: templates/listings/info_metabox.tpl.php:40
+msgid "Eternal active period"
 msgstr ""
 
 #: classes/listings/listings_manager.php:71
@@ -1071,11 +1084,11 @@ msgstr ""
 msgid "An error has occurred and listing was not renewed"
 msgstr ""
 
-#: classes/listings/listings_manager.php:230
+#: classes/listings/listings_manager.php:233
 msgid "You can't publish listing until it has expired status!"
 msgstr ""
 
-#: classes/listings/listings_manager.php:235
+#: classes/listings/listings_manager.php:238
 msgid "Listing was saved successfully!"
 msgstr ""
 
@@ -1113,40 +1126,40 @@ msgstr ""
 msgid "Are you sure you want delete \"%s\" locations level?"
 msgstr ""
 
-#: classes/locations/locations_manager.php:48
+#: classes/locations/locations_manager.php:56
 msgid "Selected location"
 msgstr ""
 
-#: classes/locations/locations_manager.php:49
+#: classes/locations/locations_manager.php:57
 #: templates/locations/locations_in_metabox.tpl.php:17
 msgid "Address line 1"
 msgstr ""
 
-#: classes/locations/locations_manager.php:50
+#: classes/locations/locations_manager.php:58
 #: templates/locations/locations_in_metabox.tpl.php:24
 msgid "Address line 2"
 msgstr ""
 
-#: classes/locations/locations_manager.php:51
+#: classes/locations/locations_manager.php:59
 #: templates/locations/locations_in_metabox.tpl.php:31
 msgid "Zip or postal index"
 msgstr ""
 
-#: classes/locations/locations_manager.php:52
+#: classes/locations/locations_manager.php:60
 msgid "Use manual coordinates"
 msgstr ""
 
-#: classes/locations/locations_manager.php:53
+#: classes/locations/locations_manager.php:61
 #: templates/locations/locations_in_metabox.tpl.php:46
 msgid "Latitude"
 msgstr ""
 
-#: classes/locations/locations_manager.php:54
+#: classes/locations/locations_manager.php:62
 #: templates/locations/locations_in_metabox.tpl.php:54
 msgid "Longitude"
 msgstr ""
 
-#: classes/locations/locations_manager.php:55
+#: classes/locations/locations_manager.php:63
 msgid "Map zoom"
 msgstr ""
 
@@ -1266,23 +1279,23 @@ msgstr ""
 msgid "Attach video"
 msgstr ""
 
-#: templates/search_form.tpl.php:56
+#: templates/search_form.tpl.php:61
 msgid "What search"
 msgstr ""
 
-#: templates/search_form.tpl.php:60
+#: templates/search_form.tpl.php:65
 msgid "Enter keywords"
 msgstr ""
 
-#: templates/search_form.tpl.php:68
+#: templates/search_form.tpl.php:73
 msgid "Where search"
 msgstr ""
 
-#: templates/search_form.tpl.php:80
+#: templates/search_form.tpl.php:85
 msgid "Enter address or zip code"
 msgstr ""
 
-#: templates/search_form.tpl.php:90
+#: templates/search_form.tpl.php:95
 msgid "Search"
 msgstr ""
 
@@ -1521,16 +1534,16 @@ msgstr ""
 msgid "Message:"
 msgstr ""
 
-#: templates/frontend/category.tpl.php:27 templates/frontend/index.tpl.php:13
-#: templates/frontend/search.tpl.php:25 templates/frontend/tag.tpl.php:29
+#: templates/frontend/category.tpl.php:29 templates/frontend/index.tpl.php:16
+#: templates/frontend/search.tpl.php:27 templates/frontend/tag.tpl.php:31
 #, php-format
 msgid "Found %d listing"
 msgid_plural "Found %d listings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/frontend/category.tpl.php:43 templates/frontend/index.tpl.php:29
-#: templates/frontend/search.tpl.php:41 templates/frontend/tag.tpl.php:45
+#: templates/frontend/category.tpl.php:45 templates/frontend/index.tpl.php:32
+#: templates/frontend/search.tpl.php:43 templates/frontend/tag.tpl.php:47
 msgid "View listing >>"
 msgstr ""
 
@@ -1568,23 +1581,23 @@ msgid_plural "%d replies"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/frontend/listing.tpl.php:86
+#: templates/frontend/listing.tpl.php:93
 msgid "Map"
 msgstr ""
 
-#: templates/frontend/listing.tpl.php:89
+#: templates/frontend/listing.tpl.php:96
 msgid "Comments"
 msgstr ""
 
-#: templates/frontend/listing.tpl.php:92
+#: templates/frontend/listing.tpl.php:99
 msgid "Images"
 msgstr ""
 
-#: templates/frontend/listing.tpl.php:95
+#: templates/frontend/listing.tpl.php:102
 msgid "Videos"
 msgstr ""
 
-#: templates/frontend/listing.tpl.php:97
+#: templates/frontend/listing.tpl.php:105
 msgid "Contact"
 msgstr ""
 
@@ -1750,6 +1763,6 @@ msgstr ""
 msgid "Enter coordinates manually"
 msgstr ""
 
-#: templates/locations/locations_metabox.tpl.php:23
+#: templates/locations/locations_metabox.tpl.php:28
 msgid "Generate on google map"
 msgstr ""

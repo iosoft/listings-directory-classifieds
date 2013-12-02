@@ -22,8 +22,7 @@ class w2dc_locations_manager {
 	public function addLocationsMetabox($post_type) {
 		if ($post_type == W2DC_POST_TYPE && ($level = w2dc_getCurrentListingInAdmin()->level) && $level->locations_number > 0) {
 			if ($level->google_map) {
-				wp_enqueue_script('google_maps', '//maps.google.com/maps/api/js?v=3.14&sensor=false&language=en', array('jquery'));
-				wp_enqueue_script('google_maps_edit', W2DC_RESOURCES_URL . 'js/google_maps_edit.js', array('jquery'));
+				add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts_styles'));
 			}
 
 			add_meta_box('w2dc_locations',
@@ -41,6 +40,15 @@ class w2dc_locations_manager {
 		$listing = w2dc_getCurrentListingInAdmin();
 		$locations_levels = $w2dc_instance->locations_levels;
 		w2dc_renderTemplate('locations/locations_metabox.tpl.php', array('listing' => $listing, 'locations_levels' => $locations_levels));
+	}
+	
+	public function remove_google_maps_view() {
+		wp_dequeue_script('google_maps_view');
+	}
+	
+	public function admin_enqueue_scripts_styles() {
+		wp_enqueue_script('google_maps', '//maps.google.com/maps/api/js?v=3.14&sensor=false&language=en', array('jquery'));
+		wp_enqueue_script('google_maps_edit', W2DC_RESOURCES_URL . 'js/google_maps_edit.js', array('jquery'));
 	}
 
 	public function validateLocations(&$errors) {

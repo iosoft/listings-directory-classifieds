@@ -211,7 +211,7 @@ class w2dc_level {
 	
 	public function getActivePeriodString() {
 		if ($this->eternal_active_period)
-			return __('Eternal active period', 'W2DC');
+			return __('Never expire', 'W2DC');
 		else {
 			$string_arr = array();
 			if ($this->active_days > 0)

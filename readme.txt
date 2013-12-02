@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.1.1
+Stable tag: tags/1.1.2
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -52,7 +52,14 @@ only in listings, those were assigned with this category.
 Look at our [demo](http://www.salephpscripts.com/wordpress_directory/demo/)
 
 = Premium modules =
-Right now we have 2 additional premium modules:
+Right now we have 3 additional premium modules:
+
+**Frontend submission** - allow users to submit new directory/classified ads at the frontend side of your site. Ability to select one of available login modes:
+
+1. user must be logged in before submission
+2. new user will be created during submission (contact info required)
+3. new user will be created during submission (contact info doesn't required)
+4. create listings by anonymous users
 
 **Enhanced search** - allows to search by categories and content fields, also additional feature for locations search in radius (in miles or kilometers)
 
@@ -67,6 +74,14 @@ Right now we have 2 additional premium modules:
 
 
 == Changelog ==
+
+= Version 1.1.2 =
+* 2 new settings were added: ability to hide contact form option, ability to disable rendering of listings on directory home page
+* Yast SEO plugin compatibility bug was fixed
+* recaptcha bug on contact form was fixed
+* checkboxes content field bug when all checkboxes unchecked was fixed
+* the plugin fully adapted for customizations in css and template files
+* the plugin fully adapted for new 'Frontend submission' premium module
 
 = Version 1.1.1 =
 * locations metabox bug was fixed

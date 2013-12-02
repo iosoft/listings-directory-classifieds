@@ -77,6 +77,13 @@ class w2dc_content_fields {
 		if (isset($this->content_fields_array[$field_id]))
 			return $this->content_fields_array[$field_id];
 	}
+
+	public function getContentFieldBySlug($slug) {
+		foreach ($this->content_fields_array AS $content_field) {
+			if ($content_field->slug == $slug)
+				return $content_field;
+		}
+	}
 	
 	public function createContentFieldFromArray($array) {
 		if (isset($array['type'])) {

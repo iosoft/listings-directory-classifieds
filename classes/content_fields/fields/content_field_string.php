@@ -22,7 +22,7 @@ class w2dc_content_field_string extends w2dc_content_field {
 				if ($wpdb->update('wp_w2dc_content_fields', array('options' => serialize(array('max_length' => $result['max_length'], 'input_size' => $result['input_size'], 'regex' => $result['regex']))), array('id' => $this->id), null, array('%d')))
 					w2dc_addMessage(__('Field configuration was updated successfully!', 'W2DC'));
 				
-				$w2dc_instance->admin->content_fields_manager->showContentFieldsTable();
+				$w2dc_instance->content_fields_manager->showContentFieldsTable();
 			} else {
 				$this->max_length = $validation->result_array('max_length');
 				$this->input_size = $validation->result_array('input_size');

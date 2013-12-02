@@ -10,6 +10,7 @@
 			<br />
 			<p>Get extra modules for this plugin:</p>
 			<ul>
+				<li class="li_link"><a target="_blank" href="http://www.salephpscripts.com/wordpress_directory/demo/about-this-plugin/">Frontend submission module</a></li>
 				<li class="li_link"><a target="_blank" href="http://www.salephpscripts.com/wordpress_directory/demo/about-this-plugin/">Enhanced locations module</a></li>
 				<li class="li_link"><a target="_blank" href="http://www.salephpscripts.com/wordpress_directory/demo/about-this-plugin/">Enhanced search module</a></li>
 			</ul>

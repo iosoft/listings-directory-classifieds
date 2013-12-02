@@ -131,8 +131,8 @@ class w2dc_manage_levels_table extends WP_List_Table {
 
 	public function __construct() {
 		parent::__construct(array(
-				'singular' => __('level', 'WPBDM'),
-				'plural' => __('levels', 'WPBDM'),
+				'singular' => __('level', 'W2DC'),
+				'plural' => __('levels', 'W2DC'),
 				'ajax' => false
 		));
 	}
@@ -161,6 +161,7 @@ class w2dc_manage_levels_table extends WP_List_Table {
 					'sticky' => $level->sticky,
 					'featured' => $level->featured,
 					'categories_number' => $level->categories_number,
+					'unlimited_categories' => $level->unlimited_categories,
 					'google_map' => $level->google_map,
 			);
 			if ($level->unlimited_categories)
@@ -206,6 +207,13 @@ class w2dc_manage_levels_table extends WP_List_Table {
 			return '<img src="' . W2DC_RESOURCES_URL . 'images/delete.png" />';
 	}
 	
+	public function column_categories_number($item) {
+		if ($item['unlimited_categories'])
+			return __('Unlimited', 'W2DC');
+		else
+			return $item['categories_number'];
+	}
+	
 	public function column_default($item, $column_name) {
 		switch($column_name) {
 			default:
@@ -222,8 +230,8 @@ class w2dc_choose_levels_table extends WP_List_Table {
 
 	public function __construct() {
 		parent::__construct(array(
-				'singular' => __('level', 'WPBDM'),
-				'plural' => __('levels', 'WPBDM'),
+				'singular' => __('level', 'W2DC'),
+				'plural' => __('levels', 'W2DC'),
 				'ajax' => false
 		));
 	}
@@ -255,6 +263,7 @@ class w2dc_choose_levels_table extends WP_List_Table {
 					'sticky' => $level->sticky,
 					'featured' => $level->featured,
 					'categories_number' => $level->categories_number,
+					'unlimited_categories' => $level->unlimited_categories,
 					'google_map' => $level->google_map,
 			);
 			if ($level->unlimited_categories)
@@ -303,6 +312,13 @@ class w2dc_choose_levels_table extends WP_List_Table {
 			return '<img src="' . W2DC_RESOURCES_URL . 'images/accept.png" />';
 		else
 			return '<img src="' . W2DC_RESOURCES_URL . 'images/delete.png" />';
+	}
+
+	public function column_categories_number($item) {
+		if ($item['unlimited_categories'])
+			return __('Unlimited', 'W2DC');
+		else
+			return $item['categories_number'];
 	}
 
 	public function column_default($item, $column_name) {

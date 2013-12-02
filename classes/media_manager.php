@@ -35,7 +35,7 @@ class w2dc_media_manager {
 		}
 	}
 
-	public function mediaMetabox($post) {
+	public function mediaMetabox() {
 		$listing = w2dc_getCurrentListingInAdmin();
 
 		w2dc_renderTemplate('media_metabox.tpl.php', array('listing' => $listing));

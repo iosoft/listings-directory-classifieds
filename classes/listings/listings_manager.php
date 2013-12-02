@@ -149,12 +149,13 @@ class w2dc_listings_manager {
 	}
 	
 	public function loadCurrentListing() {
-		global $pagenow, $post;
+		global $w2dc_instance, $pagenow, $post;
 
 		if ($pagenow == 'post-new.php' && isset($_GET['post_type']) && $_GET['post_type'] == W2DC_POST_TYPE && isset($_GET['level_id']) && is_numeric($_GET['level_id'])) {
 			// New post
 			$level_id = $_GET['level_id'];
 			$this->current_listing = new w2dc_listing($level_id);
+			$w2dc_instance->current_listing = $this->current_listing;
 
 			if ($this->current_listing->level) {
 				// need to load draft post into current_listing property
@@ -172,6 +173,7 @@ class w2dc_listings_manager {
 			$listing = new w2dc_listing();
 			$listing->loadListingFromPost($post);
 			$this->current_listing = $listing;
+			$w2dc_instance->current_listing = $listing;
 		}
 	}
 	
@@ -179,8 +181,9 @@ class w2dc_listings_manager {
 		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
 			return;
 
-		global $wpdb;
+		global $w2dc_instance, $wpdb;
 		$this->current_listing->loadListingFromPost($post_id);
+		$w2dc_instance->current_listing = $this->current_listing;
 
 		return $wpdb->query($wpdb->prepare("INSERT INTO `wp_w2dc_levels_relationships` (post_id, level_id) VALUES(%d, %d) ON DUPLICATE KEY UPDATE level_id=%d", $this->current_listing->post->ID, $this->current_listing->level->id, $this->current_listing->level->id));
 	}
@@ -192,20 +195,20 @@ class w2dc_listings_manager {
 			return;
 
 		$errors = array();
-		
-		$post_categories_ids = $w2dc_instance->admin->categories_manager->validateCategories($this->current_listing->level, $postarr, $errors);
+
+		$post_categories_ids = $w2dc_instance->categories_manager->validateCategories($this->current_listing->level, $postarr, $errors);
 
 		$w2dc_instance->content_fields->saveValues($this->current_listing->post->ID, $post_categories_ids, $errors, $data);
 
 		if ($this->current_listing->level->locations_number) {
-			if ($validation_results = $w2dc_instance->admin->locations_manager->validateLocations($errors)) {
-				$w2dc_instance->admin->locations_manager->saveLocations($this->current_listing->level, $this->current_listing->post->ID, $validation_results);
+			if ($validation_results = $w2dc_instance->locations_manager->validateLocations($errors)) {
+				$w2dc_instance->locations_manager->saveLocations($this->current_listing->level, $this->current_listing->post->ID, $validation_results);
 			}
 		}
 
 		if ($this->current_listing->level->images_number || $this->current_listing->level->videos_number) {
-			if ($validation_results = $w2dc_instance->admin->media_manager->validateAttachments($this->current_listing->level, $errors))
-				$w2dc_instance->admin->media_manager->saveAttachments($this->current_listing->level, $this->current_listing->post->ID, $validation_results);
+			if ($validation_results = $w2dc_instance->media_manager->validateAttachments($this->current_listing->level, $errors))
+				$w2dc_instance->media_manager->saveAttachments($this->current_listing->level, $this->current_listing->post->ID, $validation_results);
 		}
 
 		if ($errors) {
@@ -261,7 +264,7 @@ class w2dc_listings_manager {
 	public function delete_listing_data($post_id) {
 		global $w2dc_instance;
 		
-		$w2dc_instance->admin->locations_manager->deleteLocations($post_id);
+		$w2dc_instance->locations_manager->deleteLocations($post_id);
 	}
 }
 

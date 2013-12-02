@@ -94,8 +94,8 @@ class w2dc_manage_locations_levels_table extends WP_List_Table {
 
 	public function __construct() {
 		parent::__construct(array(
-				'singular' => __('locations level', 'WPBDM'),
-				'plural' => __('locations levels', 'WPBDM'),
+				'singular' => __('locations level', 'W2DC'),
+				'plural' => __('locations levels', 'W2DC'),
 				'ajax' => false
 		));
 	}
