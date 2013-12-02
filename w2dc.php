@@ -54,16 +54,6 @@ global $w2dc_messages;
 
 class w2dc_plugin {
 	public $admin;
-	public $listings_manager;
-	public $locations_manager;
-	public $locations_levels_manager;
-	public $categories_manager;
-	public $content_fields_manager;
-	public $media_manager;
-	public $settings_manager;
-	public $levels_manager;
-
-	public $current_listing; // this is object of listing under edition right now
 	public $levels;
 	public $index_page_id;
 	public $index_page_slug;
@@ -117,11 +107,10 @@ class w2dc_plugin {
 		$w2dc_instance->locations_levels = new w2dc_locations_levels;
 		$w2dc_instance->content_fields = new w2dc_content_fields;
 
-		//if (is_admin()) {
+		if (is_admin()) {
 			$this->admin = new w2dc_admin();
-		//} else {
-		if (!is_admin()) {
-			add_action('get_header', array($this, 'configure_seo_filters'));
+		} else {
+			add_action('wp', array($this, 'configure_seo_filters'));
 			add_action('wp_loaded', array($this, 'wp_loaded'));
 			add_filter('query_vars', array($this, 'add_query_vars'));
 			add_filter('rewrite_rules_array', array($this, 'rewrite_rules'));
@@ -172,83 +161,85 @@ class w2dc_plugin {
 	}
 	
 	public function configure_seo_filters() {
-		if (isset($this->frontend_controller) && $this->frontend_controller->query) {
-			add_filter('wp_title', array($this, 'page_title'), 10, 2);
-			if (defined('WPSEO_VERSION')) {
-				global $wpseo_front;
-				remove_filter('wp_title', array(&$wpseo_front, 'title'), 15, 3);
-				remove_action('wp_head', array(&$wpseo_front, 'head'), 1, 1);
-				
-				add_action('wp_head', array( $this, 'page_meta'));
-			}
+		add_filter('wp_title', array($this, 'page_title'), 10, 2);
+		if (defined('WPSEO_VERSION')) {
+			global $wpseo_front;
+			remove_filter('wp_title', array(&$wpseo_front, 'title'), 15, 3);
+			remove_action('wp_head', array(&$wpseo_front, 'head'), 1, 1);
+			
+			add_action('wp_head', array( $this, 'page_meta'));
 		}
 	}
 	
 	public function page_meta() {
-		global $wpseo_front;
-		if ($this->frontend_controller->is_single) {
-			global $post;
-			$saved_page = $post;
-			$post = get_post($this->frontend_controller->listing->post->ID);
+		if (isset($this->frontend_controller)) {
+			global $wpseo_front;
+			if ($this->frontend_controller->is_single) {
+				global $post;
+				$saved_page = $post;
+				$post = get_post($this->frontend_controller->listing->post->ID);
 
-			$wpseo_front->metadesc();
-			$wpseo_front->metakeywords();
+				$wpseo_front->metadesc();
+				$wpseo_front->metakeywords();
 
-			$post = $saved_page;
-		} elseif ($this->frontend_controller->is_category) {
-			$metadesc = wpseo_get_term_meta($this->frontend_controller->category, $this->frontend_controller->category->taxonomy, 'desc');
-			if (!$metadesc && isset($wpseo_front->options['metadesc-' . $this->frontend_controller->category->taxonomy]))
-				$metadesc = wpseo_replace_vars($wpseo_front->options['metadesc-' . $this->frontend_controller->category->taxonomy], (array) $this->frontend_controller->category );
-			$metadesc = apply_filters('wpseo_metadesc', trim($metadesc));
-			echo '<meta name="description" content="' . esc_attr(strip_tags(stripslashes($metadesc))) . '"/>' . "\n";
-		} elseif ($this->frontend_controller->is_tag) {
-			$metadesc = wpseo_get_term_meta($this->frontend_controller->tag, $this->frontend_controller->tag->taxonomy, 'desc');
-			if (!$metadesc && isset($wpseo_front->options['metadesc-' . $this->frontend_controller->tag->taxonomy]))
-				$metadesc = wpseo_replace_vars($wpseo_front->options['metadesc-' . $this->frontend_controller->tag->taxonomy], (array) $this->frontend_controller->tag );
-			$metadesc = apply_filters('wpseo_metadesc', trim($metadesc));
-			echo '<meta name="description" content="' . esc_attr(strip_tags(stripslashes($metadesc))) . '"/>' . "\n";
-		} elseif ($this->frontend_controller->is_home) {
-			$wpseo_front->metadesc();
-			$wpseo_front->metakeywords();
+				$post = $saved_page;
+			} elseif ($this->frontend_controller->is_category) {
+				$metadesc = wpseo_get_term_meta($this->frontend_controller->category, $this->frontend_controller->category->taxonomy, 'desc');
+				if (!$metadesc && isset($wpseo_front->options['metadesc-' . $this->frontend_controller->category->taxonomy]))
+					$metadesc = wpseo_replace_vars($wpseo_front->options['metadesc-' . $this->frontend_controller->category->taxonomy], (array) $this->frontend_controller->category );
+				$metadesc = apply_filters('wpseo_metadesc', trim($metadesc));
+				echo '<meta name="description" content="' . esc_attr(strip_tags(stripslashes($metadesc))) . '"/>' . "\n";
+			} elseif ($this->frontend_controller->is_tag) {
+				$metadesc = wpseo_get_term_meta($this->frontend_controller->tag, $this->frontend_controller->tag->taxonomy, 'desc');
+				if (!$metadesc && isset($wpseo_front->options['metadesc-' . $this->frontend_controller->tag->taxonomy]))
+					$metadesc = wpseo_replace_vars($wpseo_front->options['metadesc-' . $this->frontend_controller->tag->taxonomy], (array) $this->frontend_controller->tag );
+				$metadesc = apply_filters('wpseo_metadesc', trim($metadesc));
+				echo '<meta name="description" content="' . esc_attr(strip_tags(stripslashes($metadesc))) . '"/>' . "\n";
+			} elseif ($this->frontend_controller->is_home) {
+				$wpseo_front->metadesc();
+				$wpseo_front->metakeywords();
+			}
 		}
 	}
 
 	public function page_title($title, $separator) {
-		if (defined('WPSEO_VERSION')) {
-			global $wpseo_front;
-			if ($this->frontend_controller->is_single) {
-				$title = $wpseo_front->get_content_title(get_post($this->frontend_controller->listing->post->ID));
-				return esc_html(strip_tags(stripslashes(apply_filters('wpseo_title', $title))));
-			} elseif ($this->frontend_controller->is_search) {
-				return $wpseo_front->get_title_from_options('title-search');
-			} elseif ($this->frontend_controller->is_category) {
-				$title = trim(wpseo_get_term_meta($this->frontend_controller->category, $this->frontend_controller->category->taxonomy, 'title'));
-				if (!empty($title))
-					return wpseo_replace_vars($title, (array)$this->frontend_controller->category);
-				return $wpseo_front->get_title_from_options('title-' . $this->frontend_controller->category->taxonomy, $this->frontend_controller->category);
-			} elseif ($this->frontend_controller->is_tag) {
-				$title = trim(wpseo_get_term_meta($this->frontend_controller->tag, $this->frontend_controller->tag->taxonomy, 'title'));
-				if (!empty($title))
-					return wpseo_replace_vars($title, (array)$this->frontend_controller->tag);
-				return $wpseo_front->get_title_from_options('title-' . $this->frontend_controller->tag->taxonomy, $this->frontend_controller->tag);
-			} elseif ($this->frontend_controller->is_home) {
-				$page = get_post($this->index_page_id);
-				return $wpseo_front->get_title_from_options('title-' . W2DC_POST_TYPE, (array) $page);
-			}
-		} else {
-			if ($this->frontend_controller->getPageTitle()) {
-				if (get_option('w2dc_directory_title'))
-					if ($this->frontend_controller->getPageTitle() == get_option('w2dc_directory_title'))
-						$directory_title = '';
+		if (isset($this->frontend_controller)) {
+			if (defined('WPSEO_VERSION')) {
+				global $wpseo_front;
+				if ($this->frontend_controller->is_single) {
+					$title = $wpseo_front->get_content_title(get_post($this->frontend_controller->listing->post->ID));
+					return esc_html(strip_tags(stripslashes(apply_filters('wpseo_title', $title))));
+				} elseif ($this->frontend_controller->is_search) {
+					return $wpseo_front->get_title_from_options('title-search');
+				} elseif ($this->frontend_controller->is_category) {
+					$title = trim(wpseo_get_term_meta($this->frontend_controller->category, $this->frontend_controller->category->taxonomy, 'title'));
+					if (!empty($title))
+						return wpseo_replace_vars($title, (array)$this->frontend_controller->category);
+					return $wpseo_front->get_title_from_options('title-' . $this->frontend_controller->category->taxonomy, $this->frontend_controller->category);
+				} elseif ($this->frontend_controller->is_tag) {
+					$title = trim(wpseo_get_term_meta($this->frontend_controller->tag, $this->frontend_controller->tag->taxonomy, 'title'));
+					if (!empty($title))
+						return wpseo_replace_vars($title, (array)$this->frontend_controller->tag);
+					return $wpseo_front->get_title_from_options('title-' . $this->frontend_controller->tag->taxonomy, $this->frontend_controller->tag);
+				} elseif ($this->frontend_controller->is_home) {
+					$page = get_post($this->index_page_id);
+					return $wpseo_front->get_title_from_options('title-' . W2DC_POST_TYPE, (array) $page);
+				}
+			} else {
+				if ($this->frontend_controller->getPageTitle()) {
+					if (get_option('w2dc_directory_title'))
+						if ($this->frontend_controller->getPageTitle() == get_option('w2dc_directory_title'))
+							$directory_title = '';
+						else
+							$directory_title = get_option('w2dc_directory_title');
 					else
-						$directory_title = get_option('w2dc_directory_title');
-				else
-					$directory_title = '';
-				
-				if ($title != __('Directory listings', 'W2DC') . ' ' . $separator . ' ')
-					return $this->frontend_controller->getPageTitle() . ' ' . $separator . ' ' . $directory_title;
-				else
-					return $directory_title;
+						$directory_title = '';
+					
+					if ($title != __('Directory listings', 'W2DC') . ' ' . $separator . ' ')
+						return $this->frontend_controller->getPageTitle() . ' ' . $separator . ' ' . $directory_title;
+					else
+						return $directory_title;
+				}
 			}
 		}
 
@@ -481,9 +472,11 @@ class w2dc_plugin {
 
 	public function enqueue_scripts_styles() {
 		if (!is_null($this->frontend_controller)) {
-			wp_enqueue_style('w2dc_frontend', W2DC_RESOURCES_URL . 'css/frontend.css');
 			if (is_file(W2DC_RESOURCES_PATH . 'css/frontend-custom.css'))
-				wp_enqueue_style('w2dc_frontend-custom', W2DC_RESOURCES_URL . 'css/frontend-custom.css');
+				$css_file = W2DC_RESOURCES_URL . 'css/frontend-custom.css';
+			elseif (is_file(W2DC_RESOURCES_PATH . 'css/frontend.css'))
+				$css_file = W2DC_RESOURCES_URL . 'css/frontend.css';
+			wp_enqueue_style('w2dc_frontend', $css_file);
 
 			wp_enqueue_script('js_functions', W2DC_RESOURCES_URL . 'js/js_functions.js', array('jquery'));
 			wp_localize_script(
