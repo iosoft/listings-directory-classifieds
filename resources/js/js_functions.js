@@ -131,22 +131,6 @@ function make_slug(name) {
 	return name;
 }
 
-function intersect_arrays_safe(a, b) {
-	var ai=0, bi=0;
-	var result = new Array();
-
-	while( ai < a.length && bi < b.length ) {
-		if (a[ai] < b[bi]) { ai++; }
-		else if (a[ai] > b[bi]) { bi++; }
-		else /* they're equal */ {
-			result.push(a[ai]);
-			ai++;
-			bi++;
-		}
-	}
-	return result;
-}
-
 jQuery(document).ready(function($) {
 	//Show/hide hints
 	$(".hint_icon").hover(function() {

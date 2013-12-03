@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.1.2
+Stable tag: tags/1.1.3
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -75,9 +75,13 @@ Right now we have 3 additional premium modules:
 
 == Changelog ==
 
+= Version 1.1.3 =
+* the bug that causes problems when some of content fields change its types was fixed
+* special condition for edit listing link was added in 'listing_single.tpl.php' template
+
 = Version 1.1.2 =
 * 2 new settings were added: ability to hide contact form option, ability to disable rendering of listings on directory home page
-* Yast SEO plugin compatibility bug was fixed
+* Yoast SEO plugin compatibility bug was fixed
 * recaptcha bug on contact form was fixed
 * checkboxes content field bug when all checkboxes unchecked was fixed
 * the plugin fully adapted for customizations in css and template files

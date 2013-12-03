@@ -16,7 +16,9 @@
 					</div>
 					<?php endif; ?>
 
+					<?php if (current_user_can('edit_posts', get_the_ID())): ?>
 					<div class="w2dc_edit_listing_link"><?php edit_post_link(__('Edit listing', 'W2DC'), '<img src="' . W2DC_RESOURCES_URL . 'images/page_edit.png" class="w2dc_field_icon" />'); ?></div>
+					<?php endif; ?>
 				</header>
 				<?php endif; ?>
 

@@ -24,9 +24,17 @@ foreach ($content_fields AS $content_field):
 
 			$(".w2dc_field_input_block").hide();
 			$.each(fields_in_categories, function(index, value) {
-				if (value != undefined && (value == '' || intersect_arrays_safe(value, selected_categories_ids) != ''))
-					if ($(".w2dc_field_input_block_"+index).length)
+				var show_field = false;
+				if (value != undefined) {
+					if (value.length > 0)
+						for (key in value)
+							for (key2 in selected_categories_ids)
+								if (value[key] == selected_categories_ids[key2])
+									show_field = true;
+
+					if ((value.length == 0 || show_field) && $(".w2dc_field_input_block_"+index).length)
 						$(".w2dc_field_input_block_"+index).show();
+				}
 			});
 		}
 	});

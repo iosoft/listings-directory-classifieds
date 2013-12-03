@@ -199,15 +199,28 @@ class w2dc_content_field {
 
 
 	public function validation() {
+		// core fields can't change type
+		if (!$this->is_core_field) {
+			// load dummy content field by its new type from $_POST
+			$field_class_name = 'w2dc_content_field_' . $_POST['type'];
+			if (class_exists($field_class_name)) {
+				$new_content_field = new $field_class_name;
+			} else {
+				w2dc_addMessage('This type of content field does not exist!', 'error');
+				w2dc_renderTemplate('content_fields/add_edit_content_field.tpl.php', array('content_fields' => $content_fields, 'content_field' => $content_field, 'field_id' => $field_id, 'fields_types_names' => $content_fields->fields_types_names));
+				exit;
+			}
+		}
+		
 		$validation = new form_validation();
 		$validation->set_rules('name', __('Content field name', 'W2DC'), 'required');
-		if ($this->isSlug())
+		if ($new_content_field->isSlug())
 			$validation->set_rules('slug', __('Content field slug', 'W2DC'), 'required|alpha_dash');
 		$validation->set_rules('description', __('Content field description', 'W2DC'));
 		$validation->set_rules('icon_image', __('Icon image', 'W2DC'));
-		if ($this->canBeRequired())
+		if ($new_content_field->canBeRequired())
 			$validation->set_rules('is_required', __('Content field required', 'W2DC'), 'is_checked');
-		if ($this->canBeOrdered())
+		if ($new_content_field->canBeOrdered())
 			$validation->set_rules('is_ordered', __('Order by field', 'W2DC'), 'is_checked');
 		$validation->set_rules('is_hide_name', __('Hide name', 'W2DC'), 'is_checked');
 		$validation->set_rules('on_exerpt_page', __('On excerpt page', 'W2DC'), 'is_checked');
@@ -215,12 +228,12 @@ class w2dc_content_field {
 		// core fields can't change type
 		if (!$this->is_core_field)
 			$validation->set_rules('type', __('Content field type', 'W2DC'), 'required');
-		if ($this->isCategories())
+		if ($new_content_field->isCategories())
 			$validation->set_rules('categories_list', __('Assigned categories', 'W2DC'));
 
-		$validation = apply_filters('w2dc_content_field_validation', $validation, $this);
+		$validation = apply_filters('w2dc_content_field_validation', $validation, $new_content_field);
 
-		if ($this->isSlug()) {
+		if ($new_content_field->isSlug()) {
 			global $wpdb;
 			if ($wpdb->get_results($wpdb->prepare("SELECT * FROM wp_w2dc_content_fields WHERE slug=%s AND id!=%d", $_POST['slug'], $this->id), ARRAY_A)
 				|| $_POST['slug'] == 'post_date'
@@ -269,6 +282,19 @@ class w2dc_content_field {
 	public function save($array) {
 		global $wpdb;
 		
+		// core fields can't change type
+		if (!$this->is_core_field) {
+			// load dummy content field by its new type from $_POST
+			$field_class_name = 'w2dc_content_field_' . $_POST['type'];
+			if (class_exists($field_class_name)) {
+				$new_content_field = new $field_class_name;
+			} else {
+				w2dc_addMessage('This type of content field does not exist!', 'error');
+				w2dc_renderTemplate('content_fields/add_edit_content_field.tpl.php', array('content_fields' => $content_fields, 'content_field' => $content_field, 'field_id' => $field_id, 'fields_types_names' => $content_fields->fields_types_names));
+				exit;
+			}
+		}
+		
 		$insert_update_args = array(
 				'name' => $array['name'],
 				'description' => $array['description'],
@@ -280,16 +306,35 @@ class w2dc_content_field {
 		// core fields can't change type
 		if (!$this->is_core_field)
 			$insert_update_args['type'] = $array['type'];
-		if ($this->isSlug())
+		if ($new_content_field->isSlug())
 			$insert_update_args['slug'] = $array['slug'];
-		if ($this->canBeRequired())
-			$insert_update_args['is_required'] = $array['is_required'];
-		if ($this->canBeOrdered())
-			$insert_update_args['is_ordered'] = $array['is_ordered'];
-		if ($this->isCategories())
-			$insert_update_args['categories'] = serialize($array['categories_list']);
 
-		$insert_update_args = apply_filters('w2dc_content_field_create_edit_args', $insert_update_args, $this, $array);
+		if ($new_content_field->canBeRequired())
+			$insert_update_args['is_required'] = $array['is_required'];
+		else
+			$insert_update_args['is_required'] = 0;
+
+		if ($new_content_field->canBeOrdered())
+			$insert_update_args['is_ordered'] = $array['is_ordered'];
+		else
+			$insert_update_args['is_ordered'] = 0;
+
+		if ($new_content_field->isCategories())
+			$insert_update_args['categories'] = serialize($array['categories_list']);
+		else
+			$insert_update_args['categories'] = '';
+		
+		if ($new_content_field->isConfigurationPage())
+			$insert_update_args['is_configuration_page'] = 1;
+		else
+			$insert_update_args['is_configuration_page'] = 0;
+
+		if ($new_content_field->isSearchConfigurationPage())
+			$insert_update_args['is_search_configuration_page'] = 1;
+		else
+			$insert_update_args['is_search_configuration_page'] = 0;
+
+		$insert_update_args = apply_filters('w2dc_content_field_create_edit_args', $insert_update_args, $new_content_field, $array);
 		
 		return $wpdb->update('wp_w2dc_content_fields', $insert_update_args,	array('id' => $this->id), null, array('%d')) !== false;
 	}
