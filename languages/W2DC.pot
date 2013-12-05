@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: w2dc v1.0.0\n"
-"POT-Creation-Date: 2013-12-02 20:18+0500\n"
-"PO-Revision-Date: 2013-12-02 20:18+0500\n"
+"POT-Creation-Date: 2013-12-05 19:40+0500\n"
+"PO-Revision-Date: 2013-12-05 19:41+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Subcategories:"
 msgstr ""
 
-#: w2dc.php:171
+#: w2dc.php:175
 #, php-format
 msgid ""
 "<b>Directory & Classifieds plugin</b>: sorry, but there isn't any page with "
@@ -50,153 +50,161 @@ msgid ""
 "you?"
 msgstr ""
 
-#: w2dc.php:248 w2dc.php:340 w2dc.php:352
+#: w2dc.php:252 w2dc.php:344 w2dc.php:356
 msgid "Directory listings"
 msgstr ""
 
-#: w2dc.php:341
+#: w2dc.php:345
 msgid "Directory listing"
 msgstr ""
 
-#: w2dc.php:342 w2dc.php:343
+#: w2dc.php:346 w2dc.php:347
 msgid "Create new listing"
 msgstr ""
 
-#: w2dc.php:344 templates/frontend/listing_single.tpl.php:19
+#: w2dc.php:348 templates/frontend/listing_single.tpl.php:13
 msgid "Edit listing"
 msgstr ""
 
-#: w2dc.php:345
+#: w2dc.php:349
 msgid "New listing"
 msgstr ""
 
-#: w2dc.php:346 templates/google_map.tpl.php:5
+#: w2dc.php:350 templates/google_map.tpl.php:5
 msgid "View listing"
 msgstr ""
 
-#: w2dc.php:347
+#: w2dc.php:351
 msgid "Search listings"
 msgstr ""
 
-#: w2dc.php:348
+#: w2dc.php:352
 msgid "No listings found"
 msgstr ""
 
-#: w2dc.php:349
+#: w2dc.php:353
 msgid "No listings found in trash"
 msgstr ""
 
-#: w2dc.php:363 classes/categories_manager.php:27
+#: w2dc.php:367 classes/categories_manager.php:27
 #: classes/content_fields/content_fields.php:27
 msgid "Listing categories"
 msgstr ""
 
-#: w2dc.php:364 templates/admin_index.tpl.php:63
+#: w2dc.php:368 templates/admin_index.tpl.php:63
 msgid "Directory categories"
 msgstr ""
 
-#: w2dc.php:365
+#: w2dc.php:369
 msgid "Category"
 msgstr ""
 
-#: w2dc.php:366
+#: w2dc.php:370
 msgid "Create category"
 msgstr ""
 
-#: w2dc.php:367
+#: w2dc.php:371
 msgid "New category"
 msgstr ""
 
-#: w2dc.php:368
+#: w2dc.php:372
 msgid "Edit category"
 msgstr ""
 
-#: w2dc.php:369
+#: w2dc.php:373
 msgid "View category"
 msgstr ""
 
-#: w2dc.php:370
+#: w2dc.php:374
 msgid "Update category"
 msgstr ""
 
-#: w2dc.php:371
+#: w2dc.php:375
 msgid "Search categories"
 msgstr ""
 
-#: w2dc.php:378 classes/locations/locations_manager.php:29
+#: w2dc.php:382 classes/locations/locations_manager.php:29
 msgid "Listing locations"
 msgstr ""
 
-#: w2dc.php:379 templates/admin_index.tpl.php:39
+#: w2dc.php:383 templates/admin_index.tpl.php:39
 msgid "Directory locations"
 msgstr ""
 
-#: w2dc.php:380
+#: w2dc.php:384
 msgid "Location"
 msgstr ""
 
-#: w2dc.php:381
+#: w2dc.php:385
 msgid "Create location"
 msgstr ""
 
-#: w2dc.php:382
+#: w2dc.php:386
 msgid "New location"
 msgstr ""
 
-#: w2dc.php:383
+#: w2dc.php:387
 msgid "Edit location"
 msgstr ""
 
-#: w2dc.php:384
+#: w2dc.php:388
 msgid "View location"
 msgstr ""
 
-#: w2dc.php:385
+#: w2dc.php:389
 msgid "Update location"
 msgstr ""
 
-#: w2dc.php:386
+#: w2dc.php:390
 msgid "Search locations"
 msgstr ""
 
-#: w2dc.php:394 classes/content_fields/content_fields.php:28
+#: w2dc.php:398 classes/content_fields/content_fields.php:28
 msgid "Listing tags"
 msgstr ""
 
-#: w2dc.php:395 templates/admin_index.tpl.php:71
+#: w2dc.php:399 templates/admin_index.tpl.php:71
 msgid "Directory tags"
 msgstr ""
 
-#: w2dc.php:396
+#: w2dc.php:400
 msgid "Tag"
 msgstr ""
 
-#: w2dc.php:397
+#: w2dc.php:401
 msgid "Create tag"
 msgstr ""
 
-#: w2dc.php:398
+#: w2dc.php:402
 msgid "New tag"
 msgstr ""
 
-#: w2dc.php:399
+#: w2dc.php:403
 msgid "Edit tag"
 msgstr ""
 
-#: w2dc.php:400
+#: w2dc.php:404
 msgid "View tag"
 msgstr ""
 
-#: w2dc.php:401
+#: w2dc.php:405
 msgid "Update tag"
 msgstr ""
 
-#: w2dc.php:402
+#: w2dc.php:406
 msgid "Search tags"
 msgstr ""
 
-#: w2dc.php:437 w2dc.php:472 classes/settings_manager.php:255
+#: w2dc.php:441 w2dc.php:476 classes/settings_manager.php:279
 msgid "Expiration notification"
+msgstr ""
+
+#: w2dc.php:514 templates/frontend/listing_single.tpl.php:26
+msgid "Put in favourites list"
+msgstr ""
+
+#: w2dc.php:515 templates/frontend/listing_single.tpl.php:26
+msgid "Out of favourites list"
 msgstr ""
 
 #: classes/admin.php:41 classes/admin.php:42
@@ -349,6 +357,7 @@ msgstr ""
 
 #: classes/frontend_controller.php:44 classes/frontend_controller.php:80
 #: classes/frontend_controller.php:116 classes/frontend_controller.php:158
+#: classes/frontend_controller.php:183
 msgid "Home"
 msgstr ""
 
@@ -356,33 +365,40 @@ msgstr ""
 msgid "Search results"
 msgstr ""
 
-#: classes/frontend_controller.php:273
+#: classes/frontend_controller.php:182 classes/frontend_controller.php:183
+#: templates/frontend/category.tpl.php:6 templates/frontend/index.tpl.php:6
+#: templates/frontend/listing_single.tpl.php:10
+#: templates/frontend/search.tpl.php:6 templates/frontend/tag.tpl.php:6
+msgid "My favourites"
+msgstr ""
+
+#: classes/frontend_controller.php:290
 msgid "Contact name"
 msgstr ""
 
-#: classes/frontend_controller.php:274
+#: classes/frontend_controller.php:291
 msgid "Contact email"
 msgstr ""
 
-#: classes/frontend_controller.php:276
+#: classes/frontend_controller.php:293
 #: templates/frontend/contact_form.tpl.php:21
 msgid "Your message"
 msgstr ""
 
-#: classes/frontend_controller.php:296
+#: classes/frontend_controller.php:313
 #, php-format
 msgid "%s contacted you about your listing"
 msgstr ""
 
-#: classes/frontend_controller.php:308
+#: classes/frontend_controller.php:325
 msgid "You message was sent successfully!"
 msgstr ""
 
-#: classes/frontend_controller.php:310
+#: classes/frontend_controller.php:327
 msgid "An error occurred and your message wasn\\t sent!"
 msgstr ""
 
-#: classes/frontend_controller.php:312
+#: classes/frontend_controller.php:329
 msgid "Verification code wasn't entered correctly!"
 msgstr ""
 
@@ -507,44 +523,56 @@ msgstr ""
 msgid "Enable contact form on listing page"
 msgstr ""
 
-#: classes/settings_manager.php:201
+#: classes/settings_manager.php:198
+msgid "Enable favourites list"
+msgstr ""
+
+#: classes/settings_manager.php:206
+msgid "Show print listing button"
+msgstr ""
+
+#: classes/settings_manager.php:214
+msgid "Show listing in PDF button"
+msgstr ""
+
+#: classes/settings_manager.php:225
 msgid "Maps settings"
 msgstr ""
 
-#: classes/settings_manager.php:207
+#: classes/settings_manager.php:231
 msgid "Show map on index page?"
 msgstr ""
 
-#: classes/settings_manager.php:215
+#: classes/settings_manager.php:239
 msgid "Show map on excerpt page?"
 msgstr ""
 
-#: classes/settings_manager.php:223
+#: classes/settings_manager.php:247
 msgid "Show directions panel for the listing map?"
 msgstr ""
 
-#: classes/settings_manager.php:233
+#: classes/settings_manager.php:257
 msgid "Email notifications settings"
 msgstr ""
 
-#: classes/settings_manager.php:239
+#: classes/settings_manager.php:263
 msgid "Days before pre-expiration notification will be sent"
 msgstr ""
 
-#: classes/settings_manager.php:247
+#: classes/settings_manager.php:271
 msgid "Pre-expiration notification"
 msgstr ""
 
-#: classes/settings_manager.php:266
+#: classes/settings_manager.php:290
 msgid "This title will be used in HTML title tag of every directory page"
 msgstr ""
 
-#: classes/settings_manager.php:280
+#: classes/settings_manager.php:304
 #, php-format
 msgid "get your reCAPTCHA API Keys <a href=\"%s\" target=\"_blank\">here</a>"
 msgstr ""
 
-#: classes/settings_manager.php:350
+#: classes/settings_manager.php:383
 msgid "Settings saved!"
 msgstr ""
 
@@ -600,60 +628,60 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:203
+#: classes/content_fields/content_fields.php:216
 msgid "Content field name"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:205
+#: classes/content_fields/content_fields.php:218
 msgid "Content field slug"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:206
+#: classes/content_fields/content_fields.php:219
 msgid "Content field description"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:207
+#: classes/content_fields/content_fields.php:220
 #: classes/content_fields/content_fields_manager.php:183
 #: templates/content_fields/add_edit_content_field.tpl.php:162
 msgid "Icon image"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:209
+#: classes/content_fields/content_fields.php:222
 msgid "Content field required"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:211
+#: classes/content_fields/content_fields.php:224
 #: templates/content_fields/add_edit_content_field.tpl.php:220
 msgid "Order by field"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:212
+#: classes/content_fields/content_fields.php:225
 #: templates/content_fields/add_edit_content_field.tpl.php:138
 msgid "Hide name"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:213
+#: classes/content_fields/content_fields.php:226
 #: templates/content_fields/add_edit_content_field.tpl.php:233
 msgid "On excerpt page"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:214
+#: classes/content_fields/content_fields.php:227
 #: templates/content_fields/add_edit_content_field.tpl.php:245
 msgid "On listing page"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:217
+#: classes/content_fields/content_fields.php:230
 msgid "Content field type"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:219
+#: classes/content_fields/content_fields.php:232
 #: classes/levels/levels_manager.php:72
 #: templates/content_fields/add_edit_content_field.tpl.php:261
 #: templates/levels/add_edit_level.tpl.php:275
 msgid "Assigned categories"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:235
+#: classes/content_fields/content_fields.php:248
 msgid "Can't use this slug"
 msgstr ""
 
@@ -1390,7 +1418,7 @@ msgstr ""
 msgid "Create content field"
 msgstr ""
 
-#: templates/content_fields/content_fields_metabox.tpl.php:36
+#: templates/content_fields/content_fields_metabox.tpl.php:44
 msgid "Content fields may be dependent on selected categories"
 msgstr ""
 
@@ -1534,16 +1562,20 @@ msgstr ""
 msgid "Message:"
 msgstr ""
 
-#: templates/frontend/category.tpl.php:29 templates/frontend/index.tpl.php:16
-#: templates/frontend/search.tpl.php:27 templates/frontend/tag.tpl.php:31
+#: templates/frontend/category.tpl.php:34
+#: templates/frontend/favourites.tpl.php:10
+#: templates/frontend/index.tpl.php:21 templates/frontend/search.tpl.php:32
+#: templates/frontend/tag.tpl.php:36
 #, php-format
 msgid "Found %d listing"
 msgid_plural "Found %d listings"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/frontend/category.tpl.php:45 templates/frontend/index.tpl.php:32
-#: templates/frontend/search.tpl.php:43 templates/frontend/tag.tpl.php:47
+#: templates/frontend/category.tpl.php:50
+#: templates/frontend/favourites.tpl.php:21
+#: templates/frontend/index.tpl.php:37 templates/frontend/search.tpl.php:48
+#: templates/frontend/tag.tpl.php:52
 msgid "View listing >>"
 msgstr ""
 
@@ -1570,6 +1602,10 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
+#: templates/frontend/favourites.tpl.php:16
+msgid "Remove from favourites list"
+msgstr ""
+
 #: templates/frontend/listing.tpl.php:13
 msgid "sticky listing"
 msgstr ""
@@ -1582,6 +1618,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: templates/frontend/listing.tpl.php:93
+#: templates/frontend/listing_print.tpl.php:69
 msgid "Map"
 msgstr ""
 
@@ -1590,6 +1627,7 @@ msgid "Comments"
 msgstr ""
 
 #: templates/frontend/listing.tpl.php:99
+#: templates/frontend/listing_print.tpl.php:74
 msgid "Images"
 msgstr ""
 
@@ -1599,6 +1637,28 @@ msgstr ""
 
 #: templates/frontend/listing.tpl.php:105
 msgid "Contact"
+msgstr ""
+
+#: templates/frontend/listing_print.tpl.php:39
+#: templates/frontend/listing_print.tpl.php:97
+#: templates/frontend/listing_single.tpl.php:23
+msgid "Print listing"
+msgstr ""
+
+#: templates/frontend/listing_print.tpl.php:39
+#: templates/frontend/listing_print.tpl.php:97
+msgid "Close window"
+msgstr ""
+
+#: templates/frontend/listing_print.tpl.php:86
+#, php-format
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/frontend/listing_single.tpl.php:29
+msgid "Save listing in PDF"
 msgstr ""
 
 #: templates/levels/add_edit_level.tpl.php:7

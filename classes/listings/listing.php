@@ -34,7 +34,6 @@ class w2dc_listing {
 
 		if ($this->setLevelByPostId()) {
 			$this->setMetaInformation();
-			//$this->setCategories();
 			$this->setLocations();
 			$this->setContentFields();
 			$this->setMapZoom();

@@ -193,6 +193,30 @@ class w2dc_settings_manager {
 				'w2dc_listings_section'
 		);
 		register_setting('w2dc_listings_settings_page', 'w2dc_listing_contact_form');
+		add_settings_field(
+				'w2dc_favourites_list',
+				__('Enable favourites list', 'W2DC'),
+				array($this, 'w2dc_favourites_list_callback'),
+				'w2dc_listings_settings_page',
+				'w2dc_listings_section'
+		);
+		register_setting('w2dc_listings_settings_page', 'w2dc_favourites_list');
+		add_settings_field(
+				'w2dc_print_button',
+				__('Show print listing button', 'W2DC'),
+				array($this, 'w2dc_print_button_callback'),
+				'w2dc_listings_settings_page',
+				'w2dc_listings_section'
+		);
+		register_setting('w2dc_listings_settings_page', 'w2dc_print_button');
+		add_settings_field(
+				'w2dc_pdf_button',
+				__('Show listing in PDF button', 'W2DC'),
+				array($this, 'w2dc_pdf_button_callback'),
+				'w2dc_listings_settings_page',
+				'w2dc_listings_section'
+		);
+		register_setting('w2dc_listings_settings_page', 'w2dc_pdf_button');
 
 
 		// Maps settings page /////////////////////////////////////////////////////////////////////////
@@ -321,6 +345,15 @@ class w2dc_settings_manager {
 	}
 	public function w2dc_listing_contact_form_callback() {
 		echo '<input type="checkbox" id="w2dc_listing_contact_form" name="w2dc_listing_contact_form" value="1" ' . checked(get_option('w2dc_listing_contact_form'), 1, false) .' />';
+	}
+	public function w2dc_favourites_list_callback() {
+		echo '<input type="checkbox" id="w2dc_favourites_list" name="w2dc_favourites_list" value="1" ' . checked(get_option('w2dc_favourites_list'), 1, false) .' />';
+	}
+	public function w2dc_print_button_callback() {
+		echo '<input type="checkbox" id="w2dc_print_button" name="w2dc_print_button" value="1" ' . checked(get_option('w2dc_print_button'), 1, false) .' />';
+	}
+	public function w2dc_pdf_button_callback() {
+		echo '<input type="checkbox" id="w2dc_pdf_button" name="w2dc_pdf_button" value="1" ' . checked(get_option('w2dc_pdf_button'), 1, false) .' />';
 	}
 
 	// Maps settings page /////////////////////////////////////////////////////////////////////////

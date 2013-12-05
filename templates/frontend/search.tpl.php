@@ -1,6 +1,11 @@
 			<?php w2dc_renderMessages(); ?>
 			
-			<?php do_action('w2dc_directory_frontpanel'); ?>
+			<div class="w2dc_directory_frontpanel">
+				<?php do_action('w2dc_directory_frontpanel'); ?>
+				<?php if (get_option('w2dc_favourites_list')): ?>
+				<input type="button" class="w2dc_favourites_link" value="<?php _e('My favourites', 'W2DC'); ?>" onClick="window.location='<?php echo add_query_arg('action', 'myfavourites', $w2dc_instance->index_page_url); ?>';" />
+				<?php endif; ?>
+			</div>
 
 			<?php if ($frontend_controller->getPageTitle()): ?>
 			<header class="entry-header">

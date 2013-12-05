@@ -165,6 +165,23 @@ class w2dc_frontend_controller {
 				include(get_404_template());
 				exit;
 			}
+		} elseif ($w2dc_instance->action == 'myfavourites') {
+			if (!$favourites = checkQuickList())
+				$favourites = array(0);
+			$args = array(
+					'post__in' => $favourites,
+					'post_type' => W2DC_POST_TYPE,
+					'post_status' => 'publish',
+					'meta_query' => array(array('key' => '_listing_status', 'value' => 'active')),
+					'posts_per_page' => get_option('w2dc_listings_number_excerpt'),
+					'paged' => $paged,
+			);
+			$this->query = new WP_Query($args);
+			$this->processQuery(get_option('w2dc_map_on_excerpt'));
+
+			$this->template = 'frontend/favourites.tpl.php';
+			$this->page_title = __('My favourites', 'W2DC');
+			$this->breadcrumbs = array('<a href="' . $w2dc_instance->index_page_url . '">' . __('Home', 'W2DC') . '</a>', __('My favourites', 'W2DC'));
 		} elseif (!$w2dc_instance->action) {
 			$this->is_home = true;
 			$this->search_form = new search_form();
@@ -188,7 +205,7 @@ class w2dc_frontend_controller {
 			$this->base_url = $w2dc_instance->index_page_url;
 		}
 		
-		apply_filters('w2dc_frontend_controller_contruct', $this);
+		apply_filters('w2dc_frontend_controller_construct', $this);
 	}
 
 	public function join_levels($join = '') {

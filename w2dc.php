@@ -3,13 +3,13 @@
 Plugin Name: Directory & Classifieds plugin
 Plugin URI: http://www.salephpscripts.com/wordpress_directory/
 Description: Provides an ability to build any kind of directory site: classifieds, events directory, cars, bikes, boats and other vehicles dealers site, pets, real estate portal on your WordPress powered site. In other words - whatever you want.
-Version: 1.1.3
+Version: 1.1.4
 Author: Mihail Chepovskiy
 Author URI: http://www.salephpscripts.com
 License: GPLv2 or any later version
 */
 
-define('W2DC_VERSION', '1.1.3');
+define('W2DC_VERSION', '1.1.4');
 
 define('W2DC_PATH', plugin_dir_path(__FILE__));
 define('W2DC_URL', plugins_url('/', __FILE__));
@@ -43,6 +43,7 @@ include_once W2DC_PATH . 'classes/locations/location.php';
 include_once W2DC_PATH . 'classes/levels/levels_manager.php';
 include_once W2DC_PATH . 'classes/levels/levels.php';
 include_once W2DC_PATH . 'classes/frontend_controller.php';
+include_once W2DC_PATH . 'classes/ajax_controller.php';
 include_once W2DC_PATH . 'classes/settings_manager.php';
 include_once W2DC_PATH . 'classes/search_form.php';
 include_once W2DC_PATH . 'classes/google_maps.php';
@@ -117,9 +118,13 @@ class w2dc_plugin {
 		$w2dc_instance->locations_levels = new w2dc_locations_levels;
 		$w2dc_instance->content_fields = new w2dc_content_fields;
 
+		$w2dc_instance->ajax_controller = new w2dc_ajax_controller;
+
 		$this->admin = new w2dc_admin();
 
 		if (!is_admin()) {
+			add_filter('template_include', array($this, 'printlisting_template'));
+
 			add_action('get_header', array($this, 'configure_seo_filters'));
 			add_action('wp_loaded', array($this, 'wp_loaded'));
 			add_filter('query_vars', array($this, 'add_query_vars'));
@@ -478,6 +483,19 @@ class w2dc_plugin {
 		}
 	}
 
+	/**
+	 * Special template for listings printing functionality
+	 */
+	public function printlisting_template($template) {
+		if (is_page($this->index_page_id) && $this->action == 'printlisting') {
+			if (is_file(W2DC_PATH . 'templates/frontend/listing_print-custom.tpl.php'))
+				$template = W2DC_PATH . 'templates/frontend/listing_print-custom.tpl.php';
+			else
+				$template = W2DC_PATH . 'templates/frontend/listing_print.tpl.php';
+		}
+		return $template;
+	}
+
 	public function enqueue_scripts_styles() {
 		if (!is_null($this->frontend_controller)) {
 			wp_enqueue_style('w2dc_frontend', W2DC_RESOURCES_URL . 'css/frontend.css');
@@ -491,6 +509,10 @@ class w2dc_plugin {
 					array(
 							'ajaxurl' => admin_url('admin-ajax.php'),
 							'ajax_loader_url' => W2DC_RESOURCES_URL . 'images/ajax-loader.gif',
+							'in_favourites_icon' => W2DC_RESOURCES_URL . 'images/folder_star.png',
+							'not_in_favourites_icon' => W2DC_RESOURCES_URL . 'images/folder_star_grscl.png',
+							'in_favourites_msg' => __('Put in favourites list', 'W2DC'),
+							'not_in_favourites_msg' => __('Out of favourites list', 'W2DC'),
 					)
 			);
 			
@@ -512,6 +534,8 @@ class w2dc_plugin {
 			
 			wp_enqueue_script('google_maps', '//maps.google.com/maps/api/js?v=3.14&sensor=false&language=en', array('jquery'));
 			wp_enqueue_script('google_maps_view', W2DC_RESOURCES_URL . 'js/google_maps_view.js', array('jquery'));
+			
+			wp_enqueue_script('jquery_cookie', W2DC_RESOURCES_URL . 'js/jquery.coo_kie.js', array('jquery'));
 		}
 	}
 }

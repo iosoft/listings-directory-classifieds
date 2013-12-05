@@ -136,4 +136,25 @@ function w2dc_get_term_parents($id, $tax, $link = false, $return_array = false, 
 		return implode($separator, $chain);
 }
 
+function checkQuickList($is_listing_id = null)
+{
+	if (isset($_COOKIE['favourites']))
+		$favourites = explode('*', $_COOKIE['favourites']);
+	else
+		$favourites = array();
+	$favourites = array_values(array_filter($favourites));
+
+	if ($is_listing_id)
+		if (in_array($is_listing_id, $favourites))
+			return true;
+		else 
+			return false;
+
+	$favourites_array = array();
+	foreach ($favourites AS $listing_id)
+		if (is_numeric($listing_id))
+		$favourites_array[] = $listing_id;
+	return $favourites_array;
+}
+
 ?>

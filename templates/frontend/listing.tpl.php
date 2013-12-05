@@ -6,7 +6,7 @@
 					<?php if (!get_option('w2dc_listings_own_page')): ?>
 					<?php the_title(); ?>
 					<?php else: ?>
-					<a href="<?php the_permalink(); ?>" title="<?php esc_attr(the_title()); ?>"><?php the_title(); ?></a>
+					<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 					<?php endif; ?>
 	
 					<?php if ($listing->level->sticky): ?>

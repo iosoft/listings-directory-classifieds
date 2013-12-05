@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.1.3
+Stable tag: tags/1.1.4
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -36,6 +36,9 @@ In other words - whatever you want.
 * Images AJAX uploading
 * 2 types of images gallery on listings pages
 * Contact listing owner form
+* favourites list functionality
+* 'Print listing' option
+* 'Get listing in PDF' option
 * Adapted for reCaptcha
 
 = Plugin conception =
@@ -75,7 +78,14 @@ Right now we have 3 additional premium modules:
 
 == Changelog ==
 
+= Version 1.1.4 =
+* favourites list functionality was implemented: Put in/Out button on listings pages and 'My favourites list' special page
+* new 'Print listing' option
+* new 'Get listing in PDF' option
+* 'Edit listing' button was placed on listing page, visible only for users, those can edit current listing
+
 = Version 1.1.3 =
+* javascript code for dependencies of content fields from selected categories was improved
 * the bug that causes problems when some of content fields change its types was fixed
 * special condition for edit listing link was added in 'listing_single.tpl.php' template
 

@@ -183,6 +183,9 @@ function w2dc_install_directory() {
 		update_option('w2dc_show_where_search', '1');
 		update_option('w2dc_listings_on_index', '1');
 		update_option('w2dc_listing_contact_form', '1');
+		update_option('w2dc_favourites_list', '1');
+		update_option('w2dc_print_button', '1');
+		update_option('w2dc_pdf_button', '1');
 	
 		update_option('w2dc_installed_directory', true);
 		update_option('w2dc_installed_directory_version', W2DC_VERSION);
@@ -192,6 +195,7 @@ function w2dc_install_directory() {
 				'1.0.7',
 				'1.1.0',
 				'1.1.2',
+				'1.1.4',
 		);
 
 		$old_version = get_option('w2dc_installed_directory_version');
@@ -223,6 +227,12 @@ function upgrade_to_1_1_0() {
 function upgrade_to_1_1_2() {
 	update_option('w2dc_listings_on_index', '1');
 	update_option('w2dc_listing_contact_form', '1');
+}
+
+function upgrade_to_1_1_4() {
+	update_option('w2dc_favourites_list', '1');
+	update_option('w2dc_print_button', '1');
+	update_option('w2dc_pdf_button', '1');
 }
 
 ?>

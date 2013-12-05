@@ -131,11 +131,91 @@ function make_slug(name) {
 	return name;
 }
 
+function in_array(val, arr) 
+{
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] == val)
+			return i;
+	}
+	return false;
+}
+
 jQuery(document).ready(function($) {
 	//Show/hide hints
 	$(".hint_icon").hover(function() {
 		$(this).next().show();
 	}, function() {
 		$(this).next().hide();
+	});
+	
+	var cache_in_favourites_icon = $('<img />').attr('src', js_objects.in_favourites_icon);
+	var cache_not_in_favourites_icon = $('<img />').attr('src', js_objects.not_in_favourites_icon);
+	
+	// Place listings to/from favourites list
+	if ($(".add_to_favourites").length) {
+		$(".add_to_favourites").each(function() {
+			var listing_id = $(this).attr("listingid");
+
+			if ((str = $.cookie("favourites")) != null) {
+				var favourites_array = str.split('*');
+			} else {
+				var favourites_array = new Array();
+			}
+
+			if (in_array(listing_id, favourites_array) === false) {
+				$(this).css({'background-image': 'url('+js_objects.not_in_favourites_icon+')'});
+				$(this).val(js_objects.in_favourites_msg);
+			} else {
+				$(this).css({'background-image': 'url('+js_objects.in_favourites_icon+')'});
+				$(this).val(js_objects.not_in_favourites_msg);
+			}
+		});
+
+		$(".add_to_favourites").click(function() {
+			var listing_id = $(this).attr("listingid");
+
+			if ((str = $.cookie("favourites")) != null) {
+				var favourites_array = str.split('*');
+			} else {
+				var favourites_array = new Array();
+			}
+			if (in_array(listing_id, favourites_array) === false) {
+				favourites_array.push(listing_id);
+				$(this).css({'background-image': 'url('+js_objects.in_favourites_icon+')'});
+				$(this).val(js_objects.not_in_favourites_msg);
+			} else {
+				for (var count=0; count<favourites_array.length; count++) {
+					if (favourites_array[count] == listing_id) {
+						delete favourites_array[count];
+					}
+				}
+				$(this).css({'background-image': 'url('+js_objects.not_in_favourites_icon+')'});
+				$(this).val(js_objects.in_favourites_msg);
+			}
+			$.cookie("favourites", favourites_array.join('*'), {expires: 365, path: "/"});
+			return false;
+		});
+	}
+	
+	$(".remove_from_favourites_list").click(function() {
+		var listing_id = $(this).attr("listingid");
+		
+		if ((str = $.cookie("favourites")) != null) {
+			var favourites_array = str.split('*');
+		} else {
+			var favourites_array = new Array();
+		}
+
+		for (var count=0; count<favourites_array.length; count++) {
+			if (favourites_array[count] == listing_id) {
+				delete favourites_array[count];
+			}
+		}
+		
+		$(this).next().remove();
+		$(this).remove();
+		
+		$.cookie("favourites", favourites_array.join('*'), {expires: 365, path: "/"});
+		return false;
 	});
 });
