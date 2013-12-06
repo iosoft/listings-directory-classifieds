@@ -15,10 +15,12 @@ Build Directory or Classifieds site in some minutes. The plugin combines flexibi
 The plugin provides an ability to build any kind of directory site: classifieds, events directory, cars, bikes, boats and other vehicles dealers site, pets, real estate portal.
 In other words - whatever you want.
 
+Look at our [demo](http://www.salephpscripts.com/wordpress_directory/demo/)
+
 = Features of the plugin =
 * Fully customizable and easy in configuration
 * Restrict ads by listings levels
-* Sticky and/or featured listings options
+* Sticky and featured listings options
 * Ability to raise up directory listings
 * Ability to renew expired listings manually
 * Customizable content fields of different types
@@ -36,7 +38,7 @@ In other words - whatever you want.
 * Images AJAX uploading
 * 2 types of images gallery on listings pages
 * Contact listing owner form
-* favourites list functionality
+* Favourites list functionality
 * 'Print listing' option
 * 'Get listing in PDF' option
 * Adapted for reCaptcha
@@ -51,8 +53,6 @@ set field as required, manage visibility on pages. Also listings may be ordered 
 Note that you may assign fields for specific categories. This is important feature allows to build category-specific content fields.
 For instance: there may be special *'price'* field especially in *'Classifieds/For sale'* category and all its subcategories, so this field will appear
 only in listings, those were assigned with this category.
-
-Look at our [demo](http://www.salephpscripts.com/wordpress_directory/demo/)
 
 = Premium modules =
 Right now we have 3 additional premium modules:
