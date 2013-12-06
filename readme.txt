@@ -75,6 +75,19 @@ Right now we have 3 additional premium modules:
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Create new page with [webdirectory] shortcode
 
+== Screenshots ==
+
+1. search blocks
+
+2. Google maps and map markers
+
+3. Different types of content fields
+
+4. Management of listing Images and Videos
+
+5. Listing at frontend
+
+6. Listing at frontend
 
 == Changelog ==
 
