@@ -2,7 +2,7 @@
 	<div class="postbox">
 		<h3 class="hndle"><span>Plugin Info</span></h3>
 		<div class="inside">
-			<p>Contact us <a target="_blank" href="http://www.salephpscripts.com/contact/">here</a></p>
+			<p>Contact us <a target="_blank" href="http://www.salephpscripts.com/wordpress_directory/demo/contact-us">here</a></p>
 			<ul>
 				<li class="li_link"><a target="_blank" href="http://www.salephpscripts.com/wordpress_directory/demo/">Look at the demo</a></li>
 				<li class="li_link"><a target="_blank" href="http://wordpress.org/plugins/listings-directory-classifieds/">Place a rating at WordPress.org</a></li>
