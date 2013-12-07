@@ -250,6 +250,14 @@ class w2dc_settings_manager {
 				'w2dc_maps_section'
 		);
 		register_setting('w2dc_maps_settings_page', 'w2dc_show_directions');
+		add_settings_field(
+				'w2dc_default_map_zoom',
+				__('Default Google Maps zoom level', 'W2DC'),
+				array($this, 'w2dc_default_map_zoom_callback'),
+				'w2dc_maps_settings_page',
+				'w2dc_maps_section'
+		);
+		register_setting('w2dc_maps_settings_page', 'w2dc_default_map_zoom');
 
 		// Notifications settings page /////////////////////////////////////////////////////////////////////////
 		add_settings_section(
@@ -365,6 +373,29 @@ class w2dc_settings_manager {
 	}
 	public function w2dc_show_directions_callback() {
 		echo '<input type="checkbox" id="w2dc_show_directions" name="w2dc_show_directions" value="1" ' . checked(get_option('w2dc_show_directions'), 1, false) .' />';
+	}
+	public function w2dc_default_map_zoom_callback() {
+		echo '<select id="w2dc_default_map_zoom" name="w2dc_default_map_zoom">';
+		echo '<option value="1" ' . selected(get_option('w2dc_default_map_zoom'), 1, false) . '>1</option>';
+		echo '<option value="2" ' . selected(get_option('w2dc_default_map_zoom'), 2, false) . '>2</option>';
+		echo '<option value="3" ' . selected(get_option('w2dc_default_map_zoom'), 3, false) . '>3</option>';
+		echo '<option value="4" ' . selected(get_option('w2dc_default_map_zoom'), 4, false) . '>4</option>';
+		echo '<option value="5" ' . selected(get_option('w2dc_default_map_zoom'), 5, false) . '>5</option>';
+		echo '<option value="6" ' . selected(get_option('w2dc_default_map_zoom'), 6, false) . '>6</option>';
+		echo '<option value="7" ' . selected(get_option('w2dc_default_map_zoom'), 7, false) . '>7</option>';
+		echo '<option value="8" ' . selected(get_option('w2dc_default_map_zoom'), 8, false) . '>8</option>';
+		echo '<option value="9" ' . selected(get_option('w2dc_default_map_zoom'), 9, false) . '>9</option>';
+		echo '<option value="10" ' . selected(get_option('w2dc_default_map_zoom'), 10, false) . '>10</option>';
+		echo '<option value="11" ' . selected(get_option('w2dc_default_map_zoom'), 11, false) . '>11</option>';
+		echo '<option value="12" ' . selected(get_option('w2dc_default_map_zoom'), 12, false) . '>12</option>';
+		echo '<option value="13" ' . selected(get_option('w2dc_default_map_zoom'), 13, false) . '>13</option>';
+		echo '<option value="14" ' . selected(get_option('w2dc_default_map_zoom'), 14, false) . '>14</option>';
+		echo '<option value="15" ' . selected(get_option('w2dc_default_map_zoom'), 15, false) . '>15</option>';
+		echo '<option value="16" ' . selected(get_option('w2dc_default_map_zoom'), 16, false) . '>16</option>';
+		echo '<option value="17" ' . selected(get_option('w2dc_default_map_zoom'), 17, false) . '>17</option>';
+		echo '<option value="18" ' . selected(get_option('w2dc_default_map_zoom'), 18, false) . '>18</option>';
+		echo '<option value="19" ' . selected(get_option('w2dc_default_map_zoom'), 19, false) . '>19</option>';
+		echo '</select>';
 	}
 
 	// Notifications settings page /////////////////////////////////////////////////////////////////////////

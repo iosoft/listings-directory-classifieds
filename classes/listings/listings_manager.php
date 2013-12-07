@@ -23,6 +23,7 @@ class w2dc_listings_manager {
 
 		if ((isset($_POST['publish']) || isset($_POST['save'])) && $_POST['post_type'] == W2DC_POST_TYPE) {
 			add_filter('wp_insert_post_data', array($this, 'saveListing'), 99, 2);
+			add_filter('wp_insert_post_empty_content', array($this, 'allowEmptyContent'), 99, 2);
 			add_filter('redirect_post_location', array($this, 'redirectAfterSave'));
 		}
 	}
@@ -187,6 +188,11 @@ class w2dc_listings_manager {
 
 		return $wpdb->query($wpdb->prepare("INSERT INTO `wp_w2dc_levels_relationships` (post_id, level_id) VALUES(%d, %d) ON DUPLICATE KEY UPDATE level_id=%d", $this->current_listing->post->ID, $this->current_listing->level->id, $this->current_listing->level->id));
 	}
+	
+	public function allowEmptyContent($maybe_empty, $postarr) {
+		if ($postarr['post_type'] == W2DC_POST_TYPE)
+			return false;
+	}
 
 	public function saveListing($data, $postarr) {
 		global $w2dc_instance;
@@ -195,6 +201,9 @@ class w2dc_listings_manager {
 			return;
 
 		$errors = array();
+		
+		if (!isset($postarr['post_title']) || !$postarr['post_title'] || $postarr['post_title'] == __('Auto Draft'))
+			$errors[] = __('Listing title field required', 'W2DC');
 
 		$post_categories_ids = $w2dc_instance->categories_manager->validateCategories($this->current_listing->level, $postarr, $errors);
 
@@ -211,6 +220,7 @@ class w2dc_listings_manager {
 				$w2dc_instance->media_manager->saveAttachments($this->current_listing->level, $this->current_listing->post->ID, $validation_results);
 		}
 
+		
 		if ($errors) {
 			$data['post_status'] = 'draft';
 

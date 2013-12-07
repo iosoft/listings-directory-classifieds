@@ -1,4 +1,5 @@
 	var map = null;
+	var allow_map_zoom = true; // allow/disallow map zoom in listener, this option needs because map.setZoom() also calls this listener
     var geocoder = null;
     var infoWindow = null;
     var markersArray = [];
@@ -67,7 +68,8 @@
 		    }
 
 			google.maps.event.addListener(map, 'zoom_changed', function() {
-				jQuery(".map_zoom").val(map.getZoom());
+				if (allow_map_zoom)
+					jQuery(".map_zoom").val(map.getZoom());
 			});
 		}
 	});
@@ -88,7 +90,11 @@
 			var zoom_level = map.getZoom();
 		}
 		map.setCenter(bounds.getCenter());
+		
+		// allow/disallow map zoom in listener, this option needs because map.setZoom() also calls this listener
+		allow_map_zoom = false;
 		map.setZoom(zoom_level);
+		allow_map_zoom = true;
 
 		ajax_loader_hide();
 	}

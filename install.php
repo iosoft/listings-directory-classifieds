@@ -186,6 +186,7 @@ function w2dc_install_directory() {
 		update_option('w2dc_favourites_list', '1');
 		update_option('w2dc_print_button', '1');
 		update_option('w2dc_pdf_button', '1');
+		update_option('w2dc_default_map_zoom', '11');
 	
 		update_option('w2dc_installed_directory', true);
 		update_option('w2dc_installed_directory_version', W2DC_VERSION);
@@ -196,6 +197,7 @@ function w2dc_install_directory() {
 				'1.1.0',
 				'1.1.2',
 				'1.1.4',
+				'1.1.5',
 		);
 
 		$old_version = get_option('w2dc_installed_directory_version');
@@ -233,6 +235,10 @@ function upgrade_to_1_1_4() {
 	update_option('w2dc_favourites_list', '1');
 	update_option('w2dc_print_button', '1');
 	update_option('w2dc_pdf_button', '1');
+}
+
+function upgrade_to_1_1_5() {
+	update_option('w2dc_default_map_zoom', '11');
 }
 
 ?>

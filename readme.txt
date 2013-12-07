@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.1.4
+Stable tag: tags/1.1.5
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -90,6 +90,11 @@ Right now we have 3 additional premium modules:
 6. Listing at frontend
 
 == Changelog ==
+
+= Version 1.1.5 =
+* new settings was added 'Default map zoom'
+* core content fields bug was fixed
+* creation of new listing with empty title now renders error message and saves draft instead of unknown action
 
 = Version 1.1.4 =
 * favourites list functionality was implemented: Put in/Out button on listings pages and 'My favourites list' special page

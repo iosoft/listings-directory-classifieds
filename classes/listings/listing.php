@@ -11,7 +11,7 @@ class w2dc_listing {
 	public $locations = array();
 	public $content_fields = array();
 	public $logo_file;
-	public $map_zoom = 11;
+	public $map_zoom;
 	public $logo_image;
 	public $images = array();
 	public $videos = array();
@@ -105,7 +105,8 @@ class w2dc_listing {
 	}
 
 	public function setMapZoom() {
-		$this->map_zoom = get_post_meta($this->post->ID, '_map_zoom', true);
+		if (!$this->map_zoom = get_post_meta($this->post->ID, '_map_zoom', true))
+			$this->map_zoom = get_option('w2dc_default_map_zoom');
 	}
 
 	public function setContentFields() {
