@@ -1,6 +1,8 @@
 <?php
 
 class w2dc_content_fields_manager {
+	public $menu_page_hook;
+	
 	public function __construct() {
 		global $pagenow;
 
@@ -14,7 +16,7 @@ class w2dc_content_fields_manager {
 	}
 	
 	public function menu() {
-		add_submenu_page('w2dc_admin',
+		$this->menu_page_hook = add_submenu_page('w2dc_admin',
 			__('Content fields', 'W2DC'),
 			__('Content fields', 'W2DC'),
 			'administrator',

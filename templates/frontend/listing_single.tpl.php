@@ -20,13 +20,13 @@
 					   	leftPosition = (window.screen.width / 2) - ((window_width / 2) + 10);
 					   	topPosition = (window.screen.height / 2) - ((window_height / 2) + 50);
 					</script>
-					<input type="button" class="w2dc_print_listing_link" value="<?php _e('Print listing', 'W2DC'); ?>" onClick="window.open('<?php echo add_query_arg('action', 'printlisting', the_permalink()); ?>', 'print_window', 'height='+window_height+',width='+window_width+',left='+leftPosition+',top='+topPosition+',menubar=yes,scrollbars=yes');" />
+					<input type="button" class="w2dc_print_listing_link" value="<?php _e('Print listing', 'W2DC'); ?>" onClick="window.open('<?php echo add_query_arg('action', 'printlisting', get_permalink()); ?>', 'print_window', 'height='+window_height+',width='+window_width+',left='+leftPosition+',top='+topPosition+',menubar=yes,scrollbars=yes');" />
 					<?php endif; ?>
 					<?php if (get_option('w2dc_favourites_list')): ?>
 					<input type="button" class="w2dc_save_listing_link add_to_favourites <?php if (checkQuickList(get_the_ID())) 'in_favourites_list'; else 'not_in_favourites_list'; ?>" value="<?php if (checkQuickList(get_the_ID())) _e('Out of favourites list', 'W2DC'); else _e('Put in favourites list', 'W2DC'); ?>" listingid="<?php the_ID(); ?>" />
 					<?php endif; ?>
 					<?php if (get_option('w2dc_pdf_button')): ?>
-					<input type="button" class="w2dc_pdf_listing_link" value="<?php _e('Save listing in PDF', 'W2DC'); ?>" onClick="window.open('http://pdfmyurl.com/?url=<?php the_permalink(); ?>');" />
+					<input type="button" class="w2dc_pdf_listing_link" value="<?php _e('Save listing in PDF', 'W2DC'); ?>" onClick="window.open('http://pdfmyurl.com/?url=<?php echo urlencode(get_permalink()); ?>');" />
 					<?php endif; ?>
 				</div>
 	

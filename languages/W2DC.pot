@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: w2dc v1.0.0\n"
-"POT-Creation-Date: 2013-12-05 19:40+0500\n"
-"PO-Revision-Date: 2013-12-05 19:41+0500\n"
+"POT-Creation-Date: 2013-12-10 08:27+0500\n"
+"PO-Revision-Date: 2013-12-10 08:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -195,7 +195,7 @@ msgstr ""
 msgid "Search tags"
 msgstr ""
 
-#: w2dc.php:441 w2dc.php:476 classes/settings_manager.php:279
+#: w2dc.php:441 w2dc.php:476 classes/settings_manager.php:287
 msgid "Expiration notification"
 msgstr ""
 
@@ -357,7 +357,7 @@ msgstr ""
 
 #: classes/frontend_controller.php:44 classes/frontend_controller.php:80
 #: classes/frontend_controller.php:116 classes/frontend_controller.php:158
-#: classes/frontend_controller.php:183
+#: classes/frontend_controller.php:184
 msgid "Home"
 msgstr ""
 
@@ -365,7 +365,7 @@ msgstr ""
 msgid "Search results"
 msgstr ""
 
-#: classes/frontend_controller.php:182 classes/frontend_controller.php:183
+#: classes/frontend_controller.php:183 classes/frontend_controller.php:184
 #: templates/frontend/category.tpl.php:6 templates/frontend/index.tpl.php:6
 #: templates/frontend/listing_single.tpl.php:10
 #: templates/frontend/search.tpl.php:6 templates/frontend/tag.tpl.php:6
@@ -551,28 +551,32 @@ msgstr ""
 msgid "Show directions panel for the listing map?"
 msgstr ""
 
-#: classes/settings_manager.php:257
+#: classes/settings_manager.php:255
+msgid "Default Google Maps zoom level"
+msgstr ""
+
+#: classes/settings_manager.php:265
 msgid "Email notifications settings"
 msgstr ""
 
-#: classes/settings_manager.php:263
+#: classes/settings_manager.php:271
 msgid "Days before pre-expiration notification will be sent"
 msgstr ""
 
-#: classes/settings_manager.php:271
+#: classes/settings_manager.php:279
 msgid "Pre-expiration notification"
 msgstr ""
 
-#: classes/settings_manager.php:290
+#: classes/settings_manager.php:298
 msgid "This title will be used in HTML title tag of every directory page"
 msgstr ""
 
-#: classes/settings_manager.php:304
+#: classes/settings_manager.php:312
 #, php-format
 msgid "get your reCAPTCHA API Keys <a href=\"%s\" target=\"_blank\">here</a>"
 msgstr ""
 
-#: classes/settings_manager.php:383
+#: classes/settings_manager.php:414
 msgid "Settings saved!"
 msgstr ""
 
@@ -628,149 +632,149 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:216
+#: classes/content_fields/content_fields.php:217
 msgid "Content field name"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:218
+#: classes/content_fields/content_fields.php:219
 msgid "Content field slug"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:219
+#: classes/content_fields/content_fields.php:220
 msgid "Content field description"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:220
-#: classes/content_fields/content_fields_manager.php:183
+#: classes/content_fields/content_fields.php:221
+#: classes/content_fields/content_fields_manager.php:185
 #: templates/content_fields/add_edit_content_field.tpl.php:162
 msgid "Icon image"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:222
+#: classes/content_fields/content_fields.php:223
 msgid "Content field required"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:224
+#: classes/content_fields/content_fields.php:225
 #: templates/content_fields/add_edit_content_field.tpl.php:220
 msgid "Order by field"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:225
+#: classes/content_fields/content_fields.php:226
 #: templates/content_fields/add_edit_content_field.tpl.php:138
 msgid "Hide name"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:226
+#: classes/content_fields/content_fields.php:227
 #: templates/content_fields/add_edit_content_field.tpl.php:233
 msgid "On excerpt page"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:227
+#: classes/content_fields/content_fields.php:228
 #: templates/content_fields/add_edit_content_field.tpl.php:245
 msgid "On listing page"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:230
+#: classes/content_fields/content_fields.php:231
 msgid "Content field type"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:232
+#: classes/content_fields/content_fields.php:233
 #: classes/levels/levels_manager.php:72
 #: templates/content_fields/add_edit_content_field.tpl.php:261
 #: templates/levels/add_edit_level.tpl.php:275
 msgid "Assigned categories"
 msgstr ""
 
-#: classes/content_fields/content_fields.php:248
+#: classes/content_fields/content_fields.php:249
 msgid "Can't use this slug"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:18
-#: classes/content_fields/content_fields_manager.php:19
-#: classes/content_fields/content_fields_manager.php:146
+#: classes/content_fields/content_fields_manager.php:20
+#: classes/content_fields/content_fields_manager.php:21
+#: classes/content_fields/content_fields_manager.php:148
 #: templates/admin_index.tpl.php:55
 #: templates/content_fields/content_fields_table.tpl.php:27
 msgid "Content fields"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:46
+#: classes/content_fields/content_fields_manager.php:48
 msgid "Content fields order was updated!"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:81
+#: classes/content_fields/content_fields_manager.php:83
 msgid "Content field was updated successfully!"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:85
+#: classes/content_fields/content_fields_manager.php:87
 msgid "Content field was created succcessfully!"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:106
+#: classes/content_fields/content_fields_manager.php:108
 msgid "This content field can't be configured"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:119
+#: classes/content_fields/content_fields_manager.php:121
 msgid "Content field was deleted successfully!"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:123
+#: classes/content_fields/content_fields_manager.php:125
 msgid "Delete conent field"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:123
+#: classes/content_fields/content_fields_manager.php:125
 #, php-format
 msgid "Are you sure you want delete \"%s\" content field?"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:172
+#: classes/content_fields/content_fields_manager.php:174
 msgid "content field"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:173
+#: classes/content_fields/content_fields_manager.php:175
 msgid "content fields"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:180
+#: classes/content_fields/content_fields_manager.php:182
 #: classes/levels/levels_manager.php:142 classes/levels/levels_manager.php:241
 #: classes/locations/locations_levels.php:105
 msgid "Name"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:181
+#: classes/content_fields/content_fields_manager.php:183
 #: templates/content_fields/add_edit_content_field.tpl.php:175
 msgid "Field type"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:182
+#: classes/content_fields/content_fields_manager.php:184
 msgid "Required"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:220
+#: classes/content_fields/content_fields_manager.php:222
 #: classes/levels/levels_manager.php:183
 #: classes/locations/locations_levels.php:134
 msgid "Edit"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:222
+#: classes/content_fields/content_fields_manager.php:224
 msgid "Configure"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:227
+#: classes/content_fields/content_fields_manager.php:229
 #: classes/levels/levels_manager.php:184
 #: classes/locations/locations_levels.php:135
 #: templates/delete_question.tpl.php:13
 msgid "Delete"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:257
+#: classes/content_fields/content_fields_manager.php:259
 msgid "On exerpt"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:259
+#: classes/content_fields/content_fields_manager.php:261
 msgid "On listing"
 msgstr ""
 
-#: classes/content_fields/content_fields_manager.php:277
+#: classes/content_fields/content_fields_manager.php:279
 msgid "No content fields found."
 msgstr ""
 
@@ -1056,67 +1060,75 @@ msgstr ""
 msgid "No levels found. Can't create new listings."
 msgstr ""
 
-#: classes/listings/listings_manager.php:33
+#: classes/listings/listings_manager.php:34
 msgid "Listing Info"
 msgstr ""
 
-#: classes/listings/listings_manager.php:50
+#: classes/listings/listings_manager.php:51
 msgid "Level"
 msgstr ""
 
-#: classes/listings/listings_manager.php:51
+#: classes/listings/listings_manager.php:52
 msgid "Expiration date"
 msgstr ""
 
-#: classes/listings/listings_manager.php:67
+#: classes/listings/listings_manager.php:68
 #: templates/levels/add_edit_level.tpl.php:138
 #: templates/listings/info_metabox.tpl.php:40
 msgid "Eternal active period"
 msgstr ""
 
-#: classes/listings/listings_manager.php:71
+#: classes/listings/listings_manager.php:72
 #: templates/listings/info_metabox.tpl.php:17
 msgid "renew listing"
 msgstr ""
 
-#: classes/listings/listings_manager.php:83
+#: classes/listings/listings_manager.php:84
 #: templates/listings/info_metabox.tpl.php:30
 msgid "raise up listing"
 msgstr ""
 
-#: classes/listings/listings_manager.php:91
 #: classes/listings/listings_manager.php:92
+#: classes/listings/listings_manager.php:93
 #: templates/listings/raise_up.tpl.php:5
 msgid "Raise up listing"
 msgstr ""
 
-#: classes/listings/listings_manager.php:107
+#: classes/listings/listings_manager.php:108
 msgid "Listing was raised up successfully!"
 msgstr ""
 
-#: classes/listings/listings_manager.php:109
+#: classes/listings/listings_manager.php:110
 msgid "An error has occurred and listing was not raised up"
 msgstr ""
 
-#: classes/listings/listings_manager.php:122
 #: classes/listings/listings_manager.php:123
+#: classes/listings/listings_manager.php:124
 #: templates/listings/renew.tpl.php:5 templates/listings/renew.tpl.php:13
 msgid "Renew listing"
 msgstr ""
 
-#: classes/listings/listings_manager.php:138
+#: classes/listings/listings_manager.php:139
 msgid "Listing was renewed successfully!"
 msgstr ""
 
-#: classes/listings/listings_manager.php:140
+#: classes/listings/listings_manager.php:141
 msgid "An error has occurred and listing was not renewed"
 msgstr ""
 
-#: classes/listings/listings_manager.php:233
+#: classes/listings/listings_manager.php:205
+msgid "Auto Draft"
+msgstr ""
+
+#: classes/listings/listings_manager.php:206
+msgid "Listing title field required"
+msgstr ""
+
+#: classes/listings/listings_manager.php:243
 msgid "You can't publish listing until it has expired status!"
 msgstr ""
 
-#: classes/listings/listings_manager.php:238
+#: classes/listings/listings_manager.php:248
 msgid "Listing was saved successfully!"
 msgstr ""
 
@@ -1563,7 +1575,7 @@ msgid "Message:"
 msgstr ""
 
 #: templates/frontend/category.tpl.php:34
-#: templates/frontend/favourites.tpl.php:10
+#: templates/frontend/favourites.tpl.php:21
 #: templates/frontend/index.tpl.php:21 templates/frontend/search.tpl.php:32
 #: templates/frontend/tag.tpl.php:36
 #, php-format
@@ -1573,7 +1585,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: templates/frontend/category.tpl.php:50
-#: templates/frontend/favourites.tpl.php:21
+#: templates/frontend/favourites.tpl.php:32
 #: templates/frontend/index.tpl.php:37 templates/frontend/search.tpl.php:48
 #: templates/frontend/tag.tpl.php:52
 msgid "View listing >>"
@@ -1602,7 +1614,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: templates/frontend/favourites.tpl.php:16
+#: templates/frontend/favourites.tpl.php:27
 msgid "Remove from favourites list"
 msgstr ""
 

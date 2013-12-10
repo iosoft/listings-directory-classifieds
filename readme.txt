@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.1.5
+Stable tag: tags/1.1.6
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -60,8 +60,8 @@ Right now we have 3 additional premium modules:
 **Frontend submission** - allow users to submit new directory/classified ads at the frontend side of your site. Ability to select one of available login modes:
 
 1. user must be logged in before submission
-2. new user will be created during submission (contact info required)
-3. new user will be created during submission (contact info doesn't required)
+2. new user will be created during submission (contact info is required)
+3. new user will be created during submission (contact info isn't required)
 4. create listings by anonymous users
 
 **Enhanced search** - allows to search by categories and content fields, also additional feature for locations search in radius (in miles or kilometers)
@@ -90,6 +90,10 @@ Right now we have 3 additional premium modules:
 6. Listing at frontend
 
 == Changelog ==
+
+= Version 1.1.6 =
+* translation issues on directory admin page were fixed
+* content fields menu page hook now stored in content fields manager object
 
 = Version 1.1.5 =
 * new settings was added 'Default map zoom'

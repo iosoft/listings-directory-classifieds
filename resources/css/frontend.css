@@ -244,29 +244,21 @@ li.categories_list>a {
 
 .w2dc_directory_frontpanel input[type="button"] {
 	margin: 0 10px 10px 0;
+	color: inherit;
+	background-repeat: no-repeat !important;
+	background-position: 5px center !important;
+	padding-left: 22px !important;
 }
 input[type="button"].w2dc_favourites_link, input[type="button"].w2dc_favourites_link:hover {
 	background-image: url(../images/star.png);
-	background-repeat: no-repeat;
-	background-position: 5px center;
-	padding-left: 22px;
 }
 input[type="button"].w2dc_edit_listing_link, input[type="button"].w2dc_edit_listing_link:hover {
 	background-image: url(../images/page_edit.png);
-	background-repeat: no-repeat;
-	background-position: 5px center;
-	padding-left: 22px;
 }
 input[type="button"].w2dc_print_listing_link, input[type="button"].w2dc_print_listing_link:hover {
 	background-image: url(../images/printer.png);
-	background-repeat: no-repeat;
-	background-position: 5px center;
-	padding-left: 22px;
 }
 input[type="button"].w2dc_save_listing_link, input[type="button"].w2dc_save_listing_link:hover {
-	background-repeat: no-repeat;
-	background-position: 5px center;
-	padding-left: 22px;
 }
 .in_favourites_list {
 	background-image: url(../images/folder_star.png);
@@ -276,7 +268,4 @@ input[type="button"].w2dc_save_listing_link, input[type="button"].w2dc_save_list
 }
 input[type="button"].w2dc_pdf_listing_link, input[type="button"].w2dc_pdf_listing_link:hover {
 	background-image: url(../images/page_white_acrobat.png);
-	background-repeat: no-repeat;
-	background-position: 5px center;
-	padding-left: 22px;
 }
