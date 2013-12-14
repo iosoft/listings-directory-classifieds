@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: w2dc v1.0.0\n"
-"POT-Creation-Date: 2013-12-10 08:27+0500\n"
-"PO-Revision-Date: 2013-12-10 08:27+0500\n"
+"POT-Creation-Date: 2013-12-14 15:42+0500\n"
+"PO-Revision-Date: 2013-12-14 15:42+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Subcategories:"
 msgstr ""
 
-#: w2dc.php:175
+#: w2dc.php:179
 #, php-format
 msgid ""
 "<b>Directory & Classifieds plugin</b>: sorry, but there isn't any page with "
@@ -50,160 +50,160 @@ msgid ""
 "you?"
 msgstr ""
 
-#: w2dc.php:252 w2dc.php:344 w2dc.php:356
+#: w2dc.php:256 w2dc.php:348 w2dc.php:360
 msgid "Directory listings"
 msgstr ""
 
-#: w2dc.php:345
+#: w2dc.php:349
 msgid "Directory listing"
 msgstr ""
 
-#: w2dc.php:346 w2dc.php:347
+#: w2dc.php:350 w2dc.php:351
 msgid "Create new listing"
 msgstr ""
 
-#: w2dc.php:348 templates/frontend/listing_single.tpl.php:13
+#: w2dc.php:352 templates/frontend/listing_single.tpl.php:13
 msgid "Edit listing"
 msgstr ""
 
-#: w2dc.php:349
+#: w2dc.php:353
 msgid "New listing"
 msgstr ""
 
-#: w2dc.php:350 templates/google_map.tpl.php:5
+#: w2dc.php:354 templates/google_map.tpl.php:5
 msgid "View listing"
 msgstr ""
 
-#: w2dc.php:351
+#: w2dc.php:355
 msgid "Search listings"
 msgstr ""
 
-#: w2dc.php:352
+#: w2dc.php:356
 msgid "No listings found"
 msgstr ""
 
-#: w2dc.php:353
+#: w2dc.php:357
 msgid "No listings found in trash"
 msgstr ""
 
-#: w2dc.php:367 classes/categories_manager.php:27
+#: w2dc.php:371 classes/categories_manager.php:35
 #: classes/content_fields/content_fields.php:27
 msgid "Listing categories"
 msgstr ""
 
-#: w2dc.php:368 templates/admin_index.tpl.php:63
+#: w2dc.php:372 templates/admin_index.tpl.php:63
 msgid "Directory categories"
 msgstr ""
 
-#: w2dc.php:369
+#: w2dc.php:373
 msgid "Category"
 msgstr ""
 
-#: w2dc.php:370
+#: w2dc.php:374
 msgid "Create category"
 msgstr ""
 
-#: w2dc.php:371
+#: w2dc.php:375
 msgid "New category"
 msgstr ""
 
-#: w2dc.php:372
+#: w2dc.php:376
 msgid "Edit category"
 msgstr ""
 
-#: w2dc.php:373
+#: w2dc.php:377
 msgid "View category"
 msgstr ""
 
-#: w2dc.php:374
+#: w2dc.php:378
 msgid "Update category"
 msgstr ""
 
-#: w2dc.php:375
+#: w2dc.php:379
 msgid "Search categories"
 msgstr ""
 
-#: w2dc.php:382 classes/locations/locations_manager.php:29
+#: w2dc.php:386 classes/locations/locations_manager.php:29
 msgid "Listing locations"
 msgstr ""
 
-#: w2dc.php:383 templates/admin_index.tpl.php:39
+#: w2dc.php:387 templates/admin_index.tpl.php:39
 msgid "Directory locations"
 msgstr ""
 
-#: w2dc.php:384
+#: w2dc.php:388
 msgid "Location"
 msgstr ""
 
-#: w2dc.php:385
+#: w2dc.php:389
 msgid "Create location"
 msgstr ""
 
-#: w2dc.php:386
+#: w2dc.php:390
 msgid "New location"
 msgstr ""
 
-#: w2dc.php:387
+#: w2dc.php:391
 msgid "Edit location"
 msgstr ""
 
-#: w2dc.php:388
+#: w2dc.php:392
 msgid "View location"
 msgstr ""
 
-#: w2dc.php:389
+#: w2dc.php:393
 msgid "Update location"
 msgstr ""
 
-#: w2dc.php:390
+#: w2dc.php:394
 msgid "Search locations"
 msgstr ""
 
-#: w2dc.php:398 classes/content_fields/content_fields.php:28
+#: w2dc.php:402 classes/content_fields/content_fields.php:28
 msgid "Listing tags"
 msgstr ""
 
-#: w2dc.php:399 templates/admin_index.tpl.php:71
+#: w2dc.php:403 templates/admin_index.tpl.php:71
 msgid "Directory tags"
 msgstr ""
 
-#: w2dc.php:400
+#: w2dc.php:404
 msgid "Tag"
 msgstr ""
 
-#: w2dc.php:401
+#: w2dc.php:405
 msgid "Create tag"
 msgstr ""
 
-#: w2dc.php:402
+#: w2dc.php:406
 msgid "New tag"
 msgstr ""
 
-#: w2dc.php:403
+#: w2dc.php:407
 msgid "Edit tag"
 msgstr ""
 
-#: w2dc.php:404
+#: w2dc.php:408
 msgid "View tag"
 msgstr ""
 
-#: w2dc.php:405
+#: w2dc.php:409
 msgid "Update tag"
 msgstr ""
 
-#: w2dc.php:406
+#: w2dc.php:410
 msgid "Search tags"
 msgstr ""
 
-#: w2dc.php:441 w2dc.php:476 classes/settings_manager.php:287
+#: w2dc.php:445 w2dc.php:480 classes/settings_manager.php:287
 msgid "Expiration notification"
 msgstr ""
 
-#: w2dc.php:514 templates/frontend/listing_single.tpl.php:26
+#: w2dc.php:518 templates/frontend/listing_single.tpl.php:26
 msgid "Put in favourites list"
 msgstr ""
 
-#: w2dc.php:515 templates/frontend/listing_single.tpl.php:26
+#: w2dc.php:519 templates/frontend/listing_single.tpl.php:26
 msgid "Out of favourites list"
 msgstr ""
 
@@ -225,15 +225,24 @@ msgid ""
 "successfully created, thank you!"
 msgstr ""
 
-#: classes/categories_manager.php:53
+#: classes/categories_manager.php:61
 msgid "Sorry, you can not choose some categries for this level!"
 msgstr ""
 
-#: classes/categories_manager.php:77
+#: classes/categories_manager.php:73
+#: templates/categories/select_icon_form.tpl.php:2
+msgid "Icon"
+msgstr ""
+
+#: classes/categories_manager.php:139
+msgid "Select category icon"
+msgstr ""
+
+#: classes/categories_manager.php:159
 msgid "Sorry, you can not choose this category for this level!"
 msgstr ""
 
-#: classes/categories_manager.php:78
+#: classes/categories_manager.php:160
 #, php-format
 msgid "Sorry, you can not choose more than %d categories!"
 msgstr ""
@@ -385,20 +394,20 @@ msgstr ""
 msgid "Your message"
 msgstr ""
 
-#: classes/frontend_controller.php:313
+#: classes/frontend_controller.php:314
 #, php-format
 msgid "%s contacted you about your listing"
 msgstr ""
 
-#: classes/frontend_controller.php:325
+#: classes/frontend_controller.php:326
 msgid "You message was sent successfully!"
 msgstr ""
 
-#: classes/frontend_controller.php:327
+#: classes/frontend_controller.php:328
 msgid "An error occurred and your message wasn\\t sent!"
 msgstr ""
 
-#: classes/frontend_controller.php:329
+#: classes/frontend_controller.php:330
 msgid "Verification code wasn't entered correctly!"
 msgstr ""
 
@@ -1359,6 +1368,19 @@ msgstr ""
 msgid "Email notifications"
 msgstr ""
 
+#: templates/categories/select_icons_dialog.tpl.php:1
+#: templates/content_fields/select_icons.tpl.php:1
+msgid "Reset icon image"
+msgstr ""
+
+#: templates/categories/select_icon_form.tpl.php:5
+msgid "Associate an icon to this category"
+msgstr ""
+
+#: templates/categories/select_icon_link.tpl.php:5
+msgid "Select icon"
+msgstr ""
+
 #: templates/content_fields/add_edit_content_field.tpl.php:7
 msgid "Edit content field"
 msgstr ""
@@ -1445,10 +1467,6 @@ msgstr ""
 #: templates/content_fields/content_fields_table.tpl.php:38
 #: templates/levels/levels_table.tpl.php:38
 msgid "Save order"
-msgstr ""
-
-#: templates/content_fields/select_icons.tpl.php:1
-msgid "Reset icon image"
 msgstr ""
 
 #: templates/content_fields/fields/datetime_configuration.tpl.php:5

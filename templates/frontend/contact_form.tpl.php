@@ -3,9 +3,9 @@
 	<input type="hidden" name="listing_id" value="<?php echo $listing->post->ID; ?>" />
 	<h3><?php _e('Send message to listing owner', 'W2DC'); ?></h3>
 	<div class="w2dc_contact_form">
-		<?php if ($current_user): ?>
+		<?php if (is_user_logged_in()): ?>
 		<p>
-			<?php echo sprintf(__('You are currently logged in as %s. Your message will be sent using your logged in name and email.', 'W2DC'), $current_user->user_login); ?>
+			<?php echo sprintf(__('You are currently logged in as %s. Your message will be sent using your logged in name and email.', 'W2DC'), wp_get_current_user()->user_login); ?>
 		</p>
 		<?php else: ?>
 		<p>

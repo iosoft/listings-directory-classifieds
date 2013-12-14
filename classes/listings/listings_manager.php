@@ -21,7 +21,7 @@ class w2dc_listings_manager {
 		add_action('admin_menu', array($this, 'addRaiseUpPage'));
 		add_action('admin_menu', array($this, 'addRenewPage'));
 
-		if ((isset($_POST['publish']) || isset($_POST['save'])) && $_POST['post_type'] == W2DC_POST_TYPE) {
+		if ((isset($_POST['publish']) || isset($_POST['save'])) && (isset($_POST['post_type']) && $_POST['post_type'] == W2DC_POST_TYPE)) {
 			add_filter('wp_insert_post_data', array($this, 'saveListing'), 99, 2);
 			add_filter('wp_insert_post_empty_content', array($this, 'allowEmptyContent'), 99, 2);
 			add_filter('redirect_post_location', array($this, 'redirectAfterSave'));

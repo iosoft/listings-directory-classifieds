@@ -5,7 +5,7 @@ Tags: directory, wordpress directory, directory plugin, classifieds, listings di
 Requires at least: 3.6.0
 Tested up to: 3.7.1
 Last Updated: 2013-Nov-15
-Stable tag: tags/1.1.6
+Stable tag: tags/1.1.7
 License: GPLv2 or later
 
 Build Directory or Classifieds site in some minutes. The plugin combines flexibility of WordPress and functionality of Directory and Classifieds
@@ -28,6 +28,7 @@ Look at our [demo](http://www.salephpscripts.com/wordpress_directory/demo/)
 * Category-based content fields
 * Order directory listings by content fields
 * Powerful search by content fields (in premium module)
+* Icons for categories
 * Search by categories and locations
 * SEO friendly - fully compatible with Yoast SEO plugin
 * Locations search in radius - results displaying on map (in premium module)
@@ -90,6 +91,10 @@ Right now we have 3 additional premium modules:
 6. Listing at frontend
 
 == Changelog ==
+
+= Version 1.1.7 =
+* new feature was added: icons for categories
+* contact form for anonymous users bug was fixed
 
 = Version 1.1.6 =
 * translation issues on directory admin page were fixed

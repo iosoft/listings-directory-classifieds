@@ -153,7 +153,7 @@ class w2dc_listing {
 	}
 
 	public function display() {
-		w2dc_renderTemplate('frontend/listing.tpl.php', array('listing' => $this, 'current_user' => wp_get_current_user()));
+		w2dc_renderTemplate('frontend/listing.tpl.php', array('listing' => $this));
 	}
 	
 	public function renderContentFields($is_single = true) {

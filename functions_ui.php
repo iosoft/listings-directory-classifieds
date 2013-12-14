@@ -226,7 +226,12 @@ function w2dc_renderSubCategories($parent_category_slug = '', $columns = 2, $cou
 			else
 				$term_count = '';
 
-			echo '<li class="categories_list" style="width: ' . $width . '%"><a href="' . get_term_link($term) . '">' . $term->name . $term_count . '</a></li>';
+			if ($icon_file = w2dc_getCategoryIcon($term->term_id))
+				$icon_image = '<img class="w2dc_field_icon" src="' . W2DC_CATEGORIES_ICONS_URL . $icon_file . '" />';
+			else
+				$icon_image = '';
+
+			echo '<li class="categories_list" style="width: ' . $width . '%"><a href="' . get_term_link($term) . '">' . $icon_image . $term->name . $term_count . '</a></li>';
 			$ccount++;
 			$tcount++;
 			if ($ccount == $columns || $tcount == count($terms)) {
@@ -292,7 +297,12 @@ function w2dc_renderAllCategories($depth = 2, $columns = 2, $count = false) {
 			else
 				$term_count = '';
 
-			echo '<li class="categories_list" style="width: ' . $width . '%"><a href="' . get_term_link($term) . '">' . $term->name . $term_count . '</a>' . _w2dc_renderAllCategories($term->term_id, $depth, 1, $count) . '</li>';
+			if ($icon_file = w2dc_getCategoryIcon($term->term_id))
+				$icon_image = '<img class="w2dc_field_icon" src="' . W2DC_CATEGORIES_ICONS_URL . $icon_file . '" />';
+			else
+				$icon_image = '';
+			
+			echo '<li class="categories_list" style="width: ' . $width . '%"><a href="' . get_term_link($term) . '">' . $icon_image . $term->name . $term_count . '</a>' . _w2dc_renderAllCategories($term->term_id, $depth, 1, $count) . '</li>';
 			$ccount++;
 			$tcount++;
 			if ($ccount == $columns || $tcount == count($terms)) {
@@ -314,11 +324,23 @@ function _w2dc_renderAllCategories($parent = 0, $depth = 2, $level = 0, $count =
 			else
 				$term_count = '';
 
-			$html .= '<li class="subcategories_list"><a href="' . get_term_link($term) . '">' . $term->name . $term_count . '</a>' . _w2dc_renderAllCategories($term->term_id, $depth, $level, $count) . '</li>';
+			if ($icon_file = w2dc_getCategoryIcon($term->term_id))
+				$icon_image = '<img class="w2dc_field_icon" src="' . W2DC_CATEGORIES_ICONS_URL . $icon_file . '" />';
+			else
+				$icon_image = '';
+
+			$html .= '<li class="subcategories_list"><a href="' . get_term_link($term) . '">' . $icon_image . $term->name . $term_count . '</a>' . _w2dc_renderAllCategories($term->term_id, $depth, $level, $count) . '</li>';
 		}
 		$html .= '</ul>';
 	}
 	return $html;
+}
+
+function w2dc_getCategoryIcon($term_id) {
+	global $w2dc_instance;
+	
+	if ($icon_file = $w2dc_instance->categories_manager->getCategoryIconFile($term_id))
+		return $icon_file;
 }
 
 function w2dc_show_404() {

@@ -135,7 +135,7 @@
 
 				<?php if (get_option('w2dc_listing_contact_form')): ?>
 				<div id="contact-tab">
-					<?php w2dc_renderTemplate('frontend/contact_form.tpl.php', array('listing' => $listing, 'current_user' => wp_get_current_user())); ?>
+					<?php w2dc_renderTemplate('frontend/contact_form.tpl.php', array('listing' => $listing)); ?>
 				</div>
 				<?php endif; ?>
 			</div>

@@ -3,13 +3,13 @@
 Plugin Name: Directory & Classifieds plugin
 Plugin URI: http://www.salephpscripts.com/wordpress_directory/
 Description: Provides an ability to build any kind of directory site: classifieds, events directory, cars, bikes, boats and other vehicles dealers site, pets, real estate portal on your WordPress powered site. In other words - whatever you want.
-Version: 1.1.6
+Version: 1.1.7
 Author: Mihail Chepovskiy
 Author URI: http://www.salephpscripts.com
 License: GPLv2 or any later version
 */
 
-define('W2DC_VERSION', '1.1.6');
+define('W2DC_VERSION', '1.1.7');
 
 define('W2DC_PATH', plugin_dir_path(__FILE__));
 define('W2DC_URL', plugins_url('/', __FILE__));
@@ -19,6 +19,10 @@ define('W2DC_RESOURCES_URL', W2DC_URL . 'resources/');
 // Content fields icons constant
 define('W2DC_FIELDS_ICONS_PATH', W2DC_PATH . '/resources/images/content_fields_icons/');
 define('W2DC_FIELDS_ICONS_URL', W2DC_RESOURCES_URL . 'images/content_fields_icons/');
+
+// Categories icons constant
+define('W2DC_CATEGORIES_ICONS_PATH', W2DC_PATH . '/resources/images/categories_icons/');
+define('W2DC_CATEGORIES_ICONS_URL', W2DC_RESOURCES_URL . 'images/categories_icons/');
 
 define('W2DC_POST_TYPE', 'w2dc_listing');
 define('W2DC_CATEGORIES_TAX', 'w2dc-category');

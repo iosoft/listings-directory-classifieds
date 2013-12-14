@@ -160,33 +160,34 @@ function w2dc_install_directory() {
 			wp_insert_term('Wyoming', W2DC_LOCATIONS_TAX, array('parent' => $parent_term['term_id']));
 		}
 	
-		update_option('w2dc_category_slug', 'web-category');
-		update_option('w2dc_tag_slug', 'web-tag');
-		update_option('w2dc_enable_recaptcha', '0');
-		update_option('w2dc_recaptcha_public_key', '');
-		update_option('w2dc_recaptcha_private_key', '');
-		update_option('w2dc_show_categories_index', '1');
-		update_option('w2dc_show_category_count', '1');
-		update_option('w2dc_listings_number_index', '6');
-		update_option('w2dc_listings_number_excerpt', '6');
-		update_option('w2dc_map_on_index', '1');
-		update_option('w2dc_map_on_excerpt', '1');
-		update_option('w2dc_listings_own_page', '1');
-		update_option('w2dc_directory_title', 'Directory & Classifieds');
-		update_option('w2dc_categories_nesting_level', '1');
-		update_option('w2dc_images_on_tab', '0');
-		update_option('w2dc_show_directions', '1');
-		update_option('w2dc_send_expiration_notification_days', '1');
-		update_option('w2dc_preexpiration_notification', 'Your listing "[listing]" will expiry in [days] days.');
-		update_option('w2dc_expiration_notification', 'Your listing "[listing]" had expired. You can renew it here [link]');
-		update_option('w2dc_show_what_search', '1');
-		update_option('w2dc_show_where_search', '1');
-		update_option('w2dc_listings_on_index', '1');
-		update_option('w2dc_listing_contact_form', '1');
-		update_option('w2dc_favourites_list', '1');
-		update_option('w2dc_print_button', '1');
-		update_option('w2dc_pdf_button', '1');
-		update_option('w2dc_default_map_zoom', '11');
+		add_option('w2dc_category_slug', 'web-category');
+		add_option('w2dc_tag_slug', 'web-tag');
+		add_option('w2dc_enable_recaptcha');
+		add_option('w2dc_recaptcha_public_key');
+		add_option('w2dc_recaptcha_private_key');
+		add_option('w2dc_show_categories_index', '1');
+		add_option('w2dc_show_category_count', '1');
+		add_option('w2dc_listings_number_index', '6');
+		add_option('w2dc_listings_number_excerpt', '6');
+		add_option('w2dc_map_on_index', '1');
+		add_option('w2dc_map_on_excerpt', '1');
+		add_option('w2dc_listings_own_page', '1');
+		add_option('w2dc_directory_title', 'Directory & Classifieds');
+		add_option('w2dc_categories_nesting_level', '1');
+		add_option('w2dc_images_on_tab', '0');
+		add_option('w2dc_show_directions', '1');
+		add_option('w2dc_send_expiration_notification_days', '1');
+		add_option('w2dc_preexpiration_notification', 'Your listing "[listing]" will expiry in [days] days.');
+		add_option('w2dc_expiration_notification', 'Your listing "[listing]" had expired. You can renew it here [link]');
+		add_option('w2dc_show_what_search', '1');
+		add_option('w2dc_show_where_search', '1');
+		add_option('w2dc_listings_on_index', '1');
+		add_option('w2dc_listing_contact_form', '1');
+		add_option('w2dc_favourites_list', '1');
+		add_option('w2dc_print_button', '1');
+		add_option('w2dc_pdf_button', '1');
+		add_option('w2dc_default_map_zoom', '11');
+		add_option('w2dc_categories_icons');
 	
 		update_option('w2dc_installed_directory', true);
 		update_option('w2dc_installed_directory_version', W2DC_VERSION);
@@ -198,6 +199,7 @@ function w2dc_install_directory() {
 				'1.1.2',
 				'1.1.4',
 				'1.1.5',
+				'1.1.7',
 		);
 
 		$old_version = get_option('w2dc_installed_directory_version');
@@ -213,12 +215,12 @@ function w2dc_install_directory() {
 }
 
 function upgrade_to_1_0_6() {
-	update_option('w2dc_show_what_search', '1');
-	update_option('w2dc_show_where_search', '1');
+	add_option('w2dc_show_what_search', '1');
+	add_option('w2dc_show_where_search', '1');
 }
 
 function upgrade_to_1_0_7() {
-	update_option('w2dc_content_width', '60');
+	add_option('w2dc_content_width', '60');
 }
 
 function upgrade_to_1_1_0() {
@@ -227,18 +229,22 @@ function upgrade_to_1_1_0() {
 }
 
 function upgrade_to_1_1_2() {
-	update_option('w2dc_listings_on_index', '1');
-	update_option('w2dc_listing_contact_form', '1');
+	add_option('w2dc_listings_on_index', '1');
+	add_option('w2dc_listing_contact_form', '1');
 }
 
 function upgrade_to_1_1_4() {
-	update_option('w2dc_favourites_list', '1');
-	update_option('w2dc_print_button', '1');
-	update_option('w2dc_pdf_button', '1');
+	add_option('w2dc_favourites_list', '1');
+	add_option('w2dc_print_button', '1');
+	add_option('w2dc_pdf_button', '1');
 }
 
 function upgrade_to_1_1_5() {
-	update_option('w2dc_default_map_zoom', '11');
+	add_option('w2dc_default_map_zoom', '11');
+}
+
+function upgrade_to_1_1_7() {
+	add_option('w2dc_categories_icons');
 }
 
 ?>

@@ -286,16 +286,17 @@ class w2dc_frontend_controller {
 	
 	public function contactOwnerAction($post) {
 		$validation = new form_validation;
-		if (!($current_user = wp_get_current_user())) {
+		if (!is_user_logged_in()) {
 			$validation->set_rules('contact_name', __('Contact name', 'W2DC'), 'required');
 			$validation->set_rules('contact_email', __('Contact email', 'W2DC'), 'required|valid_email');
 		}
 		$validation->set_rules('contact_message', __('Your message', 'W2DC'), 'required|max_length[1500]');
 		if ($validation->run()) {
-			if (!$current_user) {
+			if (!is_user_logged_in()) {
 				$contact_name = $validation->result_array('contact_name');
 				$contact_email = $validation->result_array('contact_email');
 			} else {
+				$current_user = wp_get_current_user();
 				$contact_name = $current_user->user_login;
 				$contact_email = $current_user->user_email;
 			}
