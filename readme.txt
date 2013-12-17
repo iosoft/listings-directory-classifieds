@@ -3,7 +3,7 @@ Contributors: Mihail Chepovskiy
 Donate link: http://www.salephpscripts.com/
 Tags: directory, wordpress directory, directory plugin, classifieds, listings directory, listings, ads directory, advertisement, yellow pages, directory theme, classifieds directory, locations directory, address, classified ads, directory plugin, business directory plugin, classifieds plugin, church directory, member directory, members directory, city portal, city portal plugin, events directory, cars directory, bikes directory, boats directory, vehicles dealers directory, pets directory, real estate portal, google maps
 Requires at least: 3.6.0
-Tested up to: 3.7.1
+Tested up to: 3.8
 Last Updated: 2013-Nov-15
 Stable tag: tags/1.1.7
 License: GPLv2 or later
